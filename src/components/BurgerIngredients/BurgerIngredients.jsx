@@ -1,14 +1,10 @@
 import React from "react";
 import {
-  Logo,
-  BurgerIcon,
-  ListIcon,
-  ProfileIcon,
-  BurgerIn,
   Tab,
-  ConstructorElement,
+  Counter,
+  CurrencyIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import IngredientsStyles from "./BurgerIngredients.module.css";
+import styles from "./BurgerIngredients.module.css";
 import { data } from "../../utils/data.js";
 
 export default function BurgerIngredients() {
@@ -29,38 +25,57 @@ export default function BurgerIngredients() {
     );
   };
 
-  /*const Ingreients = () => {
-		return (
-			<div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-				<ConstructorElement
-					type="top"
-					isLocked={true}
-					text="Краторная булка N-200i (верх)"
-					price={200}
-					//thumbnail={img}
-				/>
-				<ConstructorElement
-					text="Краторная булка N-200i (верх)"
-					price={50}
-					//thumbnail={img}
-				/>
-				<ConstructorElement
-					type="bottom"
-					isLocked={true}
-					text="Краторная булка N-200i (низ)"
-					price={200}
-					//thumbnail={img}
-				/>
-			</div>
-		)
-		}*/
+  const Ingredients = ({ data }) => {
+    return (
+      <div className={styles.ingredients_card}>
+        <Counter count={9} size="small" />
+        <img className={styles.ingImage} src={data.image} alt={data.name} />
+        <div className={styles.ingredients_price}>
+          <p className="text text_type_digits-default">{data.price}</p>
+          <CurrencyIcon type="primary" />
+        </div>
+        <p className="text text_type_main-small">{data.name}</p>
+      </div>
+    );
+  };
+
   return (
-    <section className={IngredientsStyles.ingredients}>
-      <h2 className="text text_type_main-large">Соберите бургер</h2>
+    <section className={styles.ingredients}>
+      <h2 className="text text_type_main-large mt-10 mb-5">Соберите бургер</h2>
       <Tabs />
-      <div className="burgerBun"></div>
-      <div className="sauces"></div>
-      <div className="stuffing"></div>
+
+      <div className={styles.ingredients_container}>
+        <div className="mt-10">
+          <p className="text text_type_main-medium mb-6">Булки</p>
+          <div className={styles.buns}>
+            {data
+              .filter((ing) => ing.type == "bun")
+              .map((data, type) => (
+                <Ingredients key={type} data={data} />
+              ))}
+          </div>
+        </div>
+        <div className="mt-10">
+          <p className="text text_type_main-medium mb-6">Соусы</p>
+          <div className={styles.sauces}>
+            {data
+              .filter((ing) => ing.type == "sauce")
+              .map((data, type) => (
+                <Ingredients key={type} data={data} />
+              ))}
+          </div>
+        </div>
+        <div className="mt-10">
+          <p className="text text_type_main-medium mb-6">Начинки</p>
+          <div className={styles.stuffing}>
+            {data
+              .filter((ing) => ing.type == "main")
+              .map((data, type) => (
+                <Ingredients key={type} data={data} />
+              ))}
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
