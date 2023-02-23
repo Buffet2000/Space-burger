@@ -1,13 +1,33 @@
-import React from 'react'
-import { Logo, BurgerIcon, ListIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import HeaderStyles from "./AppHeader.module.css"
+import React from "react";
+import {
+  Logo,
+  BurgerIcon,
+  ListIcon,
+  ProfileIcon,
+  BurgerIn,
+} from "@ya.praktikum/react-developer-burger-ui-components";
+import HeaderStyles from "./AppHeader.module.css";
 
 export default function AppHeader() {
-	return (
-		<header className={HeaderStyles.header}>
-			<button type='button' className={HeaderStyles.button_burger}><BurgerIcon/><p>Конструктор</p></button>
-			<button type='button' className={HeaderStyles.button_list}><ListIcon/><p>Лента заказов</p></button>
-			<div className={HeaderStyles.burger}><Logo/></div>
-		</header>
-	)
+  return (
+    <header className={HeaderStyles.header}>
+      <div className={HeaderStyles.button_container}>
+        <button type="button" className={HeaderStyles.button_burger}>
+          <BurgerIcon type="secondary" />
+          <p className="text text_type_main-small">Конструктор</p>
+        </button>
+        <button type="button" className={HeaderStyles.button_list}>
+          <ListIcon type="secondary" />
+          <p className="text text_type_main-small">Лента заказов</p>
+        </button>
+      </div>
+      <div className={HeaderStyles.burger_logo}>
+        <Logo />
+      </div>
+      <button type="button" className={HeaderStyles.button_profile}>
+        <ProfileIcon type="secondary" />
+        <p className="text text_type_main-small">Личный кабинет</p>
+      </button>
+    </header>
+  );
 }
