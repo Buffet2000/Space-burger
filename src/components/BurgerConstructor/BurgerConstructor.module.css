@@ -1,3 +1,21 @@
 .constructor {
 	max-width: 600px;
 }
+
+.constructor_list {
+	max-width: 600px;
+	margin-top: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: scroll;
+	overflow-x: hidden;
+}
+
+.constructor_total {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: end;
+	margin-top: 40px;
+}

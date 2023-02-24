@@ -7,6 +7,7 @@
 	height: 1000px;
 	overflow: scroll;
 	overflow-x: hidden;
+	margin-top: 40px;
 }
 
 .ingredients_card {
@@ -57,8 +58,4 @@
 	row-gap: 32px;
 	column-gap: 24px;
 	margin-left: 16px;
-}
-
-.right_side {
-	border: 1px red solid;
 }

@@ -1,9 +1,9 @@
 import React from "react";
 import {
-  Tab,
-  Counter,
   CurrencyIcon,
   ConstructorElement,
+  DragIcon,
+  Button,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./BurgerConstructor.module.css";
 import { data } from "../../utils/data.js";
@@ -16,31 +16,54 @@ export default function BurgerConstructor() {
           type="top"
           isLocked={true}
           text="Краторная булка N-200i (верх)"
-          price={data.price}
-          thumbnail={data.image}
+          price={20}
+          thumbnail={"https://code.s3.yandex.net/react/code/bun-02.png"}
+        />
+        <DragIcon type="primary" /><ConstructorElement
+          text="Соус традиционный галактический"
+          price={30}
+          thumbnail={"https://code.s3.yandex.net/react/code/sauce-03.png"}
         />
         <ConstructorElement
-          text="Краторная булка N-200i (верх)"
-          price={data.price}
-          thumbnail={data.image}
+          text="Мясо бессмертных моллюсков Protostomia"
+          price={300}
+          thumbnail={"https://code.s3.yandex.net/react/code/meat-02.png"}
+        />
+        <ConstructorElement
+          text="Плоды Фалленианского дерева"
+          price={80}
+          thumbnail={"https://code.s3.yandex.net/react/code/sp_1.png"}
+        />
+        <ConstructorElement
+          text="Хрустящие минеральные кольца"
+          price={80}
+          thumbnail={"https://code.s3.yandex.net/react/code/mineral_rings.png"}
+        />
+        <ConstructorElement
+          text="Хрустящие минеральные кольца"
+          price={80}
+          thumbnail={"https://code.s3.yandex.net/react/code/mineral_rings.png"}
         />
         <ConstructorElement
           type="bottom"
           isLocked={true}
           text="Краторная булка N-200i (низ)"
-          price={data.price}
-          thumbnail={data.image}
+          price={20}
+          thumbnail={"https://code.s3.yandex.net/react/code/bun-02.png"}
         />
       </div>
     );
   };
   return (
     <div className={styles.constructor}>
-      {data
-        .filter((ing) => ing.type == "sauce")
-        .map((data, type) => (
-          <Element key={type} data={data} />
-        ))}
+      <div className={styles.constructor_list}>
+        <Element data={data} />
+      </div>
+      <div className={styles.constructor_total}>
+      <p className="text text_type_digits-medium mr-2">610</p>
+        <CurrencyIcon type="primary" />
+        <Button htmlType="button" type="primary" size="large" extraClass="ml-8">Оформить заказ</Button>
+      </div>
     </div>
   );
 }

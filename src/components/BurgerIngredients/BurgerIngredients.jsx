@@ -45,7 +45,7 @@ export default function BurgerIngredients() {
       <Tabs />
 
       <div className={styles.ingredients_container}>
-        <div className="mt-10">
+        <div>
           <p className="text text_type_main-medium mb-6">Булки</p>
           <div className={styles.buns}>
             {data

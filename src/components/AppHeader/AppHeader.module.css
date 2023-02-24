@@ -29,7 +29,8 @@
   height: 56px;
   background: #1c1c21;
   border-radius: 40px;
-  color: #8585ad;
+  color: #F2F2F3;
+
   /*border: 1px red solid;*/
   border: none;
 }
@@ -45,7 +46,7 @@
   margin-left: 8px;
   background: #1c1c21;
   border-radius: 40px;
-  color: #8585ad;
+  color: #F2F2F3;
   /*border: 1px red solid;*/
   border: none;
 }
@@ -61,7 +62,7 @@
   margin-right: 320px;
   background: #1c1c21;
   border-radius: 40px;
-  color: #8585ad;
+  color: #F2F2F3;
   /*border: 1px red solid;*/
   border: none;
 }

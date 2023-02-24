@@ -13,12 +13,12 @@ export default function AppHeader() {
     <header className={HeaderStyles.header}>
       <div className={HeaderStyles.button_container}>
         <button type="button" className={HeaderStyles.button_burger}>
-          <BurgerIcon type="secondary" />
+          <BurgerIcon type="primary" />
           <p className="text text_type_main-small">Конструктор</p>
         </button>
         <button type="button" className={HeaderStyles.button_list}>
           <ListIcon type="secondary" />
-          <p className="text text_type_main-small">Лента заказов</p>
+          <p className="text text_type_main-small text_color_inactive">Лента заказов</p>
         </button>
       </div>
       <div className={HeaderStyles.burger_logo}>
@@ -26,7 +26,7 @@ export default function AppHeader() {
       </div>
       <button type="button" className={HeaderStyles.button_profile}>
         <ProfileIcon type="secondary" />
-        <p className="text text_type_main-small">Личный кабинет</p>
+        <p className="text text_type_main-small text_color_inactive">Личный кабинет</p>
       </button>
     </header>
   );
