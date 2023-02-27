@@ -7,7 +7,7 @@
 	height: 1000px;
 	overflow: scroll;
 	overflow-x: hidden;
-	margin-top: 40px;
+	margin-top: 41px;
 }
 
 .ingredients_card {
@@ -40,7 +40,7 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	row-gap: 32px;
-	column-gap: 24px;
+	column-gap: 15px;
 	margin-left: 16px;
 }
 
@@ -48,7 +48,7 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	row-gap: 32px;
-	column-gap: 24px;
+	column-gap: 15px;
 	margin-left: 16px;
 }
 
@@ -56,6 +56,6 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	row-gap: 32px;
-	column-gap: 24px;
+	column-gap: 15px;
 	margin-left: 16px;
 }

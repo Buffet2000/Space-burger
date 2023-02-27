@@ -9,60 +9,44 @@ import styles from "./BurgerConstructor.module.css";
 import { data } from "../../utils/data.js";
 
 export default function BurgerConstructor() {
-  const Element = ({ data }) => {
+  const Element = ({ data, id, type, isLocked, hideIco }) => {
     return (
-      <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-        <ConstructorElement
-          type="top"
-          isLocked={true}
-          text="Краторная булка N-200i (верх)"
-          price={20}
-          thumbnail={"https://code.s3.yandex.net/react/code/bun-02.png"}
-        />
-        <DragIcon type="primary" /><ConstructorElement
-          text="Соус традиционный галактический"
-          price={30}
-          thumbnail={"https://code.s3.yandex.net/react/code/sauce-03.png"}
-        />
-        <ConstructorElement
-          text="Мясо бессмертных моллюсков Protostomia"
-          price={300}
-          thumbnail={"https://code.s3.yandex.net/react/code/meat-02.png"}
-        />
-        <ConstructorElement
-          text="Плоды Фалленианского дерева"
-          price={80}
-          thumbnail={"https://code.s3.yandex.net/react/code/sp_1.png"}
-        />
-        <ConstructorElement
-          text="Хрустящие минеральные кольца"
-          price={80}
-          thumbnail={"https://code.s3.yandex.net/react/code/mineral_rings.png"}
-        />
-        <ConstructorElement
-          text="Хрустящие минеральные кольца"
-          price={80}
-          thumbnail={"https://code.s3.yandex.net/react/code/mineral_rings.png"}
-        />
-        <ConstructorElement
-          type="bottom"
-          isLocked={true}
-          text="Краторная булка N-200i (низ)"
-          price={20}
-          thumbnail={"https://code.s3.yandex.net/react/code/bun-02.png"}
-        />
-      </div>
+      <>
+        {data
+          .filter((ing) => ing._id == id)
+          .map((data) => (
+            <div className={styles.ingredient_container}>
+              <div className={hideIco}><DragIcon type="primary" /></div>
+              <ConstructorElement
+                key={id}
+                type={type}
+                isLocked={isLocked}
+                text={data.name}
+                price={data.price}
+                thumbnail={data.image}
+              />
+            </div>
+          ))}
+      </>
     );
   };
   return (
     <div className={styles.constructor}>
       <div className={styles.constructor_list}>
-        <Element data={data} />
+        <Element className="mr-4" hideIco={styles.ingredient_dragIcon} isLocked={true} type={"top"} data={data} id={"60666c42cc7b410027a1a9b1"} />
+        <Element data={data} id={"60666c42cc7b410027a1a9b9"} />
+        <Element data={data} id={"60666c42cc7b410027a1a9b4"} />
+        <Element data={data} id={"60666c42cc7b410027a1a9bc"} />
+        <Element data={data} id={"60666c42cc7b410027a1a9bb"} />
+        <Element data={data} id={"60666c42cc7b410027a1a9bb"} />
+        <Element hideIco={styles.ingredient_dragIcon} isLocked={true} type={"bottom"} data={data} id={"60666c42cc7b410027a1a9b1"} />
       </div>
       <div className={styles.constructor_total}>
-      <p className="text text_type_digits-medium mr-2">610</p>
+        <p className="text text_type_digits-medium mr-2">610</p>
         <CurrencyIcon type="primary" />
-        <Button htmlType="button" type="primary" size="large" extraClass="ml-8">Оформить заказ</Button>
+        <Button htmlType="button" type="primary" size="large" extraClass="ml-10">
+          Оформить заказ
+        </Button>
       </div>
     </div>
   );

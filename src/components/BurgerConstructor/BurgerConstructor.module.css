@@ -6,16 +6,29 @@
 	max-width: 600px;
 	margin-top: 100px;
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	flex-direction: column;
+	gap: 16px;
 	overflow: scroll;
 	overflow-x: hidden;
+}
+
+.ingredient_container {
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+	align-items: center;
+	margin-left: 16px;
+	margin-right: 16px;
+}
+
+.ingredient_dragIcon {
+	visibility: hidden;
 }
 
 .constructor_total {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: end;
 	margin-top: 40px;
+	margin-left: 222px;
 }

@@ -14,7 +14,7 @@
   display: flex;
   width: 290px;
   height: 40px;
-  margin-left: 125px;
+  margin-left: 110px;
   /*border: 1px red solid;*/
   align-items: center;
 }
@@ -58,7 +58,7 @@
   padding: 16px 20px;
   gap: 8px;
   width: 207px;
-  margin-left: 270px;
+  margin-left: 290px;
   margin-right: 320px;
   background: #1c1c21;
   border-radius: 40px;
