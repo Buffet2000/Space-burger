@@ -33,7 +33,7 @@ export default function BurgerIngredients() {
           {data
             .filter((ing) => ing.type == ing_type)
             .map((data) => (
-              <Ingredient data={data} />
+              <Ingredient key={data._id} data={data} />
             ))}
         </div>
       </div>
