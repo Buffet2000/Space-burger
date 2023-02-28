@@ -25,7 +25,7 @@
   align-items: center;
   padding: 16px 20px;
   gap: 8px;
-  width: 178px;
+  max-width: 178px;
   height: 56px;
   background: #1c1c21;
   border-radius: 40px;
@@ -41,7 +41,7 @@
   align-items: center;
   padding: 16px 20px;
   gap: 8px;
-  width: 197px;
+  max-width: 197px;
   height: 56px;
   margin-left: 8px;
   background: #1c1c21;
@@ -57,7 +57,7 @@
   align-items: center;
   padding: 16px 20px;
   gap: 8px;
-  width: 207px;
+  max-width: 207px;
   margin-left: 290px;
   margin-right: 320px;
   background: #1c1c21;

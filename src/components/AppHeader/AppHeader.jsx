@@ -4,7 +4,6 @@ import {
   BurgerIcon,
   ListIcon,
   ProfileIcon,
-  BurgerIn,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import HeaderStyles from "./AppHeader.module.css";
 

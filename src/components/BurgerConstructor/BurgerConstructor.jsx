@@ -6,19 +6,18 @@ import {
   Button,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./BurgerConstructor.module.css";
-import { data } from "../../utils/data.js";
+import { data } from "../../utils/data";
 
 export default function BurgerConstructor() {
   const Element = ({ data, id, type, isLocked, hideIco }) => {
     return (
       <>
         {data
-          .filter((ing) => ing._id == id)
+          .filter((ing) => ing._id === id)
           .map((data) => (
-            <div className={styles.ingredient_container}>
+            <div key={data._id} className={styles.ingredient_container}>
               <div className={hideIco}><DragIcon type="primary" /></div>
               <ConstructorElement
-                key={id}
                 type={type}
                 isLocked={isLocked}
                 text={data.name}

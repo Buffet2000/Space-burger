@@ -16,7 +16,10 @@
 	list-style: none;
 	text-align: center;
 	position: relative;
+}
 
+.ingredient_tabs {
+	display: flex;
 }
 
 .ingredients_price {
