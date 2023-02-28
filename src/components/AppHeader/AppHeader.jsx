@@ -11,22 +11,22 @@ export default function AppHeader() {
   return (
     <header className={HeaderStyles.header}>
       <div className={HeaderStyles.button_container}>
-        <button type="button" className={HeaderStyles.button_burger}>
+        <a href="#" type="button" className={HeaderStyles.button_burger}>
           <BurgerIcon type="primary" />
           <p className="text text_type_main-default">Конструктор</p>
-        </button>
-        <button type="button" className={HeaderStyles.button_list}>
+        </a>
+        <a href="#" type="button" className={HeaderStyles.button_list}>
           <ListIcon type="secondary" />
           <p className="text text_type_main-default text_color_inactive">Лента заказов</p>
-        </button>
+        </a>
       </div>
       <div className={HeaderStyles.burger_logo}>
         <Logo />
       </div>
-      <button type="button" className={HeaderStyles.button_profile}>
+      <a href="#" type="button" className={HeaderStyles.button_profile}>
         <ProfileIcon type="secondary" />
         <p className="text text_type_main-default text_color_inactive">Личный кабинет</p>
-      </button>
+      </a>
     </header>
   );
 }
