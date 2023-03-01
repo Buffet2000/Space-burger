@@ -6,6 +6,9 @@ import styles from "./BurgerIngredients.module.css";
 import { data } from "../../utils/data";
 import BurgerIngredientCategory from "../BurgerIngredientCategory/BurgerIngredientCategory"
 
+//ВОПРОС!: Имеет смысл называть директории и файлы в стиле kebab-case : это поможет избежать случайных проблем с регистрами в именах;
+//Правильно ли я понял, что дериктории и имена файлов лучше писать как, например: burger-ingredients/ burger-ingredients.jsx по сказанной выше причине?
+
 export default function BurgerIngredients() {
   const Tabs = () => {
     const [current, setCurrent] = React.useState("one");
