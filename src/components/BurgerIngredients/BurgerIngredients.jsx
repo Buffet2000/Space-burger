@@ -10,7 +10,7 @@ import BurgerIngredientCategory from "../BurgerIngredientCategory/BurgerIngredie
 //Правильно ли я понял, что дериктории и имена файлов лучше писать как, например: burger-ingredients/ burger-ingredients.jsx по сказанной выше причине?
 
 export default function BurgerIngredients() {
-  const Tabs = () => {
+  const Tabs = () => { // Будет ли правильной мысль, что Tabs можно тоже вынести в отдельный компонент?
     const [current, setCurrent] = React.useState("one");
     return (
       <div className={styles.ingredient_tabs}>
