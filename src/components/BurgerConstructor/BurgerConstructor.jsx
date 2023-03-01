@@ -10,25 +10,21 @@ import { data } from "../../utils/data";
 
 export default function BurgerConstructor() {
   const Element = ({ data, id, type, isLocked, hideIco }) => {
+    const ingredient = data.find((ingr) => ingr._id === id);
     return (
-      <>
-        {data
-          .filter((ing) => ing._id === id)
-          .map((data) => (
-            <div key={data._id} className={styles.ingredient_container}>
-              <div className={hideIco}><DragIcon type="primary" /></div>
-              <ConstructorElement
-                type={type}
-                isLocked={isLocked}
-                text={data.name}
-                price={data.price}
-                thumbnail={data.image}
-              />
-            </div>
-          ))}
-      </>
-    );
-  };
+      <div className={styles.ingredient_container}>
+         <div className={hideIco}>
+           <DragIcon type="primary" />
+         </div>
+         <ConstructorElement
+           type={type}
+           isLocked={isLocked}
+           text={ingredient.name}
+           price={ingredient.price}
+           thumbnail={ingredient.image}
+         />
+      </div>
+    )};
   return (
     <div className={styles.constructor}>
       <div className={styles.constructor_list}>

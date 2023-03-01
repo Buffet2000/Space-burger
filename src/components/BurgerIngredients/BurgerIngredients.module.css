@@ -10,33 +10,8 @@
 	margin-top: 41px;
 }
 
-.ingredients_card {
-	max-width: 272px;
-	height: 208px;
-	list-style: none;
-	text-align: center;
-	position: relative;
-}
-
 .ingredient_tabs {
 	display: flex;
-}
-
-.ingredients_price {
-	display: flex;
-	justify-content: center;
-	flex-wrap: nowrap;
-	gap: 9px;
-	margin-top: 4px;
-	margin-bottom: 4px;
-
-}
-
-.ingImage {
-	width: 240px;
-	height: 120px;
-	object-fit: contain;
-
 }
 
 .buns {
