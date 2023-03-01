@@ -8,7 +8,7 @@ export default function BurgerIngredientCategory({ data, ingr_type, name, style 
       <p className="text text_type_main-medium mb-6">{name}</p>
       <div className={style}>
         {data
-          .filter((ingr) => ingr.type == ingr_type) //А что на счёт этого места? Здесь идёт сравнение на равенство, а не на идентичность. Я так понял, что в данном случае нет разницы, т.к. у нас массивы?
+          .filter((ingr) => ingr.type === ingr_type) //И тут строгое сравнение? Это например не массив и здесь нужно 100% соответсвие? Пытаюсь понять на будущее.
           .map((data) => (
             <BurgerIngredient key={data._id} data={data} />
           ))}

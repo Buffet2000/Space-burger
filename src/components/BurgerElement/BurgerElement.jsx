@@ -7,7 +7,7 @@ import {
 import styles from "./BurgerElement.module.css";
 
 export default function BurgerElement ({ data, id, type, isLocked, hideIco }) {
-	const ingredient = data.find((ingr) => ingr._id === id);
+	const ingredient = data.find((ingr) => ingr._id === id); //Тут строгое сравнение? Это например не массив и здесь нужно 100% соответсвие?
 	return (
 		<div className={styles.ingredient_container}>
 			 <div className={hideIco}>
