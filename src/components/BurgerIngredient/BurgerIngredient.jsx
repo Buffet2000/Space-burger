@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {
   Counter,
   CurrencyIcon,
@@ -17,4 +18,8 @@ export default function BurgerIngredient ({ data }) {
 			<p className="text text_type_main-default">{data.name}</p>
 		</div>
 	);
+};
+
+BurgerIngredient.propTypes = {
+  data: PropTypes.object
 };

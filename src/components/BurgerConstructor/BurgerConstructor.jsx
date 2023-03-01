@@ -10,7 +10,6 @@ import styles from "./BurgerConstructor.module.css";
 import { data } from "../../utils/data";
 
 export default function BurgerConstructor() {
-  
   return (
     <div className={styles.constructor}>
       <div className={styles.constructor_list}>

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {
   ConstructorElement,
   DragIcon,
@@ -21,3 +22,12 @@ export default function BurgerElement ({ data, id, type, isLocked, hideIco }) {
 			 />
 		</div>
 	)};
+
+	BurgerElement.propTypes = {
+		data: PropTypes.array,
+		id: PropTypes.string,
+		type: PropTypes.string,
+		isLocked: PropTypes.bool,
+		hideIco: PropTypes.string //здесь я не понимаю, что за тип данных, если по факту это стиль. Сам по себе это объект, 
+		                           //но данные в пропс получается просто текст. И я прям сломался, как писать по итогу. Или PropTypes.symbol или PropTypes.string :)
+	}; 

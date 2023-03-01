@@ -32,19 +32,19 @@ export default function BurgerIngredients() {
         <BurgerIngredientCategory
           name="Булки"
           data={data}
-          ing_type="bun"
+          ingr_type="bun"
           style={styles.buns}
         />
         <BurgerIngredientCategory
           name="Соусы"
           data={data}
-          ing_type="sauce"
+          ingr_type="sauce"
           style={styles.sauces}
         />
         <BurgerIngredientCategory
           name="Начинки"
           data={data}
-          ing_type="main"
+          ingr_type="main"
           style={styles.stuffing}
         />
       </div>
