@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import BurgerIngredient from "../BurgerIngredient/BurgerIngredient";
+import BurgerIngredient from "../burger-ingredient/burger-ingredient";
 
 export default function BurgerIngredientCategory({ data, ingr_type, name, style }) {
   return (
@@ -8,7 +8,7 @@ export default function BurgerIngredientCategory({ data, ingr_type, name, style 
       <p className="text text_type_main-medium mb-6">{name}</p>
       <div className={style}>
         {data
-          .filter((ingr) => ingr.type === ingr_type) //И тут строгое сравнение? Это например не массив и здесь нужно 100% соответсвие? Пытаюсь понять на будущее.
+          .filter((ingr) => ingr.type === ingr_type)
           .map((data) => (
             <BurgerIngredient key={data._id} data={data} />
           ))}

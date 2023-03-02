@@ -4,10 +4,10 @@ import {
   ConstructorElement,
   DragIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import styles from "./BurgerElement.module.css";
+import styles from "./burger-element.module.css";
 
 export default function BurgerElement ({ data, id, type, isLocked, hideIco }) {
-	const ingredient = data.find((ingr) => ingr._id === id); //Тут строгое сравнение? Это например не массив и здесь нужно 100% соответсвие?
+	const ingredient = data.find((ingr) => ingr._id === id);
 	return (
 		<div className={styles.ingredient_container}>
 			 <div className={hideIco}>
@@ -28,6 +28,5 @@ export default function BurgerElement ({ data, id, type, isLocked, hideIco }) {
 		id: PropTypes.string,
 		type: PropTypes.string,
 		isLocked: PropTypes.bool,
-		hideIco: PropTypes.string //здесь я не понимаю, что за тип данных, если по факту это стиль. Сам по себе это объект, 
-		                           //но данные в пропс получается просто текст. И я прям сломался, как писать по итогу. Или PropTypes.symbol или PropTypes.string :)
+		hideIco: PropTypes.string
 	}; 

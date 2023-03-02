@@ -1,12 +1,10 @@
 import React from "react";
 import {
   CurrencyIcon,
-  ConstructorElement,
-  DragIcon,
   Button,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import BurgerElement from "../BurgerElement/BurgerElement"
-import styles from "./BurgerConstructor.module.css";
+import BurgerElement from "../burger-element/burger-element"
+import styles from "./burger-constructor.module.css";
 import { data } from "../../utils/data";
 
 export default function BurgerConstructor() {

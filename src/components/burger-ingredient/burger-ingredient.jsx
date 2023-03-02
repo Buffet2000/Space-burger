@@ -4,7 +4,7 @@ import {
   Counter,
   CurrencyIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import styles from "./BurgerIngredient.module.css";
+import styles from "./burger-ingredient.module.css";
 
 export default function BurgerIngredient ({ data }) {
 	return (

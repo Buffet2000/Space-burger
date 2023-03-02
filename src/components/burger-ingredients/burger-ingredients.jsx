@@ -2,15 +2,12 @@ import React from "react";
 import {
   Tab,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import styles from "./BurgerIngredients.module.css";
+import styles from "./burger-ingredients.module.css";
 import { data } from "../../utils/data";
-import BurgerIngredientCategory from "../BurgerIngredientCategory/BurgerIngredientCategory"
-
-//ВОПРОС!: Имеет смысл называть директории и файлы в стиле kebab-case : это поможет избежать случайных проблем с регистрами в именах;
-//Правильно ли я понял, что дериктории и имена файлов лучше писать как, например: burger-ingredients/ burger-ingredients.jsx по сказанной выше причине?
+import BurgerIngredientCategory from "../burger-ingredient-category/burger-ingredient-category"
 
 export default function BurgerIngredients() {
-  const Tabs = () => { // Будет ли правильной мысль, что Tabs можно тоже вынести в отдельный компонент?
+  const Tabs = () => {
     const [current, setCurrent] = React.useState("one");
     return (
       <div className={styles.ingredient_tabs}>
