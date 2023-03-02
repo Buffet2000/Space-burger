@@ -24,8 +24,8 @@ export default function BurgerElement ({ data, id, type, isLocked, hideIco }) {
 	)};
 
 	BurgerElement.propTypes = {
-		data: PropTypes.array,
-		id: PropTypes.string,
+		data: PropTypes.array.isRequired,
+		id: PropTypes.string.isRequired,
 		type: PropTypes.string,
 		isLocked: PropTypes.bool,
 		hideIco: PropTypes.string

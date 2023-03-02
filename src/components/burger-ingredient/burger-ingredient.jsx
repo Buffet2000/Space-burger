@@ -20,6 +20,12 @@ export default function BurgerIngredient ({ data }) {
 	);
 };
 
+const IngredientPropType = PropTypes.shape({
+  name: PropTypes.string.isRequired,
+	image: PropTypes.string.isRequired,
+	price: PropTypes.number.isRequired,
+})
+
 BurgerIngredient.propTypes = {
-  data: PropTypes.object
-};
+  data: IngredientPropType.isRequired
+}
