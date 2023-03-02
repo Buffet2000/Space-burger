@@ -1,0 +1,39 @@
+.ingredients {
+	max-width: 600px;
+}
+
+.ingredients_container {
+	max-width: 600px;
+	height: 1000px;
+	overflow: scroll;
+	overflow-x: hidden;
+	margin-top: 41px;
+}
+
+.ingredient_tabs {
+	display: flex;
+}
+
+.buns {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	row-gap: 32px;
+	column-gap: 15px;
+	margin-left: 16px;
+}
+
+.sauces {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	row-gap: 32px;
+	column-gap: 15px;
+	margin-left: 16px;
+}
+
+.stuffing {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	row-gap: 32px;
+	column-gap: 15px;
+	margin-left: 16px;
+}
