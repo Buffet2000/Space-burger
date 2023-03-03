@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import BurgerIngredient from "../burger-ingredient/burger-ingredient";
 
 export default function BurgerIngredientCategory({ data, ingr_type, name, style }) {
@@ -27,14 +27,14 @@ const IngredientType = PropTypes.shape({
   calories: PropTypes.number,
   price: PropTypes.number,
   image: PropTypes.string,
-  image_mobile:  PropTypes.string,
-  image_large:  PropTypes.string,
-  __v: PropTypes.number
+  image_mobile: PropTypes.string,
+  image_large: PropTypes.string,
+  __v: PropTypes.number,
 });
 
 BurgerIngredientCategory.propTypes = {
   data: PropTypes.arrayOf(IngredientType.isRequired).isRequired,
   ingr_type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  style: PropTypes.string.isRequired
+  style: PropTypes.string.isRequired,
 };
