@@ -10,7 +10,7 @@ import styles from "./burger-constructor.module.css";
 
 export default function BurgerConstructor({ data }) {
 
-  const [ModalActive, setModalActive] = React.useState(false);
+  const [modalActive, setModalActive] = React.useState(false);
 
   return (
     <div className={styles.constructor}>
@@ -31,7 +31,7 @@ export default function BurgerConstructor({ data }) {
         <Button htmlType="button" type="primary" size="large" extraClass="ml-10" onClick={() => setModalActive(true)}>
           Оформить заказ
         </Button>
-        <Modal active ={ModalActive} handleClose={() => setModalActive(false)}>
+        <Modal active ={modalActive} handleClose={() => setModalActive(false)}>
           <OrderDetails/>
         </Modal>
       </div>

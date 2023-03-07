@@ -9,7 +9,7 @@ import IngredientDetails from "../ingredient-details/ingredient-details";
 import styles from "./burger-ingredient.module.css";
 
 export default function BurgerIngredient({ data }) {
-  const [ModalActive, setModalActive] = React.useState(false);
+  const [modalActive, setModalActive] = React.useState(false);
   const [ingrediantData, setIngredientData] = React.useState({})
 
   function handleClose() {
@@ -31,7 +31,7 @@ export default function BurgerIngredient({ data }) {
             calories={ingrediantData.calories}
           />
         }
-        active={ModalActive}
+        active={modalActive}
         setActive={setModalActive}
         handleClose={handleClose}
       />
