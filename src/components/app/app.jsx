@@ -2,8 +2,6 @@ import React from "react";
 import AppHeader from "../app-header/app-header";
 import BurgerIngredients from "../burger-ingredients/burger-ingredients";
 import BurgerConstructor from "../burger-constructor/burger-constructor";
-import IngredientDetails from "../ingredient-details/ingredient-details";
-import Modal from "../modal/modal";
 import styles from "./app.module.css";
 
 const apiUrl = "https://norma.nomoreparties.space/api/ingredients";
@@ -36,7 +34,6 @@ export default function App() {
   return (
     <>
       <AppHeader />
-
       <div className={styles.page}>
         {isLoading && "Загрузка..."}
         {hasError && "Произошла ошибка"}

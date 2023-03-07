@@ -10,27 +10,34 @@ import styles from "./burger-ingredient.module.css";
 
 export default function BurgerIngredient({ data }) {
   const [ModalActive, setModalActive] = React.useState(false);
+  const [ingrediantData, setIngredientData] = React.useState({})
+
+  function handleClose() {
+    setModalActive(false);
+    setIngredientData({});
+  }
 
   return (
     <>
       <Modal
         title={"Детали ингредиента"}
-        content={
+        children={
           <IngredientDetails
-            title={data.name}
-            img={data.image_large}
-            carbohydrates={data.carbohydrates}
-            proteins={data.proteins}
-            fat={data.fat}
-            calories={data.calories}
+            title={ingrediantData.name}
+            img={ingrediantData.image_large}
+            carbohydrates={ingrediantData.carbohydrates}
+            proteins={ingrediantData.proteins}
+            fat={ingrediantData.fat}
+            calories={ingrediantData.calories}
           />
         }
         active={ModalActive}
         setActive={setModalActive}
+        handleClose={handleClose}
       />
       <div
         className={styles.ingredients_card}
-        onClick={() => setModalActive(true)}
+        onClick={() => {setModalActive(true); setIngredientData(data)}}
       >
         <Counter count={9} size="default" />
         <img className={styles.ingImage} src={data.image} alt={data.name} />
