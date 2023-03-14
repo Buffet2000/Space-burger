@@ -1,12 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  Counter,
-  CurrencyIcon,
-} from "@ya.praktikum/react-developer-burger-ui-components";
+import { Counter, CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import Modal from "../modal/modal";
 import IngredientDetails from "../ingredient-details/ingredient-details";
 import styles from "./burger-ingredient.module.css";
+import { DataType } from "../../utils/dataType";
 
 export default function BurgerIngredient({ data }) {
   const [modalActive, setModalActive] = React.useState(null);
@@ -44,12 +42,6 @@ export default function BurgerIngredient({ data }) {
   );
 }
 
-const IngredientPropType = PropTypes.shape({
-  name: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-});
-
 BurgerIngredient.propTypes = {
-  data: IngredientPropType.isRequired,
+  data: DataType.isRequired,
 };

@@ -1,10 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  ConstructorElement,
-  DragIcon,
-} from "@ya.praktikum/react-developer-burger-ui-components";
+import { ConstructorElement, DragIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./burger-element.module.css";
+import { DataType } from "../../utils/dataType";
 
 export default function BurgerElement({ data, id, type, isLocked, hideIco }) {
   const ingredient = data.find((ingr) => ingr._id === id);
@@ -25,13 +23,6 @@ export default function BurgerElement({ data, id, type, isLocked, hideIco }) {
     </div>
   );
 }
-
-const DataType = PropTypes.shape({
-  _id: PropTypes.string,
-  name: PropTypes.string,
-  price: PropTypes.number,
-  image: PropTypes.string,
-});
 
 BurgerElement.propTypes = {
   data: PropTypes.arrayOf(DataType.isRequired).isRequired,

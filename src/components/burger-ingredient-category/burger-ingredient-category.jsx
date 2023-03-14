@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import BurgerIngredient from "../burger-ingredient/burger-ingredient";
+import { DataType } from "../../utils/dataType";
 
 export default function BurgerIngredientCategory({ data, ingr_type, name, style }) {
   return (
@@ -17,23 +18,8 @@ export default function BurgerIngredientCategory({ data, ingr_type, name, style 
   );
 }
 
-const IngredientType = PropTypes.shape({
-  _id: PropTypes.string,
-  name: PropTypes.string,
-  type: PropTypes.string,
-  proteins: PropTypes.number,
-  fat: PropTypes.number,
-  carbohydrates: PropTypes.number,
-  calories: PropTypes.number,
-  price: PropTypes.number,
-  image: PropTypes.string,
-  image_mobile: PropTypes.string,
-  image_large: PropTypes.string,
-  __v: PropTypes.number,
-});
-
 BurgerIngredientCategory.propTypes = {
-  data: PropTypes.arrayOf(IngredientType.isRequired).isRequired,
+  data: PropTypes.arrayOf(DataType.isRequired).isRequired,
   ingr_type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   style: PropTypes.string.isRequired,

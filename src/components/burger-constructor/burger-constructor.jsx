@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  CurrencyIcon,
-  Button,
-} from "@ya.praktikum/react-developer-burger-ui-components";
+import { CurrencyIcon, Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import BurgerElement from "../burger-element/burger-element";
 import OrderDetails from "../order-details/order-details"
 import Modal from "../modal/modal";
