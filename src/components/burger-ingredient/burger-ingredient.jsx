@@ -10,7 +10,7 @@ import styles from "./burger-ingredient.module.css";
 
 export default function BurgerIngredient({ data }) {
   const [modalActive, setModalActive] = React.useState(null);
-  const [ingrediantData, setIngredientData] = React.useState(null) //тут не совсем понял из примера. То ли true, то ли null. Предпологаю, что null подходит. Видимо суть в том, что если отправить в "{}" true, то код сработает, но не корректно.
+  const [ingrediantData, setIngredientData] = React.useState(null)
 
   function handleClose() {
     setModalActive(false);
@@ -26,8 +26,6 @@ export default function BurgerIngredient({ data }) {
             data={ingrediantData}
           />
         }
-        active={modalActive}
-        setActive={setModalActive}
         handleClose={handleClose}
       />}
       <div

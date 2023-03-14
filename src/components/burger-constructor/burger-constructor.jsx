@@ -31,9 +31,9 @@ export default function BurgerConstructor({ data }) {
         <Button htmlType="button" type="primary" size="large" extraClass="ml-10" onClick={() => setModalActive(true)}>
           Оформить заказ
         </Button>
-        <Modal active ={modalActive} handleClose={() => setModalActive(false)}>
+        {modalActive && <Modal active ={modalActive} handleClose={() => setModalActive(false)}>
           <OrderDetails/>
-        </Modal>
+        </Modal>}
       </div>
     </div>
   );
