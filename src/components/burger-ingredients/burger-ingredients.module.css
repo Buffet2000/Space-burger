@@ -1,39 +1,50 @@
 .ingredients {
-	max-width: 600px;
+  max-width: 600px;
 }
 
 .ingredients_container {
-	max-width: 600px;
-	height: 1000px;
-	overflow: scroll;
-	overflow-x: hidden;
-	margin-top: 41px;
-}
-
-.ingredient_tabs {
-	display: flex;
+  max-width: 600px;
+  height: 1000px;
+  overflow: scroll;
+  overflow-x: hidden;
+  margin-top: 41px;
 }
 
 .buns {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	row-gap: 32px;
-	column-gap: 15px;
-	margin-left: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 32px;
+  column-gap: 15px;
+  margin-left: 16px;
 }
 
 .sauces {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	row-gap: 32px;
-	column-gap: 15px;
-	margin-left: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 32px;
+  column-gap: 15px;
+  margin-left: 16px;
 }
 
 .stuffing {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	row-gap: 32px;
-	column-gap: 15px;
-	margin-left: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 32px;
+  column-gap: 15px;
+  margin-left: 16px;
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+	background-color: #2F2F37;
+	padding-top: 20px;
+	border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #8585AD;
+}
+
+::-webkit-scrollbar-button {
+	display: none;
 }

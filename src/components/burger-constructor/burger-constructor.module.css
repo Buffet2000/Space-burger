@@ -23,3 +23,18 @@
 	margin-top: 40px;
 	margin-left: 222px;
 }
+
+::-webkit-scrollbar {
+	width: 8px;
+	background-color: #2F2F37;
+	padding-top: 20px;
+	border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #8585AD;
+}
+
+::-webkit-scrollbar-button {
+	display: none;
+}
