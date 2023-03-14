@@ -1,18 +1,18 @@
 import React from "react";
 import styles from "./ingredient-details.module.css";
 
-export default function IngredientDetails({img, title, proteins, fat, calories, carbohydrates}) {
+export default function IngredientDetails({ data }) {
   return (
     <>
       <img
         className={styles.ingredient_illustration}
-        src={img}
-        alt="Биокотлета из марсианской Магнолии"
+        src={data.image_large}
+        alt={data.name}
       ></img>
       <div>
         <div className={styles.ingredient_details}>
           <p className="text text_type_main-medium mb-8">
-            {title}
+            {data.title}
           </p>
           <div className={styles.nutrition_values}>
             <div className={styles.value_item}>
@@ -20,7 +20,7 @@ export default function IngredientDetails({img, title, proteins, fat, calories, 
                 Калории, ккал
               </p>
               <p className="text text_type_digits-default text_color_inactive mt-2">
-                {calories}
+                {data.calories}
               </p>
             </div>
             <div className={styles.value_item}>
@@ -28,7 +28,7 @@ export default function IngredientDetails({img, title, proteins, fat, calories, 
                 Белки, г
               </p>
               <p className="text text_type_digits-default text_color_inactive mt-2">
-                {proteins}
+                {data.proteins}
               </p>
             </div>
             <div className={styles.value_item}>
@@ -36,7 +36,7 @@ export default function IngredientDetails({img, title, proteins, fat, calories, 
                 Жиры, г
               </p>
               <p className="text text_type_digits-default text_color_inactive mt-2">
-                {fat}
+                {data.fat}
               </p>
             </div>
             <div className={styles.value_item}>
@@ -44,7 +44,7 @@ export default function IngredientDetails({img, title, proteins, fat, calories, 
                 Углеводы, г
               </p>
               <p className="text text_type_digits-default text_color_inactive mt-2">
-                {carbohydrates}
+                {data.carbohydrates}
               </p>
             </div>
           </div>

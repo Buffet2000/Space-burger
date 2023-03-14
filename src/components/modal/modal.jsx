@@ -12,15 +12,15 @@ export default function Modal({ title, children, active, handleClose }) {
     document.addEventListener("keydown", closeByEsc);
     
     return () => document.removeEventListener("keydown", closeByEsc);
-  });
+  },[]);
 
   if (!active) return null;
 
   return ReactDOM.createPortal(
     <>
-      <div className={active ? `${styles.modal} ${styles.modal_active}` : styles.modal}>
+      <div className={styles.modal}>
         <p className="text text_type_main-large mt-3 mb-3">{title}</p>
-        <button className={styles.button_close} onClick={() => handleClose()}>
+        <button className={styles.button_close} onClick={handleClose}>
           <CloseIcon type="primary" />
         </button>
         {children}
@@ -32,7 +32,7 @@ export default function Modal({ title, children, active, handleClose }) {
 }
 
 Modal.propTypes = {
-  children: PropTypes.object.isRequired, 
+  children: PropTypes.element.isRequired, 
   handleClose: PropTypes.func.isRequired,
   title: PropTypes.string,
   active: PropTypes.bool,

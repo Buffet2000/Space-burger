@@ -9,8 +9,8 @@ import IngredientDetails from "../ingredient-details/ingredient-details";
 import styles from "./burger-ingredient.module.css";
 
 export default function BurgerIngredient({ data }) {
-  const [modalActive, setModalActive] = React.useState(false);
-  const [ingrediantData, setIngredientData] = React.useState({})
+  const [modalActive, setModalActive] = React.useState(null);
+  const [ingrediantData, setIngredientData] = React.useState(null) //тут не совсем понял из примера. То ли true, то ли null. Предпологаю, что null подходит. Видимо суть в том, что если отправить в "{}" true, то код сработает, но не корректно.
 
   function handleClose() {
     setModalActive(false);
@@ -19,22 +19,17 @@ export default function BurgerIngredient({ data }) {
 
   return (
     <>
-      <Modal
+      {modalActive && <Modal
         title={"Детали ингредиента"}
         children={
           <IngredientDetails
-            title={ingrediantData.name}
-            img={ingrediantData.image_large}
-            carbohydrates={ingrediantData.carbohydrates}
-            proteins={ingrediantData.proteins}
-            fat={ingrediantData.fat}
-            calories={ingrediantData.calories}
+            data={ingrediantData}
           />
         }
         active={modalActive}
         setActive={setModalActive}
         handleClose={handleClose}
-      />
+      />}
       <div
         className={styles.ingredients_card}
         onClick={() => {setModalActive(true); setIngredientData(data)}}

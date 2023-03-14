@@ -26,8 +26,15 @@ export default function BurgerElement({ data, id, type, isLocked, hideIco }) {
   );
 }
 
+const DataType = PropTypes.shape({
+  _id: PropTypes.string, //здесь я написал только те данные data, которые используются. Надеюсь, что задумка в этом. Ещё раз огромное спасибо за обратную связь.
+  name: PropTypes.string,
+  price: PropTypes.number,
+  image: PropTypes.string,
+});
+
 BurgerElement.propTypes = {
-  data: PropTypes.array.isRequired,
+  data: PropTypes.arrayOf(DataType.isRequired).isRequired,
   id: PropTypes.string.isRequired,
   type: PropTypes.string,
   isLocked: PropTypes.bool,
