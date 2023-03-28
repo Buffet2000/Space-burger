@@ -4,10 +4,13 @@ import BurgerElement from "../burger-element/burger-element";
 import OrderDetails from "../order-details/order-details"
 import Modal from "../modal/modal";
 import styles from "./burger-constructor.module.css";
+import { IngredientContext } from "../../services/ingredient-context";
+import { useContext } from "react";
 
-export default function BurgerConstructor({ data }) {
+export default function BurgerConstructor() {
 
   const [modalActive, setModalActive] = React.useState(false);
+  const data = useContext(IngredientContext);
 
   return (
     <div className={styles.constructor}>
@@ -28,7 +31,7 @@ export default function BurgerConstructor({ data }) {
         <Button htmlType="button" type="primary" size="large" extraClass="ml-10" onClick={() => setModalActive(true)}>
           Оформить заказ
         </Button>
-        {modalActive && <Modal active ={modalActive} handleClose={() => setModalActive(false)}>
+        {modalActive && <Modal handleClose={() => setModalActive(false)}>
           <OrderDetails/>
         </Modal>}
       </div>

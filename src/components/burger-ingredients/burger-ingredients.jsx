@@ -1,10 +1,12 @@
 import React from "react";
 import Tabs from "../tabs/tabs"
 import styles from "./burger-ingredients.module.css";
-import BurgerIngredientCategory from "../burger-ingredient-category/burger-ingredient-category"
+import BurgerIngredientCategory from "../burger-ingredient-category/burger-ingredient-category";
+import { IngredientContext } from "../../services/ingredient-context";
 
-export default function BurgerIngredients({ data }) {
-  
+
+export default function BurgerIngredients() {
+  const data = React.useContext(IngredientContext)
   return (
     <section className={styles.ingredients}>
       <h2 className="text text_type_main-large mt-10 mb-5">Соберите бургер</h2>
