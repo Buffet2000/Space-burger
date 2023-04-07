@@ -1,0 +1,2 @@
+const ingredients = [];
+export { ingredients }
