@@ -3,7 +3,7 @@ import AppHeader from "../app-header/app-header";
 import BurgerIngredients from "../burger-ingredients/burger-ingredients";
 import BurgerConstructor from "../burger-constructor/burger-constructor";
 import styles from "./app.module.css";
-import { burgerApi } from "../../utils/burger-api";
+import { getIngredients } from "../api/api";
 import { IngredientContext } from "../../services/ingredient-context";
 
 export default function App() {
@@ -11,19 +11,14 @@ export default function App() {
   const [data, setData] = React.useState([]);
   const [error, setError] = React.useState(null);
 
-  const checkResponse = (res) => {
-    return res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
-  };
-
-  const getIngredients = () => {
-    fetch(`${burgerApi}/ingredients`)
-      .then(checkResponse)
+  const getAllIngredients = () => {
+      getIngredients()
       .then((data) => setData(data))
       .catch((err) => (console.error(`Произошла ошибка: ${err}`), setError(true)))
       .finally(() => setLoading(false))
   };
 
-  React.useEffect(() => getIngredients(), []);
+  React.useEffect(() => getAllIngredients(), []);
 
   return (
     <>

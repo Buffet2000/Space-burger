@@ -1,2 +1,0 @@
-const ingredients = [];
-export { ingredients }

@@ -1,15 +1,10 @@
-import React, {useMemo} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { ConstructorElement, DragIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./burger-element.module.css";
 import { DataType } from "../../utils/dataType";
-import { IngredientContext } from "../../services/ingredient-context";
-import { ConstructorIngredients } from "../../services/constructor-ingredients";
 
-export default function BurgerBun({ data, type, isLocked, hideIco }) {
-  //const data = React.useContext(IngredientContext);
-  //const ingredients = data.find((ingr) => ingr.type === type);
-
+export default function BurgerBun({ data, containerType, isLocked, hideIco, nameType }) {
   return (
       <div className={styles.ingredient_container}>
         <div className={hideIco}>
@@ -17,9 +12,9 @@ export default function BurgerBun({ data, type, isLocked, hideIco }) {
         </div>
         {data && (
           <ConstructorElement
-            type={type}
+            type={containerType}
             isLocked={isLocked}
-            text={data.name}
+            text={`${data.name} ${nameType}`} //поравил верх/низ.
             price={data.price}
             thumbnail={data.image}
           />
@@ -29,8 +24,7 @@ export default function BurgerBun({ data, type, isLocked, hideIco }) {
 }
 
 BurgerBun.propTypes = {
-  data: PropTypes.arrayOf(DataType.isRequired).isRequired,
-  id: PropTypes.string.isRequired,
+  data: PropTypes.objectOf(DataType.isRequired).isRequired, //Не понимаю, почему консоль ругается на data._id. Ведь это string.
   type: PropTypes.string,
   isLocked: PropTypes.bool,
   hideIco: PropTypes.string,

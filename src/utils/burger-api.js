@@ -1,1 +1,0 @@
-export const burgerApi = "https:/norma.nomoreparties.space/api";

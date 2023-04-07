@@ -1,15 +1,9 @@
-import React, {useMemo} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { ConstructorElement, DragIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./burger-element.module.css";
-import { DataType } from "../../utils/dataType";
-import { IngredientContext } from "../../services/ingredient-context";
-import { ConstructorIngredients } from "../../services/constructor-ingredients";
 
 export default function BurgerStuffing({ data }) {
-  //const data = React.useContext(IngredientContext);
-  //const ingredients = data.find((ingr) => ingr.type === type);
-
   return (
       <div className={styles.ingredient_container}>
         <div>
@@ -27,8 +21,7 @@ export default function BurgerStuffing({ data }) {
 }
 
 BurgerStuffing.propTypes = {
-  data: PropTypes.arrayOf(DataType.isRequired).isRequired,
-  id: PropTypes.string.isRequired,
+  data: PropTypes.object.isRequired,
   type: PropTypes.string,
   isLocked: PropTypes.bool,
   hideIco: PropTypes.string,
