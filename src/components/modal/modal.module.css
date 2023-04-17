@@ -1,6 +1,6 @@
 .modal {
 	width: 640px;
-	position: absolute;
+	position: fixed;
 	z-index: 2;
 	left: 50%;
 	top: 50%;
