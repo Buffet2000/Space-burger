@@ -1,5 +1,4 @@
-import React, { useRef } from "react";
-import Tabs from "../tabs/tabs"
+import React from "react";
 import styles from "./burger-ingredients.module.css";
 import BurgerIngredientCategory from "../burger-ingredient-category/burger-ingredient-category";
 import { IngredientContext } from "../../services/ingredient-context";
@@ -11,9 +10,9 @@ export default function BurgerIngredients() {
   const data = React.useContext(IngredientContext)
   const [current, setCurrent] = React.useState("bun");
 
-  function scrollToCategory(tab) {
-    setCurrent(tab);
-    const element = document.getElementById(tab);
+  function scrollToCategory(cat) {
+    setCurrent(cat);
+    const element = document.getElementById(cat);
     if (element) element.scrollIntoView({ behavior: "smooth" });
   }
 

@@ -28,4 +28,5 @@ BurgerBun.propTypes = {
   type: PropTypes.string,
   isLocked: PropTypes.bool,
   hideIco: PropTypes.string,
+  nameType: PropTypes.string,
 };

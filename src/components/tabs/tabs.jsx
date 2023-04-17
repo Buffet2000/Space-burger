@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./tabs.module.css";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
-
+//НАДО УДАЛИТЬ
 export default function Tabs({scroll}) {
   const [current, setCurrent] = React.useState("buns");
   const {bunsInView, sausesInView, mainInView} = scroll;
