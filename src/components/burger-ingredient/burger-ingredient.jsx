@@ -5,15 +5,31 @@ import Modal from "../modal/modal";
 import IngredientDetails from "../ingredient-details/ingredient-details";
 import styles from "./burger-ingredient.module.css";
 import { DataType } from "../../utils/dataType";
+import { useDrag } from 'react-dnd';
 
 export default function BurgerIngredient({ data }) {
   const [modalActive, setModalActive] = React.useState(null);
-  const [ingrediantData, setIngredientData] = React.useState(null)
+  const [ingrediantData, setIngredientData] = React.useState(null);
+  
+  //const constructorIngredients = useSelector((store) => store.constructorIngredients.ingredients);
+  //const constructorBuns = useSelector((store) => store.constructorIngredients.buns);
 
   function handleClose() {
     setModalActive(false);
     setIngredientData({});
   }
+
+  /*const count = React.useMemo(() => {
+    const allIngredients = [...constructorIngredients, ...constructorBuns]
+    return allIngredients.filter(item => item._id === data._id).length;
+  }, [constructorIngredients, constructorBuns])*/
+
+  const count = 0;
+
+  const [, dragRef] = useDrag({
+    type: "ingredient",
+    item: data,
+  });
 
   return (
     <>
@@ -27,10 +43,11 @@ export default function BurgerIngredient({ data }) {
         handleClose={handleClose}
       />}
       <div
+        ref={dragRef}
         className={styles.ingredients_card}
         onClick={() => {setModalActive(true); setIngredientData(data)}}
       >
-        <Counter count={9} size="default" />
+        {count === 0 ? null : <Counter count={count} size="default" />}
         <img className={styles.ingImage} src={data.image} alt={data.name} />
         <div className={styles.ingredients_price}>
           <p className="text text_type_digits-default">{data.price}</p>
@@ -45,3 +62,6 @@ export default function BurgerIngredient({ data }) {
 BurgerIngredient.propTypes = {
   data: DataType.isRequired,
 };
+
+
+/*{count === 0 ? null : <Counter count={count} size="default" />} */

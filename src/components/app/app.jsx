@@ -5,6 +5,8 @@ import BurgerConstructor from "../burger-constructor/burger-constructor";
 import styles from "./app.module.css";
 import { getIngredients } from "../api/api";
 import { IngredientContext } from "../../services/ingredient-context";
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { DndProvider } from 'react-dnd';
 
 export default function App() {
   const [loading, setLoading] = React.useState(true);
@@ -27,8 +29,10 @@ export default function App() {
         {loading && "Загрузка..."}
         {error && "Произошла ошибка"}
         <IngredientContext.Provider value={data.data}>
-          {!loading && !error && <BurgerIngredients />}
-          {!loading && !error && <BurgerConstructor />}
+          <DndProvider backend={HTML5Backend}>
+            {!loading && !error && <BurgerIngredients />}
+            {!loading && !error && <BurgerConstructor />}
+          </DndProvider>
         </IngredientContext.Provider>
       </div>
     </>

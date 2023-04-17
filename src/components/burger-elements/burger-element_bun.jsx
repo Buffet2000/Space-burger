@@ -14,7 +14,7 @@ export default function BurgerBun({ data, containerType, isLocked, hideIco, name
           <ConstructorElement
             type={containerType}
             isLocked={isLocked}
-            text={`${data.name} ${nameType}`} //поравил верх/низ.
+            text={`${data.name} ${nameType}`}
             price={data.price}
             thumbnail={data.image}
           />
@@ -24,7 +24,7 @@ export default function BurgerBun({ data, containerType, isLocked, hideIco, name
 }
 
 BurgerBun.propTypes = {
-  data: PropTypes.objectOf(DataType.isRequired).isRequired, //Не понимаю, почему консоль ругается на data._id. Ведь это string.
+  data: DataType.isRequired,
   type: PropTypes.string,
   isLocked: PropTypes.bool,
   hideIco: PropTypes.string,

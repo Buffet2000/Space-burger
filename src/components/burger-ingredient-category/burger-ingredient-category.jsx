@@ -4,11 +4,12 @@ import BurgerIngredient from "../burger-ingredient/burger-ingredient";
 import { DataType } from "../../utils/dataType";
 import { IngredientContext } from "../../services/ingredient-context";
 
-export default function BurgerIngredientCategory({ ingr_type, name, style }) {
+export default function BurgerIngredientCategory({ innerRef, ingr_type, name, style }) {
   const data = React.useContext(IngredientContext)
+  
   return (
     <div className="mt-10">
-      <p className="text text_type_main-medium mb-6">{name}</p>
+      <p ref={innerRef} id={ingr_type} className="text text_type_main-medium mb-6">{name}</p>
       <div className={style}>
         {data
           .filter((ingr) => ingr.type === ingr_type)

@@ -22,7 +22,4 @@ export default function BurgerStuffing({ data }) {
 
 BurgerStuffing.propTypes = {
   data: PropTypes.object.isRequired,
-  type: PropTypes.string,
-  isLocked: PropTypes.bool,
-  hideIco: PropTypes.string,
 };

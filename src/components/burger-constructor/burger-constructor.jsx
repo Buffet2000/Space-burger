@@ -7,6 +7,7 @@ import Modal from "../modal/modal";
 import styles from "./burger-constructor.module.css";
 import { IngredientContext } from "../../services/ingredient-context";
 import { postOrder } from "../api/api";
+import { useDrop } from "react-dnd";
 
 export default function BurgerConstructor() {
   const [modalActive, setModalActive] = React.useState(false);
@@ -15,8 +16,8 @@ export default function BurgerConstructor() {
   const data = React.useContext(IngredientContext);
 
   const stuffing = useMemo(() => { return (data.filter(item => item.type !== 'bun')) }, [data])
-  const bun = useMemo(() => { return (data.find(item => item.type === 'bun')) }, [data]) //только булочка.
-  const ingredients = useMemo(() => { return ([...stuffing, bun, bun]) }, [stuffing, bun]); //ингредиенты заказа.
+  const bun = useMemo(() => { return (data.find(item => item.type === 'bun')) }, [data]) //Только булочка.
+  const ingredients = useMemo(() => { return ([...stuffing, bun, bun]) }, [stuffing, bun]); //Ингредиенты заказа.
 
   const ingredientsId = ingredients.map(item => item._id); //Все id заказа.
   
