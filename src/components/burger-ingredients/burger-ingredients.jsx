@@ -1,13 +1,12 @@
 import React from "react";
 import styles from "./burger-ingredients.module.css";
 import BurgerIngredientCategory from "../burger-ingredient-category/burger-ingredient-category";
-import { IngredientContext } from "../../services/ingredient-context";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useInView } from "react-intersection-observer";
-
+import { getEventListeners } from "events";
 
 export default function BurgerIngredients() {
-  const data = React.useContext(IngredientContext)
+  
   const [current, setCurrent] = React.useState("bun");
 
   function scrollToCategory(cat) {
@@ -48,21 +47,18 @@ export default function BurgerIngredients() {
         <BurgerIngredientCategory
           innerRef={bunRef}
           name="Булки"
-          data={data}
           ingr_type="bun"
           style={styles.buns}
         />
         <BurgerIngredientCategory
           innerRef={sauceRef}
           name="Соусы"
-          data={data}
           ingr_type="sauce"
           style={styles.sauces}
         />
         <BurgerIngredientCategory
           innerRef={mainRef}
           name="Начинки"
-          data={data}
           ingr_type="main"
           style={styles.stuffing}
         />

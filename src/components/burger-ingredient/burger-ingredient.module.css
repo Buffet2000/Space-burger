@@ -4,7 +4,7 @@
 	list-style: none;
 	text-align: center;
 	position: relative;
-	cursor: pointer;
+	cursor: grab;
 }
 
 .ingredients_price {

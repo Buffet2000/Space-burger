@@ -6,25 +6,32 @@ import IngredientDetails from "../ingredient-details/ingredient-details";
 import styles from "./burger-ingredient.module.css";
 import { DataType } from "../../utils/dataType";
 import { useDrag } from 'react-dnd';
+import { useSelector } from "react-redux";
 
 export default function BurgerIngredient({ data }) {
   const [modalActive, setModalActive] = React.useState(null);
-  const [ingrediantData, setIngredientData] = React.useState(null);
+  const [ingredientData, setIngredientData] = React.useState(null);
   
-  //const constructorIngredients = useSelector((store) => store.constructorIngredients.ingredients);
-  //const constructorBuns = useSelector((store) => store.constructorIngredients.buns);
+  const constructorIngredients = useSelector((store) => store.constructorIngredients.ingredients);
+  const constructorBuns = useSelector((store) => store.constructorIngredients.buns);
 
   function handleClose() {
     setModalActive(false);
     setIngredientData({});
   }
 
-  /*const count = React.useMemo(() => {
+  function handleOpen(e) {
+    e.stopPropagation();
+    setIngredientData(data);
+    setModalActive(true);
+  }
+
+  const count = React.useMemo(() => {
     const allIngredients = [...constructorIngredients, ...constructorBuns]
     return allIngredients.filter(item => item._id === data._id).length;
-  }, [constructorIngredients, constructorBuns])*/
+  }, [constructorIngredients, constructorBuns])
 
-  const count = 0;
+  //const count = 0;
 
   const [, dragRef] = useDrag({
     type: "ingredient",
@@ -37,7 +44,7 @@ export default function BurgerIngredient({ data }) {
         title={"Детали ингредиента"}
         children={
           <IngredientDetails
-            data={ingrediantData}
+            data={ingredientData}
           />
         }
         handleClose={handleClose}
@@ -45,7 +52,7 @@ export default function BurgerIngredient({ data }) {
       <div
         ref={dragRef}
         className={styles.ingredients_card}
-        onClick={() => {setModalActive(true); setIngredientData(data)}}
+        onClick={handleOpen}
       >
         {count === 0 ? null : <Counter count={count} size="default" />}
         <img className={styles.ingImage} src={data.image} alt={data.name} />
@@ -62,6 +69,3 @@ export default function BurgerIngredient({ data }) {
 BurgerIngredient.propTypes = {
   data: DataType.isRequired,
 };
-
-
-/*{count === 0 ? null : <Counter count={count} size="default" />} */

@@ -1,12 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import BurgerIngredient from "../burger-ingredient/burger-ingredient";
-import { DataType } from "../../utils/dataType";
-import { IngredientContext } from "../../services/ingredient-context";
+import { useSelector } from 'react-redux';
 
 export default function BurgerIngredientCategory({ innerRef, ingr_type, name, style }) {
-  const data = React.useContext(IngredientContext)
-  
+  const data = useSelector((store) => store.ingredients.items);
+
   return (
     <div className="mt-10">
       <p ref={innerRef} id={ingr_type} className="text text_type_main-medium mb-6">{name}</p>
@@ -22,7 +21,7 @@ export default function BurgerIngredientCategory({ innerRef, ingr_type, name, st
 }
 
 BurgerIngredientCategory.propTypes = {
-  data: PropTypes.arrayOf(DataType.isRequired).isRequired,
+  innerRef: PropTypes.func,
   ingr_type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   style: PropTypes.string.isRequired,
