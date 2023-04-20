@@ -14,13 +14,14 @@ import { v4 as uuidv4 } from "uuid";
 export default function BurgerConstructor() {
   const [modalActive, setModalActive] = React.useState(false);
 
-  const ingredients = useSelector((store) => store.constructorIngredients.ingredients); //Ингредиенты конструктора
-  const buns = useSelector((store) => store.constructorIngredients.buns);
-  //const orderIsLoaded = useSelector((store) => store.orderInformation.isLoaded);
+  const ingredients = useSelector((store) => store.constructorIngredients.ingredients); //Ингредиенты в конструкторе
+  const buns = useSelector((store) => store.constructorIngredients.buns);//Булки в конструкторе
+
   const dispatch = useDispatch();
   const ingredientsId = ingredients.map(item => item._id); //Все id заказа.
   
   const [buttonValue, setButtonValue] = React.useState(true)
+
   React.useEffect(() => {
     if (buns.length === 0 || ingredients.length === 0) {
       setButtonValue(true)
@@ -75,11 +76,10 @@ export default function BurgerConstructor() {
       <div className={styles.constructor_list}>
         <BurgerBun className="mr-4" hideIco={styles.dragIcon_hidden} isLocked={true} containerType={"top"} nameType={"(верх)"} />
         <ul className={styles.stuffing_list}>
-          
           {ingredients.length === 0
             ? <div className={`${styles.stuffing_addIngredient} text text_type_main-medium`}>Добавь ингредиеты</div>
             : ingredients.map((item, index) => {
-              return <BurgerStuffing data={item} key={item.id} index={index} />
+              return <BurgerStuffing data={item} key={item.id} id={item.id} index={index} />
             })
           }
         </ul>

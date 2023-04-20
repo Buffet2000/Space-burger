@@ -1,11 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './components/app/app';
-import { Provider } from 'react-redux';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./components/app/app";
+import { Provider } from "react-redux";
 import { rootReducer } from "../src/services/reducers/root-reducer";
-import { legacy_createStore as createStore} from 'redux';
-import { compose, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
+import { legacy_createStore as createStore} from "redux";
+import { compose, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
