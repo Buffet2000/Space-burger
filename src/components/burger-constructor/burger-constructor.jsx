@@ -27,7 +27,7 @@ export default function BurgerConstructor() {
   React.useEffect(() => {
     if (buns.length === 0 || ingredients.length === 0) {
       setButtonValue(true)
-    } if (ingredients.length > 0) {
+    } if (ingredients.length > 0 && buns.length > 0) {
       setButtonValue(false)
     }
   }, [buns, ingredients])
