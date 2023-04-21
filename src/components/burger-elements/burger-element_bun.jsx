@@ -2,30 +2,33 @@ import React from "react";
 import PropTypes from "prop-types";
 import { ConstructorElement, DragIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./burger-element.module.css";
-import { DataType } from "../../utils/dataType";
+import { useSelector } from "react-redux";
 
-export default function BurgerBun({ data, containerType, isLocked, hideIco, nameType }) {
+export default function BurgerBun({ containerType, isLocked, hideIco, nameType }) {
+
+  const buns = useSelector((store) => store.constructorIngredients.buns);
+
   return (
       <div className={styles.ingredient_container}>
         <div className={hideIco}>
           <DragIcon type="primary" />
         </div>
-        {data && (
+        {buns.length !== 0 &&
           <ConstructorElement
             type={containerType}
             isLocked={isLocked}
-            text={`${data.name} ${nameType}`} //поравил верх/низ.
-            price={data.price}
-            thumbnail={data.image}
+            text={`${buns[0].name} ${nameType}`}
+            price={buns[0].price}
+            thumbnail={buns[0].image}
           />
-        )}
+        }
       </div>
   );
 }
 
 BurgerBun.propTypes = {
-  data: PropTypes.objectOf(DataType.isRequired).isRequired, //Не понимаю, почему консоль ругается на data._id. Ведь это string.
   type: PropTypes.string,
   isLocked: PropTypes.bool,
   hideIco: PropTypes.string,
+  nameType: PropTypes.string,
 };

@@ -4,7 +4,7 @@
 
 .ingredients_container {
   max-width: 600px;
-  height: 1000px;
+  max-height: 850px;
   overflow: scroll;
   overflow-x: hidden;
   margin-top: 41px;
@@ -47,4 +47,8 @@
 
 ::-webkit-scrollbar-button {
 	display: none;
+}
+
+.ingredient_tabs {
+  display: flex;
 }

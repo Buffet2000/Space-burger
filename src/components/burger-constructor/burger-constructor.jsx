@@ -5,61 +5,93 @@ import BurgerStuffing from "../burger-elements/burger-element_stuffing";
 import OrderDetails from "../order-details/order-details"
 import Modal from "../modal/modal";
 import styles from "./burger-constructor.module.css";
-import { IngredientContext } from "../../services/ingredient-context";
-import { postOrder } from "../api/api";
+import { useDrop } from "react-dnd";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteOrder, postOrderInfo } from "../../services/actions/order";
+import { addIngredientInConstructor, addBunsInConstructor, deleteAllIngredients } from "../../services/actions/constructor-ingredients";
+import { v4 as uuidv4 } from "uuid";
 
 export default function BurgerConstructor() {
   const [modalActive, setModalActive] = React.useState(false);
-  const [order, setOrder] = React.useState({ number: '0', data: [] });
 
-  const data = React.useContext(IngredientContext);
+  const getIngredients = (store) => store.constructorIngredients.ingredients;
+  const getBuns = (store) => store.constructorIngredients.buns;
 
-  const stuffing = useMemo(() => { return (data.filter(item => item.type !== 'bun')) }, [data])
-  const bun = useMemo(() => { return (data.find(item => item.type === 'bun')) }, [data]) //только булочка.
-  const ingredients = useMemo(() => { return ([...stuffing, bun, bun]) }, [stuffing, bun]); //ингредиенты заказа.
+  const ingredients = useSelector(getIngredients); //Ингредиенты в конструкторе
+  const buns = useSelector(getBuns);//Булки в конструкторе
+  const order = [...ingredients, ...buns]; //Весь заказ в конструкторе
+  const dispatch = useDispatch();
+  const orderIds = order.map(item => item._id); //Все id заказа.
+  const [buttonValue, setButtonValue] = React.useState(true)
 
-  const ingredientsId = ingredients.map(item => item._id); //Все id заказа.
-  
+  React.useEffect(() => {
+    if (buns.length === 0 || ingredients.length === 0) {
+      setButtonValue(true)
+    } if (ingredients.length > 0) {
+      setButtonValue(false)
+    }
+  }, [buns, ingredients])
+
   const totalPrice = useMemo(
     () => {
       let total = 0;
-      ingredients.map((item) => total = total + item.price);
+      ingredients.map((item) => { total = total + item.price });
+      buns.map((item) => { total = total + item.price });
       return total;
     },
-    [ingredients]
+    [ingredients, buns]
   );
 
-  function setOrderData() {
-    postOrder(ingredientsId)
-    .then(data => (setOrder({ ...order, number: data.order.number }), console.log(order.number)))
+  function setOrderData(id) {
+    dispatch(postOrderInfo(id));
   }
 
-  function confirmOrder() {
-    setOrderData();
+  function confirmOrder(id) {
+    setOrderData(id);
     setModalActive(true);
   }
 
+  function closeOrder() {
+    dispatch(deleteOrder());
+    dispatch(deleteAllIngredients());
+    setModalActive(false)
+  }
+
+  const [, dropTarget] = useDrop({
+    accept: "ingredient",
+    drop(item) {
+      if (item.type === 'bun') {
+        dispatch(addBunsInConstructor([item, item]));
+      } else {
+        dispatch(addIngredientInConstructor({ ...item, id: uuidv4() }));
+      }
+    },
+  });
+
   return (
-    <section className={styles.constructor}>
+    <section ref={dropTarget} className={styles.constructor}>
       <div className={styles.constructor_list}>
-        <BurgerBun className="mr-4" hideIco={styles.dragIcon_hidden} isLocked={true} containerType={"top"} data={bun} nameType={"(верх)"} />
+        <BurgerBun className="mr-4" hideIco={styles.dragIcon_hidden} isLocked={true} containerType={"top"} nameType={"(верх)"} />
         <ul className={styles.stuffing_list}>
-          {stuffing.map((item) => {
-            return <BurgerStuffing data={item} key={item._id} />
-          })}
+          {ingredients.length === 0
+            ? <div className={`${styles.stuffing_addIngredient} text text_type_main-medium`}>Добавь ингредиеты</div>
+            : ingredients.map((item, index) => {
+              return <BurgerStuffing data={item} key={item.id} id={item.id} index={index} />
+            })
+          }
         </ul>
-        <BurgerBun hideIco={styles.dragIcon_hidden} isLocked={true} type={"bottom"} data={bun} nameType={"(низ)"} />
+        <BurgerBun hideIco={styles.dragIcon_hidden} isLocked={true} type={"bottom"} nameType={"(низ)"} />
       </div>
       <div className={styles.constructor_total}>
         <div className={styles.total_price}>
           <p className="text text_type_digits-medium mr-2">{totalPrice}</p>
           <CurrencyIcon type="primary" />
         </div>
-        <Button htmlType="button" type="primary" size="large" onClick={() => confirmOrder(ingredientsId)}>
+        <Button disabled={buttonValue} htmlType="button" type="primary" size="large" onClick={() => confirmOrder(orderIds)}>
           Оформить заказ
         </Button>
-        {modalActive && <Modal handleClose={() => setModalActive(false)}>
-          <OrderDetails orderNumber={order.number}/>
+        {modalActive && <Modal handleClose={closeOrder}>
+          <OrderDetails />
         </Modal>}
       </div>
     </section>
