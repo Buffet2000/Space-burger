@@ -7,7 +7,7 @@ import Modal from "../modal/modal";
 import styles from "./burger-constructor.module.css";
 import { useDrop } from "react-dnd";
 import { useDispatch, useSelector } from "react-redux";
-import { addOrder, deleteOrder, postOrderInfo } from "../../services/actions/order";
+import { deleteOrder, postOrderInfo } from "../../services/actions/order";
 import { addIngredientInConstructor, addBunsInConstructor, deleteAllIngredients } from "../../services/actions/constructor-ingredients";
 import { v4 as uuidv4 } from "uuid";
 
@@ -16,10 +16,9 @@ export default function BurgerConstructor() {
 
   const ingredients = useSelector((store) => store.constructorIngredients.ingredients); //Ингредиенты в конструкторе
   const buns = useSelector((store) => store.constructorIngredients.buns);//Булки в конструкторе
-
+  const order = [...ingredients, ...buns]; //Весь заказ в конструкторе
   const dispatch = useDispatch();
-  const ingredientsId = ingredients.map(item => item._id); //Все id заказа.
-  
+  const orderIds = order.map(item => item._id); //Все id заказа.
   const [buttonValue, setButtonValue] = React.useState(true)
 
   React.useEffect(() => {
@@ -43,14 +42,12 @@ export default function BurgerConstructor() {
     [ingredients, buns]
   );
 
-  function setOrderData() {
-    const orderArray = [...ingredients, ...buns]
-    dispatch(addOrder(orderArray));
-    dispatch(postOrderInfo(orderArray));
+  function setOrderData(id) {
+    dispatch(postOrderInfo(id));
   }
 
-  function confirmOrder() {
-    setOrderData();
+  function confirmOrder(id) {
+    setOrderData(id);
     setModalActive(true);
   }
 
@@ -90,7 +87,7 @@ export default function BurgerConstructor() {
           <p className="text text_type_digits-medium mr-2">{totalPrice}</p>
           <CurrencyIcon type="primary" />
         </div>
-        <Button disabled={buttonValue} htmlType="button" type="primary" size="large" onClick={() => confirmOrder(ingredientsId)}>
+        <Button disabled={buttonValue} htmlType="button" type="primary" size="large" onClick={() => confirmOrder(orderIds)}>
           Оформить заказ
         </Button>
         {modalActive && <Modal handleClose={closeOrder}>

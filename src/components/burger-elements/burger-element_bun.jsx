@@ -6,8 +6,6 @@ import { useSelector } from "react-redux";
 
 export default function BurgerBun({ containerType, isLocked, hideIco, nameType }) {
 
-  const allIngredients = useSelector((store) => store.ingredients.items);
-  const defaultBun = allIngredients.find(item => item.name = "Краторная булка N-200i");
   const buns = useSelector((store) => store.constructorIngredients.buns);
 
   return (
@@ -15,14 +13,7 @@ export default function BurgerBun({ containerType, isLocked, hideIco, nameType }
         <div className={hideIco}>
           <DragIcon type="primary" />
         </div>
-        {buns.length === 0 ?
-          <ConstructorElement
-            type={containerType}
-            isLocked={isLocked}
-            text={`${defaultBun.name} ${nameType}`}
-            price={defaultBun.price}
-            thumbnail={defaultBun.image}
-          /> : 
+        {buns.length !== 0 &&
           <ConstructorElement
             type={containerType}
             isLocked={isLocked}
