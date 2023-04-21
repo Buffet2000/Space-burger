@@ -14,8 +14,11 @@ import { v4 as uuidv4 } from "uuid";
 export default function BurgerConstructor() {
   const [modalActive, setModalActive] = React.useState(false);
 
-  const ingredients = useSelector((store) => store.constructorIngredients.ingredients); //Ингредиенты в конструкторе
-  const buns = useSelector((store) => store.constructorIngredients.buns);//Булки в конструкторе
+  const getIngredients = (store) => store.constructorIngredients.ingredients;
+  const getBuns = (store) => store.constructorIngredients.buns;
+
+  const ingredients = useSelector(getIngredients); //Ингредиенты в конструкторе
+  const buns = useSelector(getBuns);//Булки в конструкторе
   const order = [...ingredients, ...buns]; //Весь заказ в конструкторе
   const dispatch = useDispatch();
   const orderIds = order.map(item => item._id); //Все id заказа.
@@ -32,9 +35,6 @@ export default function BurgerConstructor() {
   const totalPrice = useMemo(
     () => {
       let total = 0;
-      buns.length === 0 ?
-      total = 2510 :
-      total = 0;
       ingredients.map((item) => { total = total + item.price });
       buns.map((item) => { total = total + item.price });
       return total;
