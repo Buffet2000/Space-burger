@@ -60,7 +60,7 @@ export default function BurgerConstructor() {
   const [, dropTarget] = useDrop({
     accept: "ingredient",
     drop(item) {
-      if (item.type === 'bun') {
+      if (item.type === "bun") {
         dispatch(addBunsInConstructor([item, item]));
       } else {
         dispatch(addIngredientInConstructor({ ...item, id: uuidv4() }));
@@ -80,7 +80,7 @@ export default function BurgerConstructor() {
             })
           }
         </ul>
-        <BurgerBun hideIco={styles.dragIcon_hidden} isLocked={true} type={"bottom"} nameType={"(низ)"} />
+        <BurgerBun hideIco={styles.dragIcon_hidden} isLocked={true} containerType={"bottom"} nameType={"(низ)"} />
       </div>
       <div className={styles.constructor_total}>
         <div className={styles.total_price}>
