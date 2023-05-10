@@ -7,6 +7,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import { DndProvider } from 'react-dnd';
 import { useDispatch, useSelector } from 'react-redux';
 import { getIngredientsData } from "../../services/actions/all-ingredients";
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 export default function App() {
 
@@ -17,15 +18,21 @@ export default function App() {
   React.useEffect(() => { dispatch(getIngredientsData()) }, [dispatch]);
 
   return (
-    <>
-      <AppHeader />
-      <div className={styles.page}>
-        {itemsLoading && "Загрузка..."}
-        <DndProvider backend={HTML5Backend}>
-          {!itemsLoading && !itemsError && <BurgerIngredients />}
-          {!itemsLoading && !itemsError && <BurgerConstructor />}
-        </DndProvider>
-      </div>
-    </>
+    <ProvideAuth>
+    <BrowserRouter>
+      <Routes>
+        <>
+          <AppHeader />
+          <div className={styles.page}>
+            {itemsLoading && "Загрузка..."}
+            <DndProvider backend={HTML5Backend}>
+              {!itemsLoading && !itemsError && <BurgerIngredients />}
+              {!itemsLoading && !itemsError && <BurgerConstructor />}
+            </DndProvider>
+          </div>
+        </>
+      </Routes>
+    </BrowserRouter>
+    </ProvideAuth>  
   );
 } 
