@@ -4,7 +4,7 @@ import styles from './login.module.css';
 import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link } from 'react-router-dom';
 
-export default function Login() {
+export default function Register() {
 
 	const [login, setLogin] = React.useState('')
   const inputRef = React.useRef(null)
@@ -19,10 +19,25 @@ export default function Login() {
 
 	const [current, setCurrent] = React.useState("profile");
 
+	const [value, setValue] = React.useState('')
+
 	return (
 		<>
 			<div className={styles.inputContainer}>
-				<h2 className="text text_type_main-medium">Вход</h2>
+				<h2 className="text text_type_main-medium">Регистрация</h2>
+				<Input
+					type={'text'}
+					placeholder={'Имя'}
+					onChange={e => setValue(e.target.value)}
+					value={value}
+					name={'name'}
+					error={false}
+					ref={inputRef}
+					onIconClick={onIconClick}
+					errorText={'Ошибка'}
+					size={'default'}
+					extraClass="ml-1"
+				/>
 				<EmailInput
 					onChange={e => setLogin(e.target.value)}
 					value={login}
@@ -36,11 +51,10 @@ export default function Login() {
 					name={''}
 				/>
 				<Button htmlType="button" type="primary" size="medium" onClick={null}>
-          Войти
+          Зарегистрироваться
         </Button>
 				<div className={styles.registration}>
-					<p className="text text_type_main-default text_color_inactive">Вы — новый пользователь? <Link>Зарегистрироваться</Link></p>
-					<p className="text text_type_main-default text_color_inactive mt-4">Забыли пароль? <Link>Восстановить пароль</Link></p>
+					<p className="text text_type_main-default text_color_inactive">Уже зарегистрированы? <Link>Войти</Link></p>
 				</div>
 			</div>
 		</>
