@@ -65,6 +65,7 @@
   /*border: 1px red solid;*/
   border: none;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .button_container {
