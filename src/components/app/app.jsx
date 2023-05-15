@@ -19,6 +19,7 @@ export default function App() {
   return (
     /*<ProvideAuth>*/
     <BrowserRouter>
+    <AppHeader/>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/profile" element={<Login />} />

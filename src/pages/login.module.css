@@ -3,6 +3,7 @@
 	flex-direction: row;
 	justify-content: center;
 	margin-top: 120px;
+	color: white;
 }
 
 .inputContainer {
@@ -11,7 +12,6 @@
 	align-items: center;
 	gap: 24px;
 	margin-left: 60px;
-	color: #8585AD !important;
 }
 
 .profileNavigation {
@@ -29,6 +29,16 @@
 	color: white;
 	width: 320px;
 	height: 64px;
+}
+
+.profileLink_active {
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	color: #8585AD;
+	width: 320px;
+	height: 64px;
+	color: white;
 }
 
 .help {

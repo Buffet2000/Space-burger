@@ -15,7 +15,6 @@ export default function HomePage() {
 
   return (
     <>
-      <AppHeader />
       <div className={styles.page}>
         {itemsLoading && "Загрузка..."}
         <DndProvider backend={HTML5Backend}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../components/app-header/app-header';
+import AppHeader from '../components/app-header/app-header';
 import styles from './login.module.css';
 import { Input, EmailInput, PasswordInput } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link } from 'react-router-dom';
@@ -20,19 +20,20 @@ export default function Login() {
     setPassword(e.target.value)
   }
 
+	const [current, setCurrent] = React.useState("profile");
+
 	return (
 		<>
-			<Header/>
 			<div className={styles.profileContent}>
 				<div className={styles.profileNavigation}>
-					<Link className={styles.profileLink}>
-						<p className='text text_type_main-medium'>Профиль</p>
+					<Link className={styles.profileLink} onClick={() => setCurrent("profile")}>
+						<p className={current === "profile" ? 'text text_type_main-medium' : 'text text_type_main-medium text_color_inactive'}>Профиль</p>
 					</Link>
-					<Link className={styles.profileLink}>
-						<p className='text text_type_main-medium'>История заказов</p>
+					<Link className={styles.profileLink} onClick={() => setCurrent("orderHistory")}>
+						<p className={current === "orderHistory" ? 'text text_type_main-medium' : 'text text_type_main-medium text_color_inactive'}>История заказов</p>
 						</Link>
-					<Link className={styles.profileLink}>
-						<p className='text text_type_main-medium'>Выход</p>
+					<Link className={styles.profileLink} onClick={() => setCurrent("logOut")}>
+						<p className={current === "logOut" ? 'text text_type_main-medium' : 'text text_type_main-medium text_color_inactive'}>Выход</p>
 					</Link>
 					<div className={styles.help}>
 						<p className='text text_type_main-default text_color_inactive'>В этом разделе вы можете изменить свои персональные данные</p>
