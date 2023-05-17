@@ -54,7 +54,7 @@ export default function Register() {
           Зарегистрироваться
         </Button>
 				<div className={styles.registration}>
-					<p className="text text_type_main-default text_color_inactive">Уже зарегистрированы? <Link>Войти</Link></p>
+					<p className="text text_type_main-default text_color_inactive">Уже зарегистрированы? <Link to='/login'>Войти</Link></p>
 				</div>
 			</div>
 		</>
