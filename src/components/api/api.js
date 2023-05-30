@@ -77,14 +77,14 @@ export function registerNewUser(email, password, name) {
 }
 
 //авторизация
-export function login({email, password}) {
+export function login(user) {
   return fetch(`${config.baseURL}/auth/login`, {
     method: 'POST',
     headers: config.headers,
     body: JSON.stringify(
       {
-        "email": email,
-        "password": password
+        "email": `${user.email}`,
+        "password": `${user.password}`
       }
     )
   })
