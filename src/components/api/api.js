@@ -24,7 +24,7 @@ export function postOrder(orderIds) {
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
-      Authorization: 'Bearer ' + getCookie('accessToken')
+      //Authorization: 'Bearer ' + getCookie('accessToken')
     },
     body: JSON.stringify({
       ingredients: orderIds
