@@ -7,6 +7,10 @@ const config = {
   }
 }
 
+const checkResponse = (res) => {
+	return res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
+};
+
 export function getIngredients() {
   return fetch(`${config.baseURL}/ingredients`, {
     method: 'GET',
@@ -20,7 +24,7 @@ export function postOrder(orderIds) {
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
-      Authorization: 'Bearer ' + getCookie('accessToken')
+      //Authorization: 'Bearer ' + getCookie('accessToken')
     },
     body: JSON.stringify({
       ingredients: orderIds
@@ -57,15 +61,15 @@ export function postResetPassword(password, token) {
 }
 
 //создание пользователя
-export function postNewUser(email, password, name) {
+export function registerNewUser(email, password, name) {
   return fetch(`${config.baseURL}/auth/register`, {
     method: 'POST',
     headers: config.headers,
     body: JSON.stringify(
       {
-        "email": `${email}`,
-        "password": `${password}`,
-        "name": `${name}`
+        "email": email,
+        "password": password,
+        "name": name
       }
     )
   })
@@ -140,11 +144,3 @@ export function logout() {
   })
     .then(res => checkResponse(res))
 }
-
-//проверка запросов
-function checkResponse(res) {
-  if (!res.ok) {
-    return Promise.reject(`Ошибка: ${res.status}`);
-  }
-  return res.json();
-} 

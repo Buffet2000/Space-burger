@@ -1,25 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AppHeader from '../components/app-header/app-header';
 import styles from './login.module.css';
 import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link } from 'react-router-dom';
+import { registerNewUser } from '../components/api/api';
 
 export default function Register() {
 
-	const [login, setLogin] = React.useState('')
   const inputRef = React.useRef(null)
   const onIconClick = () => {
     setTimeout(() => inputRef.current.focus(), 0)
-    alert('Icon Click Callback')
+
 	}
-	const [password, setPassword] = React.useState('')
+
+	const [user, setUser] = useState(
+    {
+      email: "",
+      password: "",
+      name: ""
+    })
+
   const onChange = e => {
-    setPassword(e.target.value)
+    setUser({ ...user, [e.target.name]: e.target.value });
   }
-
-	const [current, setCurrent] = React.useState("profile");
-
-	const [value, setValue] = React.useState('')
 
 	return (
 		<>
@@ -28,8 +31,8 @@ export default function Register() {
 				<Input
 					type={'text'}
 					placeholder={'Имя'}
-					onChange={e => setValue(e.target.value)}
-					value={value}
+					onChange={onChange}
+					value={user.name}
 					name={'name'}
 					error={false}
 					ref={inputRef}
@@ -39,18 +42,18 @@ export default function Register() {
 					extraClass="ml-1"
 				/>
 				<EmailInput
-					onChange={e => setLogin(e.target.value)}
-					value={login}
-					name={'Логин'}
+					onChange={onChange}
+					value={user.email}
+					name={'email'}
 					placeholder="E-mail"
 					extraClass="mb-2"
 				/>
 				<PasswordInput
 					onChange={onChange}
-					value={password}
-					name={''}
+					value={user.password}
+					name={'password'}
 				/>
-				<Button htmlType="button" type="primary" size="medium" onClick={null}>
+				<Button htmlType="button" type="primary" size="medium" onClick={() => registerNewUser(user.email, user.password, user.name)}>
           Зарегистрироваться
         </Button>
 				<div className={styles.registration}>
