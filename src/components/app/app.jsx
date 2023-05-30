@@ -10,8 +10,9 @@ import ResetPassword from '../../pages/reset-password'
 import IngredientDetailsPage from "../../pages/ingredients";
 import { useDispatch } from 'react-redux';
 import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import ProtectedRoute from "../protected-route/protected-route";
 
-import { ProvideAuth } from '../../services/auth';
+//import { ProvideAuth } from '../../services/auth';
 
 export default function App() {
 
@@ -24,8 +25,8 @@ export default function App() {
     <AppHeader/>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
+        <Route path="/login" element={<ProtectedRoute anonymous element={<Login />} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
