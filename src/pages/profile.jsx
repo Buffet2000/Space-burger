@@ -45,8 +45,7 @@ export default function Profile() {
 
 	const logOut = () => {
     setCurrent('logOut');
-    dispatch(logoutUser);
-		navigate('/login');
+    dispatch(logoutUser(() => navigate('/login')));
 		console.log(isAuthenticated)
   }
 

@@ -18,13 +18,13 @@ export const REFRESH_ACCESS_TOKEN_REQUEST = 'REFRESH_ACCESS_TOKEN_REQUEST';
 export const REFRESH_ACCESS_TOKEN_SUCCESS = 'REFRESH_ACCESS_TOKEN_SUCCESS';//рефрешим accessToken и отправляем запрос на данные
 export const REFRESH_ACCESS_TOKEN_FAILED = 'REFRESH_ACCESS_TOKEN_FAILED';//идем на страницу логина
 
-export function userLogin(userInfo) {
+export function userLogin(user) {
   // Воспользуемся первым аргументом из усилителя redux-thunk — dispatch
   return function (dispatch) {
     dispatch({
       type: USER_LOGIN_REQUEST
     });
-    login(userInfo).then(res => {
+    login(user).then(res => {
       if (res && res.success) {
         setCookie('accessToken', res.accessToken.split('Bearer ')[1]);
         setCookie('refreshToken', res.refreshToken);

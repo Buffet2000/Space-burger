@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 export default function Login() {
 	const dispatch = useDispatch();
-	const userData = useSelector((store) => store.user.user);
+	const userData = useSelector((store) => store.user);
 
 	const [user, setUser] = useState(
 		{
@@ -27,7 +27,7 @@ export default function Login() {
 	}
 
 	function loginUser() {
-		dispatch(userLogin(user.email, user.password));
+		dispatch(userLogin(user));
 		console.log(userData.accessToken ? "user login success" : "user login failed")
 	}
 	return (
