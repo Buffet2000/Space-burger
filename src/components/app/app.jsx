@@ -19,7 +19,7 @@ export default function App() {
   React.useEffect(() => { dispatch(getIngredientsData()) }, [dispatch]);
 
   return (
-    <ProvideAuth>
+    /*<ProvideAuth>*/
     <BrowserRouter>
     <AppHeader/>
       <Routes>
@@ -32,6 +32,6 @@ export default function App() {
         <Route path="/ingredients" element={<IngredientDetailsPage />} />
       </Routes>
     </BrowserRouter>
-    </ProvideAuth>
+    /*</ProvideAuth>*/
   );
 } 

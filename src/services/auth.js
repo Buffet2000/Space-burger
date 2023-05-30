@@ -1,4 +1,4 @@
-import { useContext, useState, createContext } from 'react';
+/*import { useContext, useState, createContext } from 'react';
 import { loginUser } from '../components/api/api';
 import { setCookie } from './utils';
 
@@ -42,11 +42,11 @@ export function useProvideAuth() {
       setUser(null);
       cb();
     });
-  };*/
+  };
 
   return {
     user,
     signIn,
-    //signOut
+    signOut
   };
-}
+}*/

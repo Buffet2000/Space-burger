@@ -3,7 +3,6 @@ import styles from "./burger-ingredients.module.css";
 import BurgerIngredientCategory from "../burger-ingredient-category/burger-ingredient-category";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useInView } from "react-intersection-observer";
-import { getEventListeners } from "events";
 
 export default function BurgerIngredients() {
   

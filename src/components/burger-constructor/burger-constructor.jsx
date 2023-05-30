@@ -42,12 +42,12 @@ export default function BurgerConstructor() {
     [ingredients, buns]
   );
 
-  function setOrderData(id) {
-    dispatch(postOrderInfo(id));
+  function setOrderData(orderIds) {
+    dispatch(postOrderInfo(orderIds));
   }
 
-  function confirmOrder(id) {
-    setOrderData(id);
+  function confirmOrder(orderIds) {
+    setOrderData(orderIds);
     setModalActive(true);
   }
 

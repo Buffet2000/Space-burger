@@ -7,14 +7,14 @@ export const GET_ORDER_NUMBER_FAILED = 'GET_ORDER_NUMBER_FAILED';
 
 export const DELETE_ORDER = 'DELETE_ORDER';
 
-export function postOrderInfo(array) {
+export function postOrderInfo(orderIds) {
 
   return function (dispatch) {
     dispatch({
       type: GET_ORDER_NUMBER_REQUEST
     })
 
-    postOrder(array).then(res => {
+    postOrder(orderIds).then(res => {
       if (res && res.success) {
         dispatch({
           type: GET_ORDER_NUMBER_SUCCESS,
