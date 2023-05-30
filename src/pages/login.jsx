@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 //import AppHeader from '../components/app-header/app-header';
 import styles from './login.module.css';
 import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
@@ -10,19 +10,24 @@ export default function Login() {
 	const dispatch = useDispatch();
 	const userData = useSelector((store) => store.user.user);
 
-	const [login, setLogin] = React.useState('')
+	const [user, setUser] = useState(
+		{
+			email: "",
+			password: "",
+		});
+
+	const onChange = e => {
+		setUser({ ...user, [e.target.name]: e.target.value });
+	}
+
   const inputRef = React.useRef(null)
   const onIconClick = () => {
     setTimeout(() => inputRef.current.focus(), 0)
     alert('Icon Click Callback')
 	}
-	const [password, setPassword] = React.useState('')
-  const onChange = e => {
-    setPassword(e.target.value)
-  }
 
 	function loginUser() {
-		dispatch(userLogin(login, password));
+		dispatch(userLogin(user.email, user.password));
 		console.log(userData.accessToken ? "user login success" : "user login failed")
 	}
 	return (
@@ -30,16 +35,16 @@ export default function Login() {
 			<div className={styles.inputContainer}>
 				<h2 className="text text_type_main-medium">Вход</h2>
 				<EmailInput
-					onChange={e => setLogin(e.target.value)}
-					value={login}
-					name={'Логин'}
+					onChange={onChange}
+					value={user.email}
+					name={'email'}
 					placeholder="E-mail"
 					extraClass="mb-2"
 				/>
 				<PasswordInput
 					onChange={onChange}
-					value={password}
-					name={''}
+					value={user.password}
+					name={'password'}
 				/>
 				<Button htmlType="button" type="primary" size="medium" onClick={loginUser}>
           Войти

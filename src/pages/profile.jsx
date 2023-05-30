@@ -3,7 +3,7 @@ import AppHeader from '../components/app-header/app-header';
 import styles from './profile.module.css';
 import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
-import { logoutUser } from '../services/actions/login';
+import { logoutUser, updateUserData } from '../services/actions/login';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function Profile() {
@@ -19,9 +19,9 @@ export default function Profile() {
 
   const [user, setUser] = React.useState(
     {
+			name: name,
       email: email,
       password: "",
-      name: name
     })
 
   const onIconClick = () => {
@@ -38,31 +38,17 @@ export default function Profile() {
 
 	const [current, setCurrent] = React.useState('profile');
 
+	const submitChanges = (e) => {
+    e.preventDefault();
+    dispatch(updateUserData(user))
+  }
+
 	const logOut = () => {
     setCurrent('logOut');
     dispatch(logoutUser);
 		navigate('/login');
 		console.log(isAuthenticated)
   }
-
-	/*const logOut = useCallback(
-    () => {
-            // Вызовем функцию signOut
-            signOut().then(() => {
-                // После выхода переадресуем пользователя на маршрут /login
-        navigate('/login', {replace: true});
-      });
-    },
-    [signOut, navigate]
-  );*/
-
-	/*const canсelChanges = (e) => {
-    setUserInfo({
-      email: email,
-      password: "",
-      name: name
-    })
-  }*/
 
 	return (
 		<>
