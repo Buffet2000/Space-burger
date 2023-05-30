@@ -3,7 +3,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { getCookie } from '../../services/cookie';
 import { useSelector } from 'react-redux';
 
-export default function ProtectedRoute({ element, anonymous = false }) {
+export default function ProtectedRoute({ children, anonymous = false }) {
   const isLoggedIn = getCookie("accessToken");
   const location = useLocation();
 	const { isAuthenticated } = useSelector((store) => store.user);
@@ -20,5 +20,5 @@ export default function ProtectedRoute({ element, anonymous = false }) {
     return <Navigate to="/login" replace state={{ from: location }} />;
   }
   // Если все ок, то рендерим внутреннее содержимое
-  return element;
+  return children;
 }

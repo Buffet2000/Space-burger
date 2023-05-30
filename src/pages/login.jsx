@@ -26,14 +26,17 @@ export default function Login() {
     alert('Icon Click Callback')
 	}
 
-	function loginUser() {
+	const loginUser = (e) => {
+		e.preventDefault();
 		dispatch(userLogin(user));
 		console.log(userData.accessToken ? "user login success" : "user login failed")
 	}
+
 	return (
 		<>
 			<div className={styles.inputContainer}>
 				<h2 className="text text_type_main-medium">Вход</h2>
+				<form className={styles.form} onSubmit={loginUser}>
 				<EmailInput
 					onChange={onChange}
 					value={user.email}
@@ -46,9 +49,15 @@ export default function Login() {
 					value={user.password}
 					name={'password'}
 				/>
-				<Button htmlType="button" type="primary" size="medium" onClick={loginUser}>
+				{userData.loginRequestFailed && (
+          <p className={`${styles.error} text text_type_main-default mb-2`}>
+            Неверный логин или пароль
+          </p>
+        )}
+				<Button htmlType="submit" type="primary" size="medium">
           Войти
         </Button>
+				</form>
 				<div className={styles.registration}>
 					<p className="text text_type_main-default text_color_inactive">Вы — новый пользователь? <Link to='/register'>Зарегистрироваться</Link></p>
 					<p className="text text_type_main-default text_color_inactive mt-4">Забыли пароль? <Link to='/forgot-password'>Восстановить пароль</Link></p>

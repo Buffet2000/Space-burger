@@ -13,3 +13,13 @@
 	align-items: center;
 	margin-top: 80px;
 }
+.form {
+  display: grid;
+  gap: 24px;
+  padding: 24px 0 80px 0;
+  justify-items: center;
+}
+
+.error {
+  color: #ff1919;
+}

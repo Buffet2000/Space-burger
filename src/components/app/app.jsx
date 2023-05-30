@@ -9,30 +9,32 @@ import ForgotPassword from "../../pages/forgot-password";
 import ResetPassword from '../../pages/reset-password'
 import IngredientDetailsPage from "../../pages/ingredients";
 import { useDispatch } from 'react-redux';
-import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
 import ProtectedRoute from "../protected-route/protected-route";
-
-//import { ProvideAuth } from '../../services/auth';
+import { getUserData } from "../../services/actions/login";
 
 export default function App() {
-
+  /*const location = useLocation();
+  const background = location.state && location.state.background;*/
   const dispatch = useDispatch();
-  React.useEffect(() => { dispatch(getIngredientsData()) }, [dispatch]);
+
+  React.useEffect(() => {
+    dispatch(getIngredientsData());
+    dispatch(getUserData());
+  }, [dispatch])
 
   return (
-    /*<ProvideAuth>*/
-    <BrowserRouter>
-    <AppHeader/>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
-        <Route path="/login" element={<ProtectedRoute anonymous element={<Login />} />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/ingredients" element={<IngredientDetailsPage />} />
-      </Routes>
-    </BrowserRouter>
-    /*</ProvideAuth>*/
+    <>
+      <AppHeader/>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<ProtectedRoute anonymous> <Login /> </ProtectedRoute>} />
+          <Route path="/profile" element={<ProtectedRoute> <Profile/> </ProtectedRoute>} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/reset-password" element={<ProtectedRoute anonymous><ResetPassword /></ProtectedRoute>} />
+          <Route path="/forgot-password" element={<ProtectedRoute anonymous><ForgotPassword /></ProtectedRoute>} />
+          <Route path="/ingredients" element={<IngredientDetailsPage />} />
+        </Routes>
+      </>
   );
 } 
