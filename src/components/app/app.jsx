@@ -34,9 +34,6 @@ export default function App() {
   return (
     <>
       <AppHeader/>
-      {!itemsLoaded && userData
-        ? <p>Загрузка</p>
-        : 
         <Routes location={background || location}>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<ProtectedRoute anonymous> <Login /> </ProtectedRoute>} />
@@ -44,11 +41,10 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/reset-password" element={<ProtectedRoute anonymous><ResetPassword /></ProtectedRoute>} />
           <Route path="/forgot-password" element={<ProtectedRoute anonymous><ForgotPassword /></ProtectedRoute>} />
-          <Route path="/ingredients/:id" element={<IngredientDetailsPage data={itemsLoaded}/>} />
+          <Route path="/ingredients/:id" element={<IngredientDetailsPage />} />
         </Routes>
-      }
-      
-      {background && itemsLoaded && <Routes> <Route path="/ingredients/:id" element={<Modal handleClose={closePopup}><IngredientDetails data={itemsLoaded} /></Modal>} /> </Routes>}
+
+      {background && itemsLoaded && <Routes> <Route path="/ingredients/:id" element={<Modal handleClose={closePopup}><IngredientDetails /></Modal>} /> </Routes>}
     </>
   );
 } 

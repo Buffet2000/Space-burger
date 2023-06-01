@@ -8,13 +8,13 @@ export default function IngredientDetailsPage() {
   const navigate = useNavigate();
   const { id } = useParams();
   const itemsLoaded = useSelector((store) => store.ingredients.items);
-  const openedIngredient = useSelector((store) => store.ingredientInformation.information)
+  const openedIngredient = itemsLoaded.find(item => item._id === id);
 
-  useEffect(() => {
+  /*useEffect(() => {
     if (itemsLoaded && !openedIngredient) {
-      return (navigate('/'))
+      return (navigate('/*'))
     }
-  }, [itemsLoaded]);
+  }, [itemsLoaded]);*/
 
   return (
     console.log(openedIngredient) &&

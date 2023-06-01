@@ -22,7 +22,7 @@ export default function BurgerIngredient({ data }) {
 
   function handleClose() {
     setModalActive(false);
-    dispatch(deleteIngredientInfo())
+    //dispatch(deleteIngredientInfo())
   }
 
   function handleOpen(e) {
@@ -30,6 +30,7 @@ export default function BurgerIngredient({ data }) {
     e.stopPropagation();
     dispatch(addIngredientInfo(data))
     setModalActive(true);
+  
   }
 
   const count = React.useMemo(() => {
@@ -46,13 +47,14 @@ export default function BurgerIngredient({ data }) {
 
   return (
     <> 
+      <Link to={`/ingredients/${data._id}`} state={{ background: location }}>
       {modalActive && <Modal
-        title={"Детали ингредиента"}
-        children={<IngredientDetails data={data} />}
-        handleClose={handleClose}
+      title={"Детали ингредиента"}
+      children={<IngredientDetails data={data} />}
+      handleClose={handleClose}
       />}
-      <Link className={styles.linkContainer} to={`/ingredients/${data._id}`} state={{ background: location }} >
-      <div ref={dragRef} className={styles.ingredients_card} onClick={handleOpen}>
+      
+      <div state={{ background: location }} onClick={handleOpen} ref={dragRef} className={styles.ingredients_card} >
         {count === 0 ? null : <Counter count={count} size="default" />}
         <img className={styles.ingImage} src={data.image} alt={data.name} />
         <div className={styles.ingredients_price}>

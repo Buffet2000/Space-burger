@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import styles from "./ingredient-details.module.css";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addIngredientInfo } from "../../services/actions/opened-ingredient";
 
 export default function IngredientDetails({ data }) {
-
+  const { id } = useParams();
   const storeOpenedIngredient = useSelector((store) => store.ingredientInformation.information);  
   
   console.log(storeOpenedIngredient);
@@ -13,13 +13,13 @@ export default function IngredientDetails({ data }) {
     <>
       <img
         className={styles.ingredient_illustration}
-        src={data.image_large}
-        alt={data.name}
+        src={storeOpenedIngredient.image_large}
+        alt={storeOpenedIngredient.name}
       ></img>
       <div>
         <div className={styles.ingredient_details}>
           <p className="text text_type_main-medium mb-8">
-            {data.name}
+            {storeOpenedIngredient.name}
           </p>
           <div className={styles.nutrition_values}>
             <div className={styles.value_item}>
@@ -27,7 +27,7 @@ export default function IngredientDetails({ data }) {
                 Калории, ккал
               </p>
               <p className="text text_type_digits-default text_color_inactive mt-2">
-                {data.calories}
+                {storeOpenedIngredient.calories}
               </p>
             </div>
             <div className={styles.value_item}>
@@ -35,7 +35,7 @@ export default function IngredientDetails({ data }) {
                 Белки, г
               </p>
               <p className="text text_type_digits-default text_color_inactive mt-2">
-                {data.proteins}
+                {storeOpenedIngredient.proteins}
               </p>
             </div>
             <div className={styles.value_item}>
@@ -43,7 +43,7 @@ export default function IngredientDetails({ data }) {
                 Жиры, г
               </p>
               <p className="text text_type_digits-default text_color_inactive mt-2">
-                {data.fat}
+                {storeOpenedIngredient.fat}
               </p>
             </div>
             <div className={styles.value_item}>
@@ -51,7 +51,7 @@ export default function IngredientDetails({ data }) {
                 Углеводы, г
               </p>
               <p className="text text_type_digits-default text_color_inactive mt-2">
-                {data.carbohydrates}
+                {storeOpenedIngredient.carbohydrates}
               </p>
             </div>
           </div>
