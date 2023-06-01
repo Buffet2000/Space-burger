@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./ingredient-details.module.css";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addIngredientInfo } from "../../services/actions/opened-ingredient";
 
 export default function IngredientDetails({ data }) {
+
+  const storeOpenedIngredient = useSelector((store) => store.ingredientInformation.information);  
+  
+  console.log(storeOpenedIngredient);
   return (
     <>
       <img
@@ -12,7 +19,7 @@ export default function IngredientDetails({ data }) {
       <div>
         <div className={styles.ingredient_details}>
           <p className="text text_type_main-medium mb-8">
-            {data.title}
+            {data.name}
           </p>
           <div className={styles.nutrition_values}>
             <div className={styles.value_item}>

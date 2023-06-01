@@ -2,8 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import BurgerIngredient from "../burger-ingredient/burger-ingredient";
 import { useSelector } from 'react-redux';
+import { Link, useLocation } from "react-router-dom";
 
 export default function BurgerIngredientCategory({ innerRef, ingr_type, name, style }) {
+  const location = useLocation();
   const data = useSelector((store) => store.ingredients.items);
 
   return (

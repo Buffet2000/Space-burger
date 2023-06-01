@@ -1,4 +1,4 @@
-import React, {useMemo} from "react";
+import React, {useMemo, useEffect} from "react";
 import { CurrencyIcon, Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import BurgerBun from "../burger-elements/burger-element_bun";
 import BurgerStuffing from "../burger-elements/burger-element_stuffing";
@@ -7,24 +7,29 @@ import Modal from "../modal/modal";
 import styles from "./burger-constructor.module.css";
 import { useDrop } from "react-dnd";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteOrder, postOrderInfo } from "../../services/actions/order";
+import { deleteOrder, postOrderInfo, saveOrderitems } from "../../services/actions/order";
 import { addIngredientInConstructor, addBunsInConstructor, deleteAllIngredients } from "../../services/actions/constructor-ingredients";
 import { v4 as uuidv4 } from "uuid";
+import { useNavigate } from "react-router-dom";
 
 export default function BurgerConstructor() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { isAuthenticated } = useSelector((store) => store.user);
   const [modalActive, setModalActive] = React.useState(false);
 
-  const getIngredients = (store) => store.constructorIngredients.ingredients;
-  const getBuns = (store) => store.constructorIngredients.buns;
+  //const getIngredients = (store) => store.constructorIngredients.ingredients;
+  //const getBuns = (store) => store.constructorIngredients.buns;
 
-  const ingredients = useSelector(getIngredients); //Ингредиенты в конструкторе
-  const buns = useSelector(getBuns);//Булки в конструкторе
+  const ingredients = useSelector((store) => store.constructorIngredients.ingredients); //Ингредиенты в конструкторе
+  const buns = useSelector((store) => store.constructorIngredients.buns);//Булки в конструкторе
   const order = [...ingredients, ...buns]; //Весь заказ в конструкторе
-  const dispatch = useDispatch();
+  
   const orderIds = order.map(item => item._id); //Все id заказа.
   const [buttonValue, setButtonValue] = React.useState(true)
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (buns.length === 0 || ingredients.length === 0) {
       setButtonValue(true)
     } if (ingredients.length > 0 && buns.length > 0) {
@@ -41,15 +46,18 @@ export default function BurgerConstructor() {
     },
     [ingredients, buns]
   );
-
-  function setOrderData(orderIds) {
-    dispatch(postOrderInfo(orderIds));
+  
+  function confirmOrder() {
+    if (!isAuthenticated) {
+      return (navigate('/login'))
+    }
+    if (isAuthenticated) {
+      dispatch(saveOrderitems(orderIds));
+      dispatch(postOrderInfo(orderIds));
+      setModalActive(true);
+    }
   }
-
-  function confirmOrder(orderIds) {
-    setOrderData(orderIds);
-    setModalActive(true);
-  }
+  
 
   function closeOrder() {
     dispatch(deleteOrder());

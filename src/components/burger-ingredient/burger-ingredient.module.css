@@ -5,6 +5,7 @@
 	text-align: center;
 	position: relative;
 	cursor: grab;
+	text-decoration: none;
 }
 
 .ingredients_price {
@@ -20,4 +21,9 @@
 	width: 240px;
 	height: 120px;
 	object-fit: contain;
+}
+
+.linkContainer {
+	text-decoration: none;
+	color: #F2F2F3;
 }

@@ -5,23 +5,30 @@ import IngredientDetails from "../ingredient-details/ingredient-details";
 import styles from "./burger-ingredient.module.css";
 import { DataType } from "../../utils/dataType";
 import { useDrag } from 'react-dnd';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addIngredientInfo, deleteIngredientInfo } from "../../services/actions/opened-ingredient";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function BurgerIngredient({ data }) {
-  const [modalActive, setModalActive] = React.useState(null);
-  const [ingredientData, setIngredientData] = React.useState(null);
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+  const location = useLocation();
   
+  const [modalActive, setModalActive] = React.useState(null);
+
   const constructorIngredients = useSelector((store) => store.constructorIngredients.ingredients);
   const constructorBuns = useSelector((store) => store.constructorIngredients.buns);
 
+
   function handleClose() {
     setModalActive(false);
-    setIngredientData({});
+    dispatch(deleteIngredientInfo())
   }
 
   function handleOpen(e) {
+    e.preventDefault();
     e.stopPropagation();
-    setIngredientData(data);
+    dispatch(addIngredientInfo(data))
     setModalActive(true);
   }
 
@@ -38,21 +45,14 @@ export default function BurgerIngredient({ data }) {
   });
 
   return (
-    <>
+    <> 
       {modalActive && <Modal
         title={"Детали ингредиента"}
-        children={
-          <IngredientDetails
-            data={ingredientData}
-          />
-        }
+        children={<IngredientDetails data={data} />}
         handleClose={handleClose}
       />}
-      <div
-        ref={dragRef}
-        className={styles.ingredients_card}
-        onClick={handleOpen}
-      >
+      <Link className={styles.linkContainer} to={`/ingredients/${data._id}`} state={{ background: location }} >
+      <div ref={dragRef} className={styles.ingredients_card} onClick={handleOpen}>
         {count === 0 ? null : <Counter count={count} size="default" />}
         <img className={styles.ingImage} src={data.image} alt={data.name} />
         <div className={styles.ingredients_price}>
@@ -61,6 +61,7 @@ export default function BurgerIngredient({ data }) {
         </div>
         <p className="text text_type_main-default">{data.name}</p>
       </div>
+      </Link>
     </>
   );
 }

@@ -27,7 +27,6 @@ export default function Profile() {
   const onIconClick = () => {
     setTimeout(() => inputRef.current.focus(), 0)
 		setDisabled(false);
-    alert('Icon Click Callback')
 	}
 	const [password, setPassword] = React.useState('password')
 

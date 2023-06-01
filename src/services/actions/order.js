@@ -5,6 +5,7 @@ export const GET_ORDER_NUMBER_REQUEST = 'GET_ORDER_NUMBER_REQUEST';
 export const GET_ORDER_NUMBER_SUCCESS = 'GET_ORDER_NUMBER_SUCCESS';
 export const GET_ORDER_NUMBER_FAILED = 'GET_ORDER_NUMBER_FAILED';
 
+export const ADD_ORDER = 'ADD_ORDER';
 export const DELETE_ORDER = 'DELETE_ORDER';
 
 export function postOrderInfo(orderIds) {
@@ -29,4 +30,5 @@ export function postOrderInfo(orderIds) {
   }
 }
 
+export const saveOrderitems = (payload) => ({ type: ADD_ORDER, payload });
 export const deleteOrder = () => ({ type: DELETE_ORDER })
