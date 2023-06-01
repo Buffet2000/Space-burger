@@ -10,14 +10,8 @@ export default function IngredientDetailsPage() {
   const itemsLoaded = useSelector((store) => store.ingredients.items);
   const openedIngredient = itemsLoaded.find(item => item._id === id);
 
-  /*useEffect(() => {
-    if (itemsLoaded && !openedIngredient) {
-      return (navigate('/*'))
-    }
-  }, [itemsLoaded]);*/
-
   return (
-    console.log(openedIngredient) &&
+    openedIngredient &&
     <div className={styles.container}>
       <h2 className="text text_type_main-large mt-3 mb-3">Детали ингредиента</h2>
       <img

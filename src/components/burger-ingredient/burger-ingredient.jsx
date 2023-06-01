@@ -25,11 +25,11 @@ export default function BurgerIngredient({ data }) {
     //dispatch(deleteIngredientInfo())
   }
 
-  function handleOpen(e) {
-    e.preventDefault();
-    e.stopPropagation();
+  function handleOpen() {
+    //e.preventDefault();
+    //e.stopPropagation();
     dispatch(addIngredientInfo(data))
-    setModalActive(true);
+    //setModalActive(true);
   
   }
 
@@ -47,22 +47,16 @@ export default function BurgerIngredient({ data }) {
 
   return (
     <> 
-      <Link to={`/ingredients/${data._id}`} state={{ background: location }}>
-      {modalActive && <Modal
-      title={"Детали ингредиента"}
-      children={<IngredientDetails data={data} />}
-      handleClose={handleClose}
-      />}
-      
-      <div state={{ background: location }} onClick={handleOpen} ref={dragRef} className={styles.ingredients_card} >
-        {count === 0 ? null : <Counter count={count} size="default" />}
-        <img className={styles.ingImage} src={data.image} alt={data.name} />
-        <div className={styles.ingredients_price}>
-          <p className="text text_type_digits-default">{data.price}</p>
-          <CurrencyIcon type="primary" />
+      <Link className={styles.linkContainer} to={`/ingredients/${data._id}`} state={{ background: location }}>
+        <div onClick={handleOpen} ref={dragRef} className={styles.ingredients_card} >
+          {count === 0 ? null : <Counter count={count} size="default" />}
+          <img className={styles.ingImage} src={data.image} alt={data.name} />
+          <div className={styles.ingredients_price}>
+            <p className="text text_type_digits-default">{data.price}</p>
+            <CurrencyIcon type="primary" />
+          </div>
+          <p className="text text_type_main-default">{data.name}</p>
         </div>
-        <p className="text text_type_main-default">{data.name}</p>
-      </div>
       </Link>
     </>
   );
