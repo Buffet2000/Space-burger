@@ -44,7 +44,7 @@ export default function App() {
           <Route path="/ingredients/:id" element={<IngredientDetailsPage />} />
         </Routes>
 
-      {background && itemsLoaded && <Routes> <Route path="/ingredients/:id" element={<Modal title={"Детали ингредиента"} handleClose={closePopup}><IngredientDetails /></Modal>} /> </Routes>}
+      {background && itemsLoaded && <Routes> <Route path="/ingredients/:id" element={<Modal title={"Детали ингредиента"} handleClose={closePopup}><IngredientDetails data={itemsLoaded} /></Modal>} /> </Routes>}
     </>
   );
 }
