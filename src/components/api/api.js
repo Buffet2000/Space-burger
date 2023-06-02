@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { getCookie } from '../../services/utils';
 
 const config = {
@@ -74,6 +75,7 @@ export function registerNewUser(email, password, name) {
     )
   })
     .then(res => checkResponse(res))
+    
 }
 
 //авторизация

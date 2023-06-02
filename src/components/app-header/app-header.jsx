@@ -1,5 +1,5 @@
 import React from "react";
-import Login from '../../pages/profile';
+import Login from '../../pages/profile/profile';
 import {
   Logo,
   BurgerIcon,

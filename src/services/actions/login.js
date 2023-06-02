@@ -2,24 +2,24 @@ import { login, logout, getUser, resetToken, updateUser } from '../../components
 import { setCookie, getCookie, deleteCookie } from '../../services/utils';
 
 export const USER_LOGIN_REQUEST = 'USER_LOGIN_REQUEST';
-export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';//впервые получаем данные пользователя, токены и сохраняем куки.
+export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';//Получаем данные пользователя, токены и сохраняем куки.
 export const USER_LOGIN_FAILED = 'USER_LOGIN_FAILED';
 export const USER_LOGOUT = 'USER_LOGOUT';
 
 export const USER_DATA_REQUEST = 'USER_DATA_REQUEST';
-export const USER_DATA_SUCCESS = 'USER_DATA_SUCCESS';//получаем только данные по сохраненным accessToken в куках
-export const USER_DATA_FAILED = 'USER_DATA_FAILED';//рефрешим accessToken в куках через REFRESH_ACCESS_TOKEN_REQUEST
+export const USER_DATA_SUCCESS = 'USER_DATA_SUCCESS';//Получаем данные по сохраненным accessToken в куках
+export const USER_DATA_FAILED = 'USER_DATA_FAILED';//Рефреш accessToken
 
 export const USER_DATA_UPDATE_REQUEST = 'USER_DATA_REQUEST';
 export const USER_DATA_UPDATE_SUCCESS = 'USER_DATA_UPDATE';
-export const USER_DATA_UPDATE_FAILED = 'USER_DATA_FAILED';//рефрешим accessToken в куках через REFRESH_ACCESS_TOKEN_REQUEST
+export const USER_DATA_UPDATE_FAILED = 'USER_DATA_FAILED';//Рефреш accessToken
 
 export const REFRESH_ACCESS_TOKEN_REQUEST = 'REFRESH_ACCESS_TOKEN_REQUEST';
-export const REFRESH_ACCESS_TOKEN_SUCCESS = 'REFRESH_ACCESS_TOKEN_SUCCESS';//рефрешим accessToken и отправляем запрос на данные
-export const REFRESH_ACCESS_TOKEN_FAILED = 'REFRESH_ACCESS_TOKEN_FAILED';//идем на страницу логина
+export const REFRESH_ACCESS_TOKEN_SUCCESS = 'REFRESH_ACCESS_TOKEN_SUCCESS';//Рефреш accessToken
+export const REFRESH_ACCESS_TOKEN_FAILED = 'REFRESH_ACCESS_TOKEN_FAILED';//Идем на страницу логина
 
 export function userLogin(user) {
-  // Воспользуемся первым аргументом из усилителя redux-thunk — dispatch
+
   return function (dispatch) {
     dispatch({
       type: USER_LOGIN_REQUEST

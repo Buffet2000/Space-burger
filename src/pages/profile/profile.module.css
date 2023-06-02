@@ -47,3 +47,8 @@
 	margin-top: 80px;
 	opacity: 0.4;
 }
+
+.buttons {
+	display: flex;
+	align-self: end;
+}
