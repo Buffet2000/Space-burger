@@ -26,7 +26,7 @@ export default function AppHeader() {
         </Link>
       </div>
       <div className={HeaderStyles.burger_logo}>
-        <Link to='/'><Logo /></Link>
+        <Link to='/' onClick={() => setActive('const')}><Logo /></Link>
       </div>
       <Link to='/profile' type="button" className={HeaderStyles.button_profile} onClick={() => setActive('profile')}>
         <ProfileIcon type={active === "profile" ? "primary" : "secondary"} />
