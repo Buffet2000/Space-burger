@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addIngredientInfo } from "../../services/actions/opened-ingredient";
 
-export default function IngredientDetails({ data }) {
+export default function IngredientDetails() {
   const { id } = useParams();
   const allIngredients = useSelector((store) => store.ingredients.items);
   const openedIngredient = allIngredients.find(item => item._id === id);
