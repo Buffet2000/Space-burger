@@ -9,20 +9,20 @@ export default function BurgerBun({ containerType, isLocked, hideIco, nameType }
   const buns = useSelector((store) => store.constructorIngredients.buns);
 
   return (
-      <div className={styles.ingredient_container}>
-        <div className={hideIco}>
-          <DragIcon type="primary" />
-        </div>
-        {buns.length !== 0 &&
-          <ConstructorElement
-            type={containerType}
-            isLocked={isLocked}
-            text={`${buns[0].name} ${nameType}`}
-            price={buns[0].price}
-            thumbnail={buns[0].image}
-          />
-        }
+    <div className={styles.ingredient_container}>
+      <div className={hideIco}>
+        <DragIcon type="primary" />
       </div>
+      {buns.length !== 0 &&
+        <ConstructorElement
+          type={containerType}
+          isLocked={isLocked}
+          text={`${buns[0].name} ${nameType}`}
+          price={buns[0].price}
+          thumbnail={buns[0].image}
+        />
+      }
+    </div>
   );
 }
 

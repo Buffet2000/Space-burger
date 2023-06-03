@@ -10,22 +10,22 @@ export default function Register() {
 	const { isAuthenticated } = useSelector((store) => store.user);
 	const navigate = useNavigate();
 
-  const inputRef = React.useRef(null)
-  const onIconClick = () => {
-    setTimeout(() => inputRef.current.focus(), 0)
+	const inputRef = React.useRef(null)
+	const onIconClick = () => {
+		setTimeout(() => inputRef.current.focus(), 0)
 
 	}
 
 	const [user, setUser] = useState(
-    {
-      email: "",
-      password: "",
-      name: ""
-    })
+		{
+			email: "",
+			password: "",
+			name: ""
+		})
 
-  const onChange = e => {
-    setUser({ ...user, [e.target.name]: e.target.value });
-  }
+	const onChange = e => {
+		setUser({ ...user, [e.target.name]: e.target.value });
+	}
 
 	const submitNewUser = () => {
 		registerNewUser(user.email, user.password, user.name)
@@ -61,8 +61,8 @@ export default function Register() {
 					name={'password'}
 				/>
 				<Button htmlType="submit" type="primary" size="medium" >
-          Зарегистрироваться
-        </Button>
+					Зарегистрироваться
+				</Button>
 				<div className={styles.registration}>
 					<p className="text text_type_main-default text_color_inactive">Уже зарегистрированы? <Link className={styles.link} to='/login'>Войти</Link></p>
 				</div>

@@ -12,47 +12,47 @@ export default function Profile() {
 	const isAuthenticated = useSelector((store) => store.user.isAuthenticated);
 
 	const [disabled, setDisabled] = useState(true);
-  const inputRef = useRef(null)
+	const inputRef = useRef(null)
 	const { email, name } = useSelector((store) => store.user.user);
 
-  const [user, setUser] = useState(
-    {
+	const [user, setUser] = useState(
+		{
 			name: name,
-      email: email,
-      password: "",
-    })
+			email: email,
+			password: "",
+		})
 
-		const onIconClick = () => {
-			setTimeout(() => inputRef.current.focus(), 0);
-			setDisabled(false);
-		}
+	const onIconClick = () => {
+		setTimeout(() => inputRef.current.focus(), 0);
+		setDisabled(false);
+	}
 
 
 	const onChange = e => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+		setUser({ ...user, [e.target.name]: e.target.value });
 		setActive(true)
-  }
+	}
 
 	const [current, setCurrent] = useState('profile');
 
 	const submitChanges = (e) => {
-    e.preventDefault();
-    dispatch(updateUserData(user))
-  }
+		e.preventDefault();
+		dispatch(updateUserData(user))
+	}
 
 	const canсelChanges = (e) => {
-    setUser({
-      email: email,
-      password: "",
-      name: name
-    })
-  }
+		setUser({
+			email: email,
+			password: "",
+			name: name
+		})
+	}
 
 	const logOut = () => {
-    setCurrent('logOut');
-    dispatch(logoutUser(() => navigate('/login')));
+		setCurrent('logOut');
+		dispatch(logoutUser(() => navigate('/login')));
 		console.log(isAuthenticated)
-  }
+	}
 
 	const [active, setActive] = useState(false)
 
@@ -65,7 +65,7 @@ export default function Profile() {
 					</Link>
 					<Link to='/profile/orders' name='orderHistory' className={styles.profileLink} onClick={() => setCurrent('orderHistory')}>
 						<p className={current === 'orderHistory' ? 'text text_type_main-medium' : 'text text_type_main-medium text_color_inactive'}>История заказов</p>
-						</Link>
+					</Link>
 					<Link name='logOut' className={styles.profileLink} onClick={logOut}>
 						<p className={current === 'logOut' ? 'text text_type_main-medium' : 'text text_type_main-medium text_color_inactive'}>Выход</p>
 					</Link>

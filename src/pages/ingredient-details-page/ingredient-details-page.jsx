@@ -1,4 +1,4 @@
-import React,  { useEffect } from "react";
+import React, { useEffect } from "react";
 import styles from "./ingredient-details-page.module.css";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";

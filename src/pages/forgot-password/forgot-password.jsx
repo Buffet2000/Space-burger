@@ -9,9 +9,9 @@ export default function ForgotPassword() {
 	const [login, setLogin] = React.useState('')
 
 	const resetPassword = (e) => {
-    e.preventDefault();
-    navigate('/reset-password');
-  }
+		e.preventDefault();
+		navigate('/reset-password');
+	}
 
 	return (
 		<>

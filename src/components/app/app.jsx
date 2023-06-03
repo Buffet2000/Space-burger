@@ -14,6 +14,7 @@ import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import ProtectedRoute from "../protected-route/protected-route";
 import { getUserData } from "../../services/actions/login";
 import Modal from "../modal/modal";
+import ProfileOrders from "../profile-orders/profile-orders";
 
 export default function App() {
   const location = useLocation();
@@ -22,6 +23,9 @@ export default function App() {
   const userData = useSelector((store) => store.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const ws = new WebSocket("ws://norma.nomoreparties.space/");
+  console.log(ws.readyState);
 
   React.useEffect(() => {
     dispatch(getIngredientsData());
@@ -33,16 +37,18 @@ export default function App() {
   };
   return (
     <>
-      <AppHeader/>
-        <Routes location={background || location}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<ProtectedRoute anonymous> <Login /> </ProtectedRoute>} />
-          <Route path="/profile" element={<ProtectedRoute> <Profile/> </ProtectedRoute>} />
-          <Route path="/register" element={<ProtectedRoute><Register /></ProtectedRoute>} />
-          <Route path="/reset-password" element={<ProtectedRoute anonymous><ResetPassword /></ProtectedRoute>} />
-          <Route path="/forgot-password" element={<ProtectedRoute anonymous><ForgotPassword /></ProtectedRoute>} />
-          <Route path="/ingredients/:id" element={<IngredientDetailsPage />} />
-        </Routes>
+      <AppHeader />
+      <Routes location={background || location}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<ProtectedRoute anonymous> <Login /> </ProtectedRoute>} />
+        <Route path="/profile" element={<ProtectedRoute> <Profile /> </ProtectedRoute>} >
+          <Route path="orders" element={<ProfileOrders reverse path={'/profile/orders'} />} />
+        </Route>
+        <Route path="/register" element={<ProtectedRoute><Register /></ProtectedRoute>} />
+        <Route path="/reset-password" element={<ProtectedRoute anonymous><ResetPassword /></ProtectedRoute>} />
+        <Route path="/forgot-password" element={<ProtectedRoute anonymous><ForgotPassword /></ProtectedRoute>} />
+        <Route path="/ingredients/:id" element={<IngredientDetailsPage />} />
+      </Routes>
 
       {background && itemsLoaded && <Routes> <Route path="/ingredients/:id" element={<Modal title={"Детали ингредиента"} handleClose={closePopup}><IngredientDetails data={itemsLoaded} /></Modal>} /> </Routes>}
     </>

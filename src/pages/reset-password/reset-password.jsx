@@ -6,20 +6,20 @@ import { Link, useNavigate } from 'react-router-dom';
 
 export default function ResetPassword() {
 	const navigate = useNavigate();
-  const inputRef = React.useRef(null);
+	const inputRef = React.useRef(null);
 
-  const onIconClick = () => {
-    setTimeout(() => inputRef.current.focus(), 0)
+	const onIconClick = () => {
+		setTimeout(() => inputRef.current.focus(), 0)
 	}
 
 	const [password, setPassword] = React.useState('');
 
-  const onChange = e => {
-    setPassword(e.target.value)
-  }
+	const onChange = e => {
+		setPassword(e.target.value)
+	}
 
 	const [value, setValue] = React.useState('');
-	
+
 	const resetPassword = () => {
 		navigate('/login');
 	}

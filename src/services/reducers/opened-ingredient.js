@@ -1,9 +1,12 @@
-import { ADD_INGREDIENT_INFO, DELETE_INGREDIENT_INFO } from "../actions/opened-ingredient";
+import {
+  ADD_INGREDIENT_INFO,
+  DELETE_INGREDIENT_INFO,
+} from "../actions/opened-ingredient";
 
 //Открытый ингредиент, информация
 const initialState = {
-  information: null
-}
+  information: null,
+};
 
 export const ingredientReducer = (state = initialState, action) => {
   switch (action.type) {

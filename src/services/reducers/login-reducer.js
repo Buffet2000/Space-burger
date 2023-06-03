@@ -11,8 +11,8 @@ import {
   REFRESH_ACCESS_TOKEN_REQUEST,
   USER_DATA_UPDATE_REQUEST,
   USER_DATA_UPDATE_SUCCESS,
-  USER_DATA_UPDATE_FAILED
-} from '../actions/login';
+  USER_DATA_UPDATE_FAILED,
+} from "../actions/login";
 
 const initialState = {
   loginRequest: false,
@@ -27,10 +27,10 @@ const initialState = {
   isAuthenticated: false,
   user: {
     email: "",
-    name: ""
+    name: "",
   },
   accessToken: "",
-  refreshToken: ""
+  refreshToken: "",
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -46,10 +46,10 @@ export const userReducer = (state = initialState, action) => {
         isAuthenticated: true,
         user: action.payload.user,
         accessToken: action.payload.accessToken.split("Bearer ")[1],
-        refreshToken: action.payload.refreshToken
+        refreshToken: action.payload.refreshToken,
       };
     case USER_LOGIN_FAILED:
-      return { ...state, loginRequest: false, loginRequestFailed: true, };
+      return { ...state, loginRequest: false, loginRequestFailed: true };
     case USER_LOGOUT:
       return {
         ...state,
@@ -60,10 +60,10 @@ export const userReducer = (state = initialState, action) => {
         isAuthenticated: false,
         user: {
           email: "",
-          name: ""
+          name: "",
         },
         accessToken: "",
-        refreshToken: ""
+        refreshToken: "",
       };
     case USER_DATA_REQUEST:
       return { ...state, userDataRequest: true };
@@ -82,9 +82,10 @@ export const userReducer = (state = initialState, action) => {
       return { ...state, userDataUpdateRequest: true };
     case USER_DATA_UPDATE_SUCCESS:
       return {
-        ...state, userDataUpdateRequest: false,
+        ...state,
+        userDataUpdateRequest: false,
         userDataUpdateFailed: false,
-        user: action.payload.user
+        user: action.payload.user,
       };
     case USER_DATA_UPDATE_FAILED:
       return { ...state, userDataRequest: false, userDataUpdateFailed: true };
@@ -97,11 +98,11 @@ export const userReducer = (state = initialState, action) => {
         accessTokenRequest: false,
         accessTokenRequestFailed: false,
         accessToken: action.payload.accessToken.split("Bearer ")[1],
-        refreshToken: action.payload.refreshToken
+        refreshToken: action.payload.refreshToken,
       };
     case REFRESH_ACCESS_TOKEN_FAILED:
-      return { ...state, accessTokenRequestFailed: false, };
+      return { ...state, accessTokenRequestFailed: false };
     default:
       return state;
   }
-}
+};

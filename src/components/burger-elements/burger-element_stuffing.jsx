@@ -9,7 +9,7 @@ import { moveIngredientInConstructor, deleteIngredient } from "../../services/ac
 export default function BurgerStuffing({ data, id, index }) {
   const ref = React.useRef(null);
   const dispatch = useDispatch();
-  
+
   const [, drop] = useDrop({
     accept: "filling",
     collect() { },
@@ -57,19 +57,19 @@ export default function BurgerStuffing({ data, id, index }) {
   drag(drop(ref));
 
   return (
-      <div ref={ref} style={{ opacity }} className={styles.ingredient_container}>
-        <div>
-          <DragIcon type="primary" />
-        </div>
-        {data && (
-          <ConstructorElement
-            text={data.name}
-            price={data.price}
-            thumbnail={data.image}
-            handleClose={() => dispatch(deleteIngredient(index))}
-          />
-        )}
+    <div ref={ref} style={{ opacity }} className={styles.ingredient_container}>
+      <div>
+        <DragIcon type="primary" />
       </div>
+      {data && (
+        <ConstructorElement
+          text={data.name}
+          price={data.price}
+          thumbnail={data.image}
+          handleClose={() => dispatch(deleteIngredient(index))}
+        />
+      )}
+    </div>
   );
 }
 
