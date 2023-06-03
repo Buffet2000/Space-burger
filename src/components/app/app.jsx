@@ -24,9 +24,6 @@ export default function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const ws = new WebSocket("ws://norma.nomoreparties.space/");
-  console.log(ws.readyState);
-
   React.useEffect(() => {
     dispatch(getIngredientsData());
     dispatch(getUserData());
@@ -44,7 +41,7 @@ export default function App() {
         <Route path="/profile" element={<ProtectedRoute> <Profile /> </ProtectedRoute>} >
           <Route path="orders" element={<ProfileOrders reverse path={'/profile/orders'} />} />
         </Route>
-        <Route path="/register" element={<ProtectedRoute><Register /></ProtectedRoute>} />
+        <Route path="/register" element={<Register />} />
         <Route path="/reset-password" element={<ProtectedRoute anonymous><ResetPassword /></ProtectedRoute>} />
         <Route path="/forgot-password" element={<ProtectedRoute anonymous><ForgotPassword /></ProtectedRoute>} />
         <Route path="/ingredients/:id" element={<IngredientDetailsPage />} />
