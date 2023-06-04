@@ -10,7 +10,7 @@ export default function OrderDetails() {
 
   return ( 
     <div className={styles.order_details}>
-      {orderInfo !== 0 &&<p className='text text_type_digits-large mt-15'>{orderNumber}</p>}
+      <p className='text text_type_digits-large mt-15'>{!orderInfo ? "......" : orderNumber}</p>
       <h3 className='text text_type_main-medium mt-8 mb-2'>идентификатор заказа</h3>
       <img src={done_icon} className='mt-15 mb-1' type="primary" />
       <p className='text text_type_main-default mt-15'>Ваш заказ начали готовить</p>

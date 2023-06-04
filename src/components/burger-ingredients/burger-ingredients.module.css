@@ -35,18 +35,18 @@
 }
 
 ::-webkit-scrollbar {
-	width: 8px;
-	background-color: #2F2F37;
-	padding-top: 20px;
-	border-radius: 0;
+  width: 8px;
+  background-color: #2F2F37;
+  padding-top: 20px;
+  border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: #8585AD;
+  background: #8585AD;
 }
 
 ::-webkit-scrollbar-button {
-	display: none;
+  display: none;
 }
 
 .ingredient_tabs {
