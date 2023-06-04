@@ -39,22 +39,32 @@ export default function OrderElement({ data, path }) {
 		dispatch(addCurrentOrderInfo(data));
 	}
 
+	//Отключение статуса заказа в Ленте заказов
+	useEffect(() => {
+    if (location.pathname === '/feed') {
+			setStatusOff(`${styles.statusOff}`);
+			setSize(`${styles.orderCard_size}`)
+    }
+  }, [location]);
+
+	const [statusOff, setStatusOff] = useState(null)
+	const [size, setSize] = useState(null)
 
 	return (
-		<Link to={`${path}/${data._id}`} state={{ background: location }} className={`${styles.orderCard}`} onClick={handleClick}>
+		<Link to={`${path}/${data._id}`} state={{ background: location }} className={`${styles.orderCard} ${size}`} onClick={handleClick}>
 			<p className={`${styles.number} text text_type_digits-default`}>#{data.number}</p>
 			<p className={`${styles.date} text text_type_main-default text_color_inactive`}><FormattedDate date={new Date(data.createdAt)} /></p>
 			<h4 className={`${styles.name} text text_type_main-medium`}>{data.name}</h4>
-			{status.status === 'created' && (<p className={`${styles.status} ${styles.default} text text_type_main-default`}>Создан</p>)}
-			{status.status === 'pending' && (<p className={`${styles.status} ${styles.default} text text_type_main-default`}>Готовится</p>)}
-			{status.status === 'done' && (<p className={`${styles.status} ${styles.complete} text text_type_main-default`}>Готов</p>)}
+			{status.status === 'created' && (<p className={`${styles.status} ${styles.complete} ${statusOff} text text_type_main-default`}>Создан</p>)}
+			{status.status === 'pending' && (<p className={`${styles.status} ${styles.complete} ${statusOff} text text_type_main-default`}>Готовится</p>)}
+			{status.status === 'done' && (<p className={`${styles.status} ${styles.complete} ${statusOff} text text_type_main-default`}>Выполнен</p>)}
 			<div className={`${styles.ingredients}`}>
 				{uniqueIngredients.slice(0, 6).map((item) =>
 					<OrderIngredient intersection id={item} key={item} counter={Counter(data.ingredients, item)} />
 				)}
 			</div>
-			<div className={`${styles.total}`}>
-				<TotalPrice totalPrice={status.totalPrice} />
+			<div className={styles.total}>
+				<TotalPrice size={'text text_type_digits-default'} totalPrice={status.totalPrice} />
 			</div>
 
 		</Link>

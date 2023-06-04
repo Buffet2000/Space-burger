@@ -5,7 +5,7 @@ import {
   resetToken,
   updateUser,
 } from "../../components/api/api";
-import { setCookie, getCookie, deleteCookie } from "../../services/utils";
+import { setCookie, deleteCookie } from "../../services/utils";
 
 export const USER_LOGIN_REQUEST = "USER_LOGIN_REQUEST";
 export const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS"; //Получаем данные пользователя, токены и сохраняем куки.

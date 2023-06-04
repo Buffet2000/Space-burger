@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { getCookie } from "../../services/utils";
 
 const config = {

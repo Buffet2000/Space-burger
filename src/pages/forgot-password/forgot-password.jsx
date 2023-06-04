@@ -1,16 +1,18 @@
 import React from 'react';
-import AppHeader from '../../components/app-header/app-header';
 import styles from './forgot-password.module.css';
-import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
+import { EmailInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link, useNavigate } from 'react-router-dom';
+import { sentVerificationEmail } from '../../services/actions/password-reset';
+import { useDispatch } from 'react-redux';
 
 export default function ForgotPassword() {
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [login, setLogin] = React.useState('')
 
 	const resetPassword = (e) => {
 		e.preventDefault();
-		navigate('/reset-password');
+		dispatch(sentVerificationEmail(login, () => navigate('/reset-password')));
 	}
 
 	return (

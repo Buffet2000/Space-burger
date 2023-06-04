@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { WS_AUTH_CONNECTION_START, WS_AUTH_CONNECTION_CLOSED } from '../../services/actions/web-socket-auth';
 import { useDispatch, useSelector } from 'react-redux';
 import Orders from '../../components/orders/orders';
+import styles from './profile-orders.module.css'
 import PropTypes from 'prop-types';
 
 export default function ProfileOrders({ path }) {
@@ -15,7 +16,9 @@ export default function ProfileOrders({ path }) {
   }, [dispatch]);
 
   return (
-    <Orders ordersData={wsAuthData} path={path} />
+    <div className={styles.orders}>
+      <Orders statusOn={true} ordersData={wsAuthData} path={path} />
+    </div>
   );
 }
 

@@ -9,6 +9,8 @@ import ForgotPassword from "../../pages/forgot-password/forgot-password";
 import ResetPassword from '../../pages/reset-password/reset-password'
 import IngredientDetailsPage from "../../pages/ingredient-details-page/ingredient-details-page";
 import IngredientDetails from "../ingredient-details/ingredient-details";
+import { WS_AUTH_CONNECTION_CLOSED, WS_AUTH_CONNECTION_START } from "../../services/actions/web-socket-auth";
+import { WS_CONNECTION_CLOSED, WS_CONNECTION_START } from '../../services/actions/web-socket';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import ProtectedRoute from "../protected-route/protected-route";
@@ -16,8 +18,8 @@ import { getUserData } from "../../services/actions/login";
 import Modal from "../modal/modal";
 import ProfileOrders from "../../pages/profile-orders/profile-orders";
 import ProfileInfo from "../profile-info/profile-info";
-import { WS_AUTH_CONNECTION_CLOSED, WS_AUTH_CONNECTION_START } from "../../services/actions/web-socket-auth";
 import Order from "../../pages/order/order";
+import Feed from "../../pages/feed/feed";
 
 export default function App() {
   const location = useLocation();
@@ -47,9 +49,9 @@ export default function App() {
           <Route path="" element={<ProfileInfo />} />
           <Route path="orders" element={<ProfileOrders reverse path={'/profile/orders'} />} />
         </Route>
-        <Route path="/profile/orders/:id" element={<ProtectedRoute>
-          <Order start={WS_AUTH_CONNECTION_START} close={WS_AUTH_CONNECTION_CLOSED} data={wsAuthOrdersData} /></ProtectedRoute>}
-        />
+        <Route path="/profile/orders/:id" element={<ProtectedRoute><Order start={WS_AUTH_CONNECTION_START} close={WS_AUTH_CONNECTION_CLOSED} data={wsAuthOrdersData} /></ProtectedRoute>} />
+        <Route path="/feed" element={<Feed path={'/feed'} />} />
+        <Route path="/feed/:id" element={<Order start={WS_CONNECTION_START} close={WS_CONNECTION_CLOSED} data={wsOrdersData} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/reset-password" element={<ProtectedRoute anonymous><ResetPassword /></ProtectedRoute>} />
         <Route path="/forgot-password" element={<ProtectedRoute anonymous><ForgotPassword /></ProtectedRoute>} />
@@ -57,6 +59,8 @@ export default function App() {
       </Routes>
 
       {background && itemsLoaded && <Routes> <Route path="/ingredients/:id" element={<Modal title={"Детали ингредиента"} handleClose={closePopup}><IngredientDetails data={itemsLoaded} /></Modal>} /> </Routes>}
+      {background && wsOrdersData && <Routes> <Route path="/feed/:id" element={<Modal handleClose={closePopup}><Order modal data={wsOrdersData} /></Modal>} /> </Routes>}
+      {background && wsAuthOrdersData && <Routes> <Route path="/profile/orders/:id" element={<Modal handleClose={closePopup}><Order modal data={wsAuthOrdersData} /></Modal>} /> </Routes>}
     </>
   );
 }

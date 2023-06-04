@@ -8,7 +8,7 @@
 	height: 246px;
 	display: grid;
 	align-items: center;
-	padding: 24px;
+	padding: 20px;
 	box-sizing: border-box;
 	grid-template-areas:
 		"number date"
@@ -17,20 +17,27 @@
 		"ingredients total"
 }
 
+.orderCard_size {
+	height: 214px;
+}
+
 .number {
 	margin: 0;
+	margin-top: 0px;
 	grid-area: number;
 	justify-self: start;
 }
 
 .date {
 	margin: 0;
+	margin-top: 0px;
 	grid-area: date;
 	justify-self: end;
 }
 
 .name {
 	margin: 0;
+	margin-top: 25px;
 	grid-area: name;
 	justify-self: start;
 	max-width: 536px;
@@ -41,8 +48,13 @@
 
 .status {
 	margin: 0;
+	margin-top: 0px;
 	grid-area: status;
 	justify-self: start;
+}
+
+.statusOff {
+	display: none;
 }
 
 .complete {
@@ -55,6 +67,7 @@
 
 .ingredients {
 	margin: 0;
+	margin-top: 18px;
 	grid-area: ingredients;
 	display: flex;
 	flex-direction: row-reverse;
@@ -64,6 +77,11 @@
 
 .total {
 	margin: 0;
+	margin-top: 20px;
 	grid-area: total;
-	margin: auto 0 auto auto;
+	margin: 40px 0 auto auto;
+}
+
+.size {
+	height: 214px;
 }

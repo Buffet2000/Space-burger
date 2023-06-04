@@ -1,13 +1,17 @@
 .blockWithScroll {
-	height: 860px;
+	height: 800px;
 	max-width: 844px;
 	width: 100%;
 	display: grid;
-	gap: 24px;
+	gap: 16px;
 	align-content: flex-start;
 	overflow-y: scroll;
 	padding: 0 8px 0 0;
-	margin: 20px 0 0;
+	margin: 0px 0 0;
+}
+
+.size {
+
 }
 
 .blockWithScroll::-webkit-scrollbar {
