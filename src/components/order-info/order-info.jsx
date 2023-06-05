@@ -4,10 +4,10 @@ import styles from './order-info.module.css'
 import OrderIngredient from '../orders/order-ingredient/order-ingredient';
 import { CurrencyIcon, FormattedDate } from '@ya.praktikum/react-developer-burger-ui-components';
 import TotalPrice from '../total-price/total-price';
-import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-function OrderInfo({ modal, data }) {
+export default function OrderInfo({ modal, data }) {
 	const navigate = useNavigate();
 	const { id } = useParams();
 
@@ -25,7 +25,7 @@ function OrderInfo({ modal, data }) {
 
 	useEffect(() => {
 		if (data && !currentOrderData) {
-			return (navigate('/*'))
+			return (navigate('/'))
 		}
 	}, [])
 
@@ -33,15 +33,15 @@ function OrderInfo({ modal, data }) {
 		<>
 			{currentOrderData === undefined
 				? <p>Загрузка</p>
-				: <div className={`${styles.orderBlock}`}>
+				: <div className={`${styles.orderContainer}`}>
 					{modal
 						? <p className={`text text_type_digits-default mb-10`}>#{currentOrderData.number}</p>
-						: <p className={`${styles.modal} text text_type_digits-default mb-10 mt-20`}>#{currentOrderData.number}</p>
+						: <p className={`${styles.modal} text text_type_digits-default`}>#{currentOrderData.number}</p>
 					}
 					<h3 className={`${styles.orderName} text text_type_main-medium mb-3`}>{currentOrderData.name}</h3>
 					{currentOrderData.status === 'created' && (<p className={` text text_type_main-default`}>Создан</p>)}
 					{currentOrderData.status === 'pending' && (<p className={`text text_type_main-default`}>Готовится</p>)}
-					{currentOrderData.status === 'done' && (<p className={`${styles.orderDone} text text_type_main-default mb-15`}>Готов</p>)}
+					{currentOrderData.status === 'done' && (<p className={`${styles.orderDone} text text_type_main-default mb-15`}>Выполнен</p>)}
 					<p className={`${styles.orderConsist} text text_type_main-medium mb-6`}>Состав:</p>
 					<ul className={`${styles.blockWithScroll} mb-10`}>
 						{uniqueIngredients.map((item) => {
@@ -60,7 +60,7 @@ function OrderInfo({ modal, data }) {
 					</ul>
 					<div className={`${styles.bottomBlock}`}>
 						<p className={`${styles.orderDate} text text_type_main-default `}><FormattedDate date={new Date(currentOrderData.createdAt)} /></p>
-						<TotalPrice totalPrice={totalPrice} />
+						<TotalPrice size={'text text_type_digits-default'} totalPrice={totalPrice} />
 					</div>
 				</div >
 			}
@@ -72,4 +72,4 @@ OrderInfo.propTypes = {
 	modal: PropTypes.bool
 }
 
-export default OrderInfo;
+//export {currentOrderData};
