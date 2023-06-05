@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './order-info.module.css'
 import OrderIngredient from '../orders/order-ingredient/order-ingredient';
 import { CurrencyIcon, FormattedDate } from '@ya.praktikum/react-developer-burger-ui-components';
 import TotalPrice from '../total-price/total-price';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export default function OrderInfo({ modal, data, feedOrder }) {
 	const navigate = useNavigate();
+	const location = useLocation();
 	const { id } = useParams();
 
 	const currentOrderData = data.find(item => item._id === id);
@@ -29,11 +30,24 @@ export default function OrderInfo({ modal, data, feedOrder }) {
 		}
 	}, [])
 
+		//Отключение статуса заказа в Ленте заказов
+		useEffect(() => {
+			if (location.pathname === '/feed/:id') {
+				setStyle(`${styles.orderNumber}`);
+			}
+		}, [location]);
+	
+		const [style, setStyle] = useState(null)
+
 	return (
 		<>
 			{currentOrderData === undefined
 				? <p>Загрузка</p>
-				: <div className={`${styles.orderContainer}`}>
+				: <div className={``}>
+					{modal
+						? <p className={`text text_type_digits-default mb-10 ${style}`}>#{currentOrderData.number}</p>
+						: <p className={`${styles.modal} text text_type_digits-default`}>#{currentOrderData.number}</p>
+					}
 					<h3 className={`${styles.orderName} text text_type_main-medium mb-3`}>{currentOrderData.name}</h3>
 					{currentOrderData.status === 'created' && (<p className={` text text_type_main-default`}>Создан</p>)}
 					{currentOrderData.status === 'pending' && (<p className={`text text_type_main-default`}>Готовится</p>)}

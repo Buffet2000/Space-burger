@@ -1,8 +1,19 @@
 .orderContainer {
+  position: relative;
   padding: 40px;
   margin: auto;
   width: fit-content;
   text-align: start;
+}
+
+.orderName {
+  
+}
+
+.orderNumber {
+  position: absolute;
+  left: 50px;
+  top: 10px;
 }
 
 .modal {
@@ -13,8 +24,16 @@
   justify-content: left;
 }
 
+.orderConsist {
+  display: flex;
+  justify-content: left;
+}
+
 .orderDone {
   color: #00CCCC;
+  display: flex;
+  justify-content: left;
+  margin-top: 10px;
 }
 
 .ingredient {
