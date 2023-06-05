@@ -1,12 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useLocation, useParams } from 'react-router-dom';
 import OrderInfo from '../../components/order-info/order-info';
 import PropTypes from 'prop-types';
 
-function Order({ start, close, data }) {
-	const { id } = useParams();
-	const location = useLocation();
+export default function Order({ start, close, data }) {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -28,5 +25,3 @@ function Order({ start, close, data }) {
 Order.propTypes = {
 	type: PropTypes.string
 }
-
-export default Order;

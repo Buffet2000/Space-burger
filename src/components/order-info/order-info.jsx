@@ -7,7 +7,7 @@ import TotalPrice from '../total-price/total-price';
 import { useNavigate, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-export default function OrderInfo({ modal, data }) {
+export default function OrderInfo({ modal, data, feedOrder }) {
 	const navigate = useNavigate();
 	const { id } = useParams();
 
@@ -34,10 +34,6 @@ export default function OrderInfo({ modal, data }) {
 			{currentOrderData === undefined
 				? <p>Загрузка</p>
 				: <div className={`${styles.orderContainer}`}>
-					{modal
-						? <p className={`text text_type_digits-default mb-10`}>#{currentOrderData.number}</p>
-						: <p className={`${styles.modal} text text_type_digits-default`}>#{currentOrderData.number}</p>
-					}
 					<h3 className={`${styles.orderName} text text_type_main-medium mb-3`}>{currentOrderData.name}</h3>
 					{currentOrderData.status === 'created' && (<p className={` text text_type_main-default`}>Создан</p>)}
 					{currentOrderData.status === 'pending' && (<p className={`text text_type_main-default`}>Готовится</p>)}
@@ -71,5 +67,9 @@ export default function OrderInfo({ modal, data }) {
 OrderInfo.propTypes = {
 	modal: PropTypes.bool
 }
-
-//export {currentOrderData};
+/*
+{modal
+						? <p className={`text text_type_digits-default mb-10`}>#{currentOrderData.number}</p>
+						: <p className={`${styles.modal} text text_type_digits-default`}>#{currentOrderData.number}</p>
+					}
+*/

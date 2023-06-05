@@ -59,7 +59,7 @@ export default function App() {
       </Routes>
 
       {background && itemsLoaded && <Routes> <Route path="/ingredients/:id" element={<Modal title={"Детали ингредиента"} handleClose={closePopup}><IngredientDetails data={itemsLoaded} /></Modal>} /> </Routes>}
-      {background && wsOrdersData && <Routes> <Route path="/feed/:id" element={<Modal title={''} handleClose={closePopup}><Order modal data={wsOrdersData} /></Modal>} /> </Routes>}
+      {background && wsOrdersData && <Routes> <Route path="/feed/:id" element={<Modal title={``} handleClose={closePopup}><Order modal data={wsOrdersData} /></Modal>} /> </Routes>}
       {background && wsAuthOrdersData && <Routes> <Route path="/profile/orders/:id" element={<Modal handleClose={closePopup}><Order modal data={wsAuthOrdersData} /></Modal>} /> </Routes>}
     </>
   );
