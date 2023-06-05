@@ -17,7 +17,6 @@ export default function FeedInfo({ name, arr, done, statusString }) {
 				)}
 			</ul>
 		</div>
-
 	);
 }
 
