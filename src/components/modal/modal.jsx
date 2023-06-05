@@ -33,5 +33,4 @@ Modal.propTypes = {
   children: PropTypes.element.isRequired, 
   handleClose: PropTypes.func.isRequired,
   title: PropTypes.string,
-  active: PropTypes.bool,
 }
