@@ -20,16 +20,9 @@ export default function Login() {
 		setUser({ ...user, [e.target.name]: e.target.value });
 	}
 
-	const inputRef = React.useRef(null)
-	const onIconClick = () => {
-		setTimeout(() => inputRef.current.focus(), 0)
-		alert('Icon Click Callback')
-	}
-
 	const loginUser = (e) => {
 		e.preventDefault();
 		dispatch(userLogin(user));
-		console.log(userData.accessToken ? "user login success" : "user login failed")
 	}
 
 	return (

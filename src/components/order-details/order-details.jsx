@@ -8,9 +8,14 @@ export default function OrderDetails() {
   const orderInfo = useSelector((store) => store.orderInformation.orderNumber); //Информация заказа
   const orderNumber = String(orderInfo).padStart(zeroLength, '0');
 
+  const loading = "<p className='text text_type_main-medium'>Ожидайте</p>"
+
   return ( 
     <div className={styles.order_details}>
-      <p className='text text_type_digits-large mt-15'>{!orderInfo ? "......" : orderNumber}</p>
+      {orderInfo 
+      ?  <p className='text text_type_digits-large mt-15'>{orderNumber}</p>
+      :  <p className='text text_type_main-medium'>Ожидайте...</p>
+      }
       <h3 className='text text_type_main-medium mt-8 mb-2'>идентификатор заказа</h3>
       <img src={done_icon} className='mt-15 mb-1' type="primary" />
       <p className='text text_type_main-default mt-15'>Ваш заказ начали готовить</p>

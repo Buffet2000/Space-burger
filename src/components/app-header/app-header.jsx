@@ -20,7 +20,7 @@ export default function AppHeader() {
           <BurgerIcon type={active === "const" ? "primary" : "secondary"} />
           <p className={active === "const" ? 'text text_type_main-default' : 'text text_type_main-default text_color_inactive'}>Конструктор</p>
         </Link>
-        <Link type="button" className={HeaderStyles.button_list} onClick={() => setActive('orders')}>
+        <Link to='/feed' type="button" className={HeaderStyles.button_list} onClick={() => setActive('orders')}>
           <ListIcon type={active === "orders" ? "primary" : "secondary"} />
           <p className={active === "orders" ? 'text text_type_main-default' : 'text text_type_main-default text_color_inactive'}>Лента заказов</p>
         </Link>
