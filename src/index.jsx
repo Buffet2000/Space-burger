@@ -6,7 +6,7 @@ import { rootReducer } from "../src/services/reducers/root-reducer";
 import { legacy_createStore as createStore } from "redux";
 import { compose, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, HashRouter } from "react-router-dom";
 import { wsMiddleware } from './services/middleware/wsMiddleware';
 import {
   WS_CONNECTION_START,
@@ -53,9 +53,9 @@ export const store = createStore(rootReducer, enhancers);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
+      <HashRouter>
         <App />
-      </BrowserRouter>
+      </HashRouter>
     </Provider>
   </React.StrictMode>
 );
