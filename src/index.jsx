@@ -51,9 +51,11 @@ const enhancers = composeEnhancers(applyMiddleware(thunk, wsMiddleware(`${wsUrl}
 export const store = createStore(rootReducer, enhancers);
 
 root.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>
+  <React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>
 );
