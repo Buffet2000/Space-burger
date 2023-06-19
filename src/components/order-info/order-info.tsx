@@ -1,13 +1,19 @@
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect, useState, FC } from 'react';
+import { useSelector } from '../../services/types/hooks';
 import styles from './order-info.module.css'
 import OrderIngredient from '../orders/order-ingredient/order-ingredient';
 import { CurrencyIcon, FormattedDate } from '@ya.praktikum/react-developer-burger-ui-components';
 import TotalPrice from '../total-price/total-price';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { TOrder } from '../../services/types/types';
 
-export default function OrderInfo({ modal, data }) {
+type TOrderInfo = {
+  modal?: boolean,
+  data: Array<TOrder>
+}
+
+export const OrderInfo: FC<TOrderInfo> = ({ modal, data }) => {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const { id } = useParams();

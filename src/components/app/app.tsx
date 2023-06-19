@@ -11,7 +11,7 @@ import IngredientDetailsPage from "../../pages/ingredient-details-page/ingredien
 import IngredientDetails from "../ingredient-details/ingredient-details";
 import { WS_AUTH_CONNECTION_CLOSED, WS_AUTH_CONNECTION_START } from "../../services/constants/web-socket-auth";
 import { WS_CONNECTION_CLOSED, WS_CONNECTION_START } from '../../services/constants/web-socket';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from "../../services/types/hooks";
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import ProtectedRoute from "../protected-route/protected-route";
 import { getUserData } from "../../services/actions/login";
@@ -25,7 +25,6 @@ export default function App() {
   const location = useLocation();
   const background = location.state && location.state.background;
   const itemsLoaded = useSelector((store) => store.ingredients.items);
-  const userData = useSelector((store) => store.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const wsOrdersData = useSelector((store) => store.wsOrders.orders);
@@ -58,7 +57,7 @@ export default function App() {
         <Route path="/ingredients/:id" element={<IngredientDetailsPage />} />
       </Routes>
 
-      {background && itemsLoaded && <Routes> <Route path="/ingredients/:id" element={<Modal title={"Детали ингредиента"} handleClose={closePopup}><IngredientDetails data={itemsLoaded} /></Modal>} /> </Routes>}
+      {background && itemsLoaded && <Routes> <Route path="/ingredients/:id" element={<Modal title={"Детали ингредиента"} handleClose={closePopup}><IngredientDetails /></Modal>} /> </Routes>}
       {background && wsOrdersData && <Routes> <Route path="/feed/:id" element={<Modal title={``} handleClose={closePopup}><Order modal data={wsOrdersData} /></Modal>} /> </Routes>}
       {background && wsAuthOrdersData && <Routes> <Route path="/profile/orders/:id" element={<Modal handleClose={closePopup}><Order modal data={wsAuthOrdersData} /></Modal>} /> </Routes>}
     </>

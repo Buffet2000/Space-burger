@@ -6,7 +6,6 @@ import IngredientDetails from "../../components/ingredient-details/ingredient-de
 
 export default function IngredientDetailsPage() {
 
-  const navigate = useNavigate();
   const { id } = useParams();
   const itemsLoaded = useSelector((store) => store.ingredients.items);
   const openedIngredient = itemsLoaded.find(item => item._id === id);

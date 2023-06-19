@@ -5,7 +5,7 @@ import Orders from '../../components/orders/orders';
 import styles from './profile-orders.module.css'
 import PropTypes from 'prop-types';
 
-export default function ProfileOrders({ path }) {
+export default function ProfileOrders({ path, reverse }) {
   const dispatch = useDispatch();
   const wsAuthData = useSelector((store) => store.wsAuthOrders);
   console.log(wsAuthData)
@@ -17,7 +17,7 @@ export default function ProfileOrders({ path }) {
 
   return (
     <div className={styles.orders}>
-      <Orders statusOn={true} ordersData={wsAuthData} path={path} />
+      <Orders statusOn={true} ordersData={wsAuthData} path={path} reverse={reverse} />
     </div>
   );
 }
