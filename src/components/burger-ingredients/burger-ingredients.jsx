@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./burger-ingredients.module.css";
 import BurgerIngredientCategory from "../burger-ingredient-category/burger-ingredient-category";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
@@ -18,7 +18,7 @@ export default function BurgerIngredients() {
   const [ sauceRef, scrollToSauces ] = useInView({ threshold: 0 });
   const [ mainRef, scrollToMain ] = useInView({ threshold: 0 });
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (scrollToBuns) {
       setCurrent("bun");
     } else if (scrollToSauces) {

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import styles from './order-info.module.css'
 import OrderIngredient from '../orders/order-ingredient/order-ingredient';
 import { CurrencyIcon, FormattedDate } from '@ya.praktikum/react-developer-burger-ui-components';
@@ -7,7 +7,7 @@ import TotalPrice from '../total-price/total-price';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-export default function OrderInfo({ modal, data, feedOrder }) {
+export default function OrderInfo({ modal, data }) {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const { id } = useParams();

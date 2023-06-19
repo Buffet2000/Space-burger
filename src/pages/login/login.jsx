@@ -1,28 +1,30 @@
 import React, { useState } from 'react';
 //import AppHeader from '../components/app-header/app-header';
 import styles from './login.module.css';
-import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
+import { EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link } from 'react-router-dom';
 import { userLogin } from '../../services/actions/login';
 import { useSelector, useDispatch } from "react-redux";
-
+import { useForm } from '../../services/types/hooks';
 export default function Login() {
 	const dispatch = useDispatch();
 	const userData = useSelector((store) => store.user);
 
-	const [user, setUser] = useState(
+	const {values, handleChange, setValues} = useForm({email: "", password: ""});
+
+	/*const [user, setUser] = useState(
 		{
 			email: "",
 			password: "",
-		});
+		});*/
 
-	const onChange = e => {
+	/*const onChange = e => {
 		setUser({ ...user, [e.target.name]: e.target.value });
-	}
+	}*/
 
 	const loginUser = (e) => {
 		e.preventDefault();
-		dispatch(userLogin(user));
+		dispatch(userLogin(values));
 	}
 
 	return (
@@ -31,15 +33,15 @@ export default function Login() {
 				<h2 className="text text_type_main-medium">Вход</h2>
 				<form className={styles.form} onSubmit={loginUser}>
 					<EmailInput
-						onChange={onChange}
-						value={user.email}
+						onChange={handleChange}
+						value={values.email}
 						name={'email'}
 						placeholder="E-mail"
 						extraClass="mb-2"
 					/>
 					<PasswordInput
 						onChange={onChange}
-						value={user.password}
+						value={values.password}
 						name={'password'}
 						extraClass='mb-2'
 					/>

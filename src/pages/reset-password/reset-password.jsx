@@ -1,34 +1,35 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import styles from './reset-password.module.css';
 import { Input, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetPassword } from '../../services/actions/password-reset';
+import { useForm } from '../../services/types/hooks';
 
 export default function ResetPassword() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const inputRef = React.useRef(null);
+	const inputRef = useRef(null);
 	const { verificationSent } = useSelector((store) => store.resetPassword);
 
 	const onIconClick = () => {
 		setTimeout(() => inputRef.current.focus(), 0)
 	}
 
-	const [newPasswordInfo, setNewPasswordInfo] = useState(
+	const { values, handleChange } = useForm({ newPassword: "", token: "" })
+	/*const [newPasswordInfo, setNewPasswordInfo] = useState(
     {
       newPassword: "",
       token: ""
     })
 
-
 	const onChange = e => {
 		setNewPasswordInfo({ ...newPasswordInfo, [e.target.name]: e.target.value });
-	}
+	}*/
 
 	const resetPass = e => {
 		e.preventDefault();
-		dispatch(resetPassword(newPasswordInfo.newPassword, newPasswordInfo.token));
+		dispatch(resetPassword(values.newPassword, values.token));
 		navigate('/login');
 	}
 
@@ -40,8 +41,8 @@ export default function ResetPassword() {
 		<form onSubmit={resetPass} className={styles.inputContainer}>
 			<h2 className="text text_type_main-medium">Восстановление пароля</h2>
 			<PasswordInput
-				onChange={onChange}
-				value={newPasswordInfo.newPassword}
+				onChange={handleChange}
+				value={values.newPassword}
 				name={'newPassword'}
 				placeholder={'Введите новый пароль'}
 				icon="ShowIcon"
@@ -49,8 +50,8 @@ export default function ResetPassword() {
 			<Input
 				type={'text'}
 				placeholder={'Введите код из письма'}
-				onChange={onChange}
-				value={newPasswordInfo.token}
+				onChange={handleChange}
+				value={values.token}
 				name={'token'}
 				error={false}
 				ref={inputRef}
