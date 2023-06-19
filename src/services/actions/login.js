@@ -7,22 +7,7 @@ import {
 } from "../../components/api/api";
 import { setCookie, deleteCookie } from "../../services/utils";
 
-export const USER_LOGIN_REQUEST = "USER_LOGIN_REQUEST";
-export const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS"; //Получаем данные пользователя, токены и сохраняем куки.
-export const USER_LOGIN_FAILED = "USER_LOGIN_FAILED";
-export const USER_LOGOUT = "USER_LOGOUT";
-
-export const USER_DATA_REQUEST = "USER_DATA_REQUEST";
-export const USER_DATA_SUCCESS = "USER_DATA_SUCCESS"; //Получаем данные по сохраненным accessToken в куках
-export const USER_DATA_FAILED = "USER_DATA_FAILED"; //Рефреш accessToken
-
-export const USER_DATA_UPDATE_REQUEST = "USER_DATA_REQUEST";
-export const USER_DATA_UPDATE_SUCCESS = "USER_DATA_UPDATE";
-export const USER_DATA_UPDATE_FAILED = "USER_DATA_FAILED"; //Рефреш accessToken
-
-export const REFRESH_ACCESS_TOKEN_REQUEST = "REFRESH_ACCESS_TOKEN_REQUEST";
-export const REFRESH_ACCESS_TOKEN_SUCCESS = "REFRESH_ACCESS_TOKEN_SUCCESS"; //Рефреш accessToken
-export const REFRESH_ACCESS_TOKEN_FAILED = "REFRESH_ACCESS_TOKEN_FAILED"; //Идем на страницу логина
+import { USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAILED, USER_LOGOUT, USER_DATA_REQUEST, USER_DATA_SUCCESS, USER_DATA_FAILED, REFRESH_ACCESS_TOKEN_REQUEST, REFRESH_ACCESS_TOKEN_SUCCESS, REFRESH_ACCESS_TOKEN_FAILED, USER_DATA_UPDATE_REQUEST, USER_DATA_UPDATE_SUCCESS, USER_DATA_UPDATE_FAILED } from "../constants/login";
 
 export function userLogin(user) {
   return function (dispatch) {

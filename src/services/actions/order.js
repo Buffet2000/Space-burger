@@ -1,12 +1,6 @@
 import { postOrder } from "../../components/api/api";
+import { GET_ORDER_NUMBER_REQUEST, GET_ORDER_NUMBER_SUCCESS, GET_ORDER_NUMBER_FAILED, ADD_ORDER, DELETE_ORDER } from "../constants/order";
 
-//Текущий заказ
-export const GET_ORDER_NUMBER_REQUEST = "GET_ORDER_NUMBER_REQUEST";
-export const GET_ORDER_NUMBER_SUCCESS = "GET_ORDER_NUMBER_SUCCESS";
-export const GET_ORDER_NUMBER_FAILED = "GET_ORDER_NUMBER_FAILED";
-
-export const ADD_ORDER = "ADD_ORDER";
-export const DELETE_ORDER = "DELETE_ORDER";
 
 export function postOrderInfo(orderIds) {
   return function (dispatch) {

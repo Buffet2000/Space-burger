@@ -1,9 +1,7 @@
 //Ингредиенты, добавленные в конструктор
-export const ADD_INGREDIENT = "ADD_INGREDIENT";
-export const INGREDIENT_MOVE = "INGREDIENT_MOVE";
-export const DELETE_INGREDIENT = "DELETE_INGREDIENT";
-export const ADD_BUNS = "ADD_BUNS";
-export const DELETE_ALL_INGREDIENTS = "DELETE_ALL_INGREDIENTS";
+import { ADD_INGREDIENT, INGREDIENT_MOVE, DELETE_INGREDIENT, DELETE_ALL_INGREDIENTS, ADD_BUNS } from "../constants/constructor-ingredients";
+
+
 
 export const addIngredientInConstructor = (payload) => ({
   type: ADD_INGREDIENT,

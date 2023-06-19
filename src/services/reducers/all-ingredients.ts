@@ -2,10 +2,11 @@ import {
   GET_INGREDIENTS_REQUEST,
   GET_INGREDIENTS_SUCCESS,
   GET_INGREDIENTS_FAILED,
-} from "../actions/all-ingredients";
+} from "../constants/all-ingredients";
+import { TIngredients } from "../types/types";
 
 //Все ингредиенты от запроса API
-const initialState = {
+const initialState: TIngredients = {
   items: [],
   itemsError: false,
   itemsLoading: true,

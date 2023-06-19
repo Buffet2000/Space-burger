@@ -9,8 +9,8 @@ import ForgotPassword from "../../pages/forgot-password/forgot-password";
 import ResetPassword from '../../pages/reset-password/reset-password'
 import IngredientDetailsPage from "../../pages/ingredient-details-page/ingredient-details-page";
 import IngredientDetails from "../ingredient-details/ingredient-details";
-import { WS_AUTH_CONNECTION_CLOSED, WS_AUTH_CONNECTION_START } from "../../services/actions/web-socket-auth";
-import { WS_CONNECTION_CLOSED, WS_CONNECTION_START } from '../../services/actions/web-socket';
+import { WS_AUTH_CONNECTION_CLOSED, WS_AUTH_CONNECTION_START } from "../../services/constants/web-socket-auth";
+import { WS_CONNECTION_CLOSED, WS_CONNECTION_START } from '../../services/constants/web-socket';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import ProtectedRoute from "../protected-route/protected-route";
@@ -33,7 +33,7 @@ export default function App() {
 
   React.useEffect(() => {
     dispatch(getIngredientsData());
-    dispatch(getUserData());
+    dispatch(getUserData()); 
   }, [dispatch])
 
   function closePopup() {

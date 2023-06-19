@@ -1,8 +1,9 @@
 import { getIngredients } from "../../components/api/api";
+import { AppDispatch, AppThunk } from '../../types';
 //Все ингредиенты из запроса к серверу
-export const GET_INGREDIENTS_REQUEST = "GET_INGREDIENTS_REQUEST";
-export const GET_INGREDIENTS_SUCCESS = "GET_INGREDIENTS_SUCCESS";
-export const GET_INGREDIENTS_FAILED = "GET_INGREDIENTS_FAILED";
+import { GET_INGREDIENTS_REQUEST, GET_INGREDIENTS_SUCCESS, GET_INGREDIENTS_FAILED } from "../constants/all-ingredients";
+
+export 
 
 export function getIngredientsData() {
   return function (dispatch) {

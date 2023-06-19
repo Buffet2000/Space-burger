@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { WS_AUTH_CONNECTION_START, WS_AUTH_CONNECTION_CLOSED } from '../../services/actions/web-socket-auth';
+import { WS_AUTH_CONNECTION_START, WS_AUTH_CONNECTION_CLOSED } from '../../services/constants/web-socket-auth';
 import { useDispatch, useSelector } from 'react-redux';
 import Orders from '../../components/orders/orders';
 import styles from './profile-orders.module.css'

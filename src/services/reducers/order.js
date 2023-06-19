@@ -4,7 +4,7 @@ import {
   GET_ORDER_NUMBER_FAILED,
   ADD_ORDER,
   DELETE_ORDER,
-} from "../actions/order";
+} from "../constants/order";
 
 const initialState = {
   orderNumber: null,
