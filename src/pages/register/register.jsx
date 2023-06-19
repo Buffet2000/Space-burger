@@ -5,6 +5,7 @@ import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-de
 import { Link, useNavigate } from 'react-router-dom';
 import { registerNewUser } from '../../components/api/api';
 import { useSelector } from 'react-redux';
+import { useForm } from '../../services/types/hooks';
 
 export default function Register() {
 	const { isAuthenticated } = useSelector((store) => store.user);
@@ -13,10 +14,11 @@ export default function Register() {
 	const inputRef = React.useRef(null)
 	const onIconClick = () => {
 		setTimeout(() => inputRef.current.focus(), 0)
-
 	}
 
-	const [user, setUser] = useState(
+	const { values, handleChange } = useForm({ email: "", password: "", name: "" })
+
+	/*const [user, setUser] = useState(
 		{
 			email: "",
 			password: "",
@@ -25,10 +27,10 @@ export default function Register() {
 
 	const onChange = e => {
 		setUser({ ...user, [e.target.name]: e.target.value });
-	}
+	}*/
 
 	const submitNewUser = () => {
-		registerNewUser(user.email, user.password, user.name)
+		registerNewUser(values.email, values.password, values.name)
 	}
 
 	return (
@@ -38,8 +40,8 @@ export default function Register() {
 				<Input
 					type={'text'}
 					placeholder={'Имя'}
-					onChange={onChange}
-					value={user.name}
+					onChange={handleChange}
+					value={values.name}
 					name={'name'}
 					error={false}
 					ref={inputRef}
@@ -49,15 +51,15 @@ export default function Register() {
 					extraClass="ml-1"
 				/>
 				<EmailInput
-					onChange={onChange}
-					value={user.email}
+					onChange={handleChange}
+					value={values.email}
 					name={'email'}
 					placeholder="E-mail"
 					extraClass="mb-2"
 				/>
 				<PasswordInput
-					onChange={onChange}
-					value={user.password}
+					onChange={handleChange}
+					value={values.password}
 					name={'password'}
 				/>
 				<Button htmlType="submit" type="primary" size="medium" >

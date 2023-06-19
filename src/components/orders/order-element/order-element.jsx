@@ -1,5 +1,5 @@
 import { FormattedDate } from '@ya.praktikum/react-developer-burger-ui-components';
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import { addCurrentOrderInfo } from '../../../services/actions/current-order';

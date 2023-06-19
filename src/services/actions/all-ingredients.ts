@@ -1,5 +1,5 @@
 import { getIngredients } from "../../components/api/api";
-import { AppDispatch, AppThunk } from '../../types';
+//import { AppDispatch, AppThunk } from '../../types';
 //Все ингредиенты из запроса к серверу
 import { GET_INGREDIENTS_REQUEST, GET_INGREDIENTS_SUCCESS, GET_INGREDIENTS_FAILED } from "../constants/all-ingredients";
 

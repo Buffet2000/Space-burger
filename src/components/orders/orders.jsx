@@ -1,4 +1,3 @@
-import React from 'react';
 import OrderElement from './order-element/order-element';
 import styles from './orders.module.css'
 

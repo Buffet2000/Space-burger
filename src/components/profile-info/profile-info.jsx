@@ -4,7 +4,7 @@ import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-de
 import { Link, useNavigate } from 'react-router-dom';
 import { logoutUser, updateUserData } from '../../services/actions/login';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { useForm } from '../../services/types/hooks';
 export default function ProfileInfo() {
 	const dispatch = useDispatch();
 
@@ -12,13 +12,7 @@ export default function ProfileInfo() {
 	const inputRef = useRef(null)
 	const { email, name } = useSelector((store) => store.user.user);
 
-	const [user, setUser] = useState(
-		{
-			name: name,
-			email: email,
-			password: "",
-		})
-
+	const {values, handleChange, setValues} = useForm({ name: name, email: email, password: "" });
 	const [active, setActive] = useState(false)
 
 	const onIconClick = () => {
@@ -26,19 +20,13 @@ export default function ProfileInfo() {
 		setDisabled(false);
 	}
 
-
-	const onChange = e => {
-		setUser({ ...user, [e.target.name]: e.target.value });
-		setActive(true)
-	}
-
 	const submitChanges = (e) => {
 		e.preventDefault();
-		dispatch(updateUserData(user))
+		dispatch(updateUserData(values))
 	}
 
 	const canсelChanges = (e) => {
-		setUser({
+		setValues({
 			email: email,
 			password: "",
 			name: name
@@ -51,7 +39,7 @@ export default function ProfileInfo() {
 			<Input
 				type={'text'}
 				placeholder={'Имя'}
-				onChange={onChange}
+				onChange={handleChange}
 				icon='EditIcon'
 				value={name}
 				name={'name'}
@@ -64,7 +52,7 @@ export default function ProfileInfo() {
 				disabled={disabled}
 			/>
 			<EmailInput
-				onChange={onChange}
+				onChange={handleChange}
 				value={email}
 				name={'email'}
 				placeholder="Логин"
@@ -72,8 +60,8 @@ export default function ProfileInfo() {
 				extraClass="mb-2"
 			/>
 			<PasswordInput
-				onChange={onChange}
-				value={user.password}
+				onChange={handleChange}
+				value={values.password}
 				name={'password'}
 				placeholder="Изменить пароль"
 				icon="EditIcon"

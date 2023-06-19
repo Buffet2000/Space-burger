@@ -4,15 +4,16 @@ import { EmailInput, Button } from '@ya.praktikum/react-developer-burger-ui-comp
 import { Link, useNavigate } from 'react-router-dom';
 import { sentVerificationEmail } from '../../services/actions/password-reset';
 import { useDispatch } from 'react-redux';
+import { useForm } from '../../services/types/hooks';
 
 export default function ForgotPassword() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const [login, setLogin] = React.useState('')
+	const { values, handleChange } = useForm({ email: "" });
 
 	const resetPassword = (e) => {
 		e.preventDefault();
-		dispatch(sentVerificationEmail(login, () => navigate('/reset-password')));
+		dispatch(sentVerificationEmail(values.email, () => navigate('/reset-password')));
 	}
 
 	return (
@@ -20,7 +21,7 @@ export default function ForgotPassword() {
 			<form onSubmit={resetPassword} className={styles.inputContainer}>
 				<h2 className="text text_type_main-medium">Восстановление пароля</h2>
 				<EmailInput
-					onChange={e => setLogin(e.target.value)}
+					onChange={handleChange}
 					value={login}
 					name={'Логин'}
 					placeholder="Укажите e-mail"

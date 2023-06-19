@@ -6,39 +6,24 @@ import styles from "./burger-ingredient.module.css";
 import { DataType } from "../../utils/dataType";
 import { useDrag } from 'react-dnd';
 import { useDispatch, useSelector } from "react-redux";
-import { addIngredientInfo, deleteIngredientInfo } from "../../services/actions/opened-ingredient";
+import { addIngredientInfo } from "../../services/actions/opened-ingredient";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function BurgerIngredient({ data }) {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
   const location = useLocation();
-  
-  const [modalActive, setModalActive] = React.useState(null);
 
   const constructorIngredients = useSelector((store) => store.constructorIngredients.ingredients);
   const constructorBuns = useSelector((store) => store.constructorIngredients.buns);
 
-
-  function handleClose() {
-    setModalActive(false);
-    //dispatch(deleteIngredientInfo())
-  }
-
   function handleOpen() {
-    //e.preventDefault();
-    //e.stopPropagation();
     dispatch(addIngredientInfo(data))
-    //setModalActive(true);
-  
   }
 
   const count = React.useMemo(() => {
     const allIngredients = [...constructorIngredients, ...constructorBuns]
     return allIngredients.filter(item => item._id === data._id).length;
   }, [constructorIngredients, constructorBuns])
-
-  //const count = 0;
 
   const [, dragRef] = useDrag({
     type: "ingredient",

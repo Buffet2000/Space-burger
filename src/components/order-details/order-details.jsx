@@ -8,8 +8,6 @@ export default function OrderDetails() {
   const orderInfo = useSelector((store) => store.orderInformation.orderNumber); //Информация заказа
   const orderNumber = String(orderInfo).padStart(zeroLength, '0');
 
-  const loading = "<p className='text text_type_main-medium'>Ожидайте</p>"
-
   return ( 
     <div className={styles.order_details}>
       {orderInfo 
