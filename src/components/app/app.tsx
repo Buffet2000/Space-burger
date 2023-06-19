@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import AppHeader from "../app-header/app-header";
 import { getIngredientsData } from "../../services/actions/all-ingredients";
 import HomePage from "../../pages/home-page/home-page";
@@ -31,7 +31,7 @@ export default function App() {
   const wsOrdersData = useSelector((store) => store.wsOrders.orders);
   const wsAuthOrdersData = useSelector((store) => store.wsAuthOrders.orders);
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(getIngredientsData());
     dispatch(getUserData()); 
   }, [dispatch])
