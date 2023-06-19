@@ -40,7 +40,7 @@ export default function Login() {
 						extraClass="mb-2"
 					/>
 					<PasswordInput
-						onChange={onChange}
+						onChange={handleChange}
 						value={values.password}
 						name={'password'}
 						extraClass='mb-2'
