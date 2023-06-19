@@ -3,7 +3,7 @@ import {
   WS_AUTH_CONNECTION_ERROR,
   WS_AUTH_CONNECTION_CLOSED,
   WS_GET_AUTH_ORDERS,
-} from "../actions/web-socket-auth";
+} from "../constants/web-socket-auth";
 
 const initialState = {
   wsAuthConnected: false,

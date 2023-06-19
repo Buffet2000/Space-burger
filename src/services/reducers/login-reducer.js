@@ -12,7 +12,7 @@ import {
   USER_DATA_UPDATE_REQUEST,
   USER_DATA_UPDATE_SUCCESS,
   USER_DATA_UPDATE_FAILED,
-} from "../actions/login";
+} from "../constants/login";
 
 const initialState = {
   loginRequest: false,

@@ -4,7 +4,7 @@ import {
   DELETE_INGREDIENT,
   ADD_BUNS,
   DELETE_ALL_INGREDIENTS,
-} from "../actions/constructor-ingredients";
+} from "../constants/constructor-ingredients";
 import update from "immutability-helper";
 
 //Все ингредиенты в конструкторе

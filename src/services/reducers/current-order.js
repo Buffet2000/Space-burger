@@ -1,4 +1,4 @@
-import { ADD_CURRENT_ORDER_INFO, DELETE_CURRENT_ORDER_INFO } from "../actions/current-order";
+import { ADD_CURRENT_ORDER_INFO, DELETE_CURRENT_ORDER_INFO } from "../constants/current-order";
 
 const initialState = {
   information: null

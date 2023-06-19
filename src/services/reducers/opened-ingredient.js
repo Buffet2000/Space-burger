@@ -1,7 +1,7 @@
 import {
   ADD_INGREDIENT_INFO,
   DELETE_INGREDIENT_INFO,
-} from "../actions/opened-ingredient";
+} from "../constants/opened-ingredient";
 
 //Открытый ингредиент, информация
 const initialState = {

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styles from './feed.module.css'
-import { WS_CONNECTION_START, WS_CONNECTION_CLOSED } from '../../services/actions/web-socket';
+import { WS_CONNECTION_START, WS_CONNECTION_CLOSED } from '../../services/constants/web-socket';
 import { useDispatch, useSelector } from 'react-redux';
 import Orders from '../../components/orders/orders';
 import FeedInfo from '../../components/feed-info/feed-info';

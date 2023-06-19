@@ -2,14 +2,7 @@ import {
   postForgotPassword,
   postResetPassword,
 } from "../../components/api/api";
-
-export const VERIFICATION_EMAIL_REQUEST = "VERIFICATION_EMAIL_REQUEST";
-export const VERIFICATION_EMAIL_SUCCESS = "VERIFICATION_EMAIL_SUCCESS";
-export const VERIFICATION_EMAIL_FAILED = "VERIFICATION_EMAIL_FAILED";
-
-export const RESET_PASSWORD_REQUEST = "RESET_PASSWORD_REQUEST";
-export const RESET_PASSWORD_SUCCESS = "RESET_PASSWORD_SUCCESS";
-export const RESET_PASSWORD_FAILED = "RESET_PASSWORD_FAILED";
+import { VERIFICATION_EMAIL_REQUEST, VERIFICATION_EMAIL_SUCCESS, VERIFICATION_EMAIL_FAILED, RESET_PASSWORD_REQUEST, RESET_PASSWORD_SUCCESS, RESET_PASSWORD_FAILED } from "../constants/password-reset";
 
 export function sentVerificationEmail(email, goToPage) {
   return function (dispatch) {

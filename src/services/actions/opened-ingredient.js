@@ -1,6 +1,4 @@
-//Открытый ингредиент
-export const ADD_INGREDIENT_INFO = "ADD_INGREDIENT_INFO";
-export const DELETE_INGREDIENT_INFO = "DELETE_INGREDIENT_INFO";
+import { ADD_INGREDIENT_INFO, DELETE_INGREDIENT_INFO } from "../constants/opened-ingredient"; 
 
 export const addIngredientInfo = (payload) => ({
   type: ADD_INGREDIENT_INFO,
