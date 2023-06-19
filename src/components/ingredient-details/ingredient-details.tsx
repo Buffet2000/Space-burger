@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styles from "./ingredient-details.module.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addIngredientInfo } from "../../services/actions/opened-ingredient";
+//import { addIngredientInfo } from "../../services/actions/opened-ingredient";
 
 export default function IngredientDetails() {
   const { id } = useParams();

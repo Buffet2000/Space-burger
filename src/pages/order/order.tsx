@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import OrderInfo from '../../components/order-info/order-info';
 import PropTypes from 'prop-types';
 
-export default function Order({ start, close, data }) {
+export default function Order({ start, close, data, modal }) {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -16,7 +16,7 @@ export default function Order({ start, close, data }) {
 	return (
 		<>
 			{data
-				? <OrderInfo data={data} ></OrderInfo>
+				? <OrderInfo data={data} modal={modal} ></OrderInfo>
 				: <p>Загрузка данных...</p>}
 		</>
 	);
