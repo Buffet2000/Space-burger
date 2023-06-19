@@ -22,8 +22,8 @@ export default function ForgotPassword() {
 				<h2 className="text text_type_main-medium">Восстановление пароля</h2>
 				<EmailInput
 					onChange={handleChange}
-					value={login}
-					name={'Логин'}
+					value={values.email}
+					name={'email'}
 					placeholder="Укажите e-mail"
 					extraClass="mb-2"
 				/>
