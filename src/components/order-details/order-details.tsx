@@ -1,8 +1,9 @@
+import { FC } from 'react';
 import styles from "./order-details.module.css"
 import done_icon from "../../images/done_icon.svg"
-import { useSelector } from "react-redux";
+import { useSelector } from "../../services/types/hooks";
 
-export default function OrderDetails() {
+export const OrderDetails: FC = () => {
 
   const zeroLength = 6;
   const orderInfo = useSelector((store) => store.orderInformation.orderNumber); //Информация заказа

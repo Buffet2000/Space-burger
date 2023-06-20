@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect, FC } from 'react';
+import { useDispatch } from '../../services/types/hooks';
 import OrderInfo from '../../components/order-info/order-info';
 import PropTypes from 'prop-types';
 
-export default function Order({ start, close, data, modal }) {
+export const Order: FC = ({ start, close, data, modal }) => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {

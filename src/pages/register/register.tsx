@@ -1,33 +1,20 @@
-import React, { useState } from 'react';
-import AppHeader from '../../components/app-header/app-header';
+import { useRef, FC } from 'react';
 import styles from './register.module.css';
 import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { registerNewUser } from '../../components/api/api';
-import { useSelector } from 'react-redux';
+import { useSelector } from '../../services/types/hooks';
 import { useForm } from '../../services/types/hooks';
 
-export default function Register() {
+export const Register: FC = () => {
 	const { isAuthenticated } = useSelector((store) => store.user);
-	const navigate = useNavigate();
 
-	const inputRef = React.useRef(null)
+	const inputRef = useRef(null)
 	const onIconClick = () => {
 		setTimeout(() => inputRef.current.focus(), 0)
 	}
 
 	const { values, handleChange } = useForm({ email: "", password: "", name: "" })
-
-	/*const [user, setUser] = useState(
-		{
-			email: "",
-			password: "",
-			name: ""
-		})
-
-	const onChange = e => {
-		setUser({ ...user, [e.target.name]: e.target.value });
-	}*/
 
 	const submitNewUser = () => {
 		registerNewUser(values.email, values.password, values.name)

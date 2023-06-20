@@ -5,7 +5,6 @@ import OrderIngredient from '../orders/order-ingredient/order-ingredient';
 import { CurrencyIcon, FormattedDate } from '@ya.praktikum/react-developer-burger-ui-components';
 import TotalPrice from '../total-price/total-price';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { TOrder } from '../../services/types/types';
 
 type TOrderInfo = {
@@ -83,13 +82,3 @@ export const OrderInfo: FC<TOrderInfo> = ({ modal, data }) => {
 		</>
 	);
 }
-
-OrderInfo.propTypes = {
-	modal: PropTypes.bool
-}
-/*
-{modal
-						? <p className={`text text_type_digits-default mb-10`}>#{currentOrderData.number}</p>
-						: <p className={`${styles.modal} text text_type_digits-default`}>#{currentOrderData.number}</p>
-					}
-*/

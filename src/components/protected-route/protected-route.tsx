@@ -1,8 +1,8 @@
-import React from "react";
+import { FC } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { getCookie } from "../../services/cookie";
 
-export default function ProtectedRoute({ children, anonymous = false }) {
+export const ProtectedRoute: FC = ({ children, anonymous = false }) => {
   const isLoggedIn = getCookie("accessToken");
   const location = useLocation();
 

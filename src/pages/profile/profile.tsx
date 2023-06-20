@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, FC } from 'react';
 import styles from './profile.module.css';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { logoutUser } from '../../services/actions/login';
-import { useDispatch } from 'react-redux';
+import { useDispatch } from '../../services/types/hooks';
 
-export default function Profile() {
+export const Profile: FC = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const location = useLocation();

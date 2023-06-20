@@ -1,7 +1,8 @@
 import OrderElement from './order-element/order-element';
 import styles from './orders.module.css'
+import { FC } from 'react';
 
-export default function Orders({ path, ordersData, reverse, statusOn }) {
+export const Orders: FC = ({ path, ordersData, reverse, statusOn }) => {
   return (
     <ul className={`${styles.blockWithScroll} mt-10`}>
       {reverse

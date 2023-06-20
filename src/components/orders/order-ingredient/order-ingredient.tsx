@@ -1,7 +1,8 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from '../../../services/types/hooks';
+import { FC } from 'react';
 import styles from './order-ingredient.module.css'
 
-function OrderIngredient({ intersection, id, counter }) {
+export const OrderIngredient: FC = ({ intersection, id, counter }) => {
 
 	const allIngredients = useSelector((store) => store.ingredients.items);
 	const ingredientData = allIngredients.filter(item => item._id === id)[0]
@@ -29,5 +30,3 @@ function OrderIngredient({ intersection, id, counter }) {
 		</div>
 	);
 }
-
-export default OrderIngredient;

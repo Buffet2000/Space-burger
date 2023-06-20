@@ -1,5 +1,4 @@
-import React from "react";
-import Login from '../../pages/profile/profile';
+import { useState, FC } from "react";
 import {
   Logo,
   BurgerIcon,
@@ -7,11 +6,11 @@ import {
   ProfileIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import HeaderStyles from "./app-header.module.css";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-export default function AppHeader() {
+export const AppHeader: FC = () => {
 
-  const [active, setActive] = React.useState("const")
+  const [active, setActive] = useState("const")
 
   return (
     <header className={HeaderStyles.header}>

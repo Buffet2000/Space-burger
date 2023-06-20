@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import { FC } from "react";
 import styles from "./ingredient-details.module.css";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-//import { addIngredientInfo } from "../../services/actions/opened-ingredient";
+import { useParams } from "react-router-dom";
+import { useSelector } from "../../services/types/hooks";
 
-export default function IngredientDetails() {
+
+export const IngredientDetails: FC = () => {
   const { id } = useParams();
   const allIngredients = useSelector((store) => store.ingredients.items);
   const openedIngredient = allIngredients.find(item => item._id === id);
