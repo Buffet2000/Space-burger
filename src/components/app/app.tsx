@@ -1,5 +1,5 @@
 import { useEffect, FC } from "react";
-import AppHeader from "../app-header/app-header";
+import { AppHeader } from "../app-header/app-header";
 import { getIngredientsData } from "../../services/actions/all-ingredients";
 import { HomePage } from "../../pages/home-page/home-page";
 import { Profile } from '../../pages/profile/profile';
@@ -8,14 +8,14 @@ import { Register } from '../../pages/register/register';
 import { ForgotPassword } from "../../pages/forgot-password/forgot-password";
 import { ResetPassword } from '../../pages/reset-password/reset-password'
 import { IngredientDetailsPage } from "../../pages/ingredient-details-page/ingredient-details-page";
-import IngredientDetails from "../ingredient-details/ingredient-details";
+import { IngredientDetails } from "../ingredient-details/ingredient-details";
 import { WS_AUTH_CONNECTION_CLOSED, WS_AUTH_CONNECTION_START } from "../../services/constants/web-socket-auth";
 import { WS_CONNECTION_CLOSED, WS_CONNECTION_START } from '../../services/constants/web-socket';
 import { useSelector, useDispatch } from "../../services/types/hooks";
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { ProtectedRoute }  from "../protected-route/protected-route";
 import { getUserData } from "../../services/actions/login";
-import Modal from "../modal/modal";
+import { Modal } from "../modal/modal";
 import { ProfileOrders } from "../../pages/profile-orders/profile-orders";
 import { ProfileInfo } from "../profile-info/profile-info";
 import { Order } from "../../pages/order/order";

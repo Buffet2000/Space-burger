@@ -3,8 +3,8 @@ import { useState, useEffect, useMemo, FC } from 'react';
 import { useDispatch, useSelector } from '../../../services/types/hooks';
 import { Link, useLocation } from 'react-router-dom';
 import { addCurrentOrderInfo } from '../../../services/actions/current-order';
-import TotalPrice from '../../total-price/total-price';
-import OrderIngredient from '../order-ingredient/order-ingredient';
+import { TotalPrice } from '../../total-price/total-price';
+import { OrderIngredient } from '../order-ingredient/order-ingredient';
 import styles from './order-element.module.css'
 
 export const OrderElement: FC = ({ data, path }) => {

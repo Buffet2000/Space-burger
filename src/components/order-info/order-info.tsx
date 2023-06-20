@@ -1,9 +1,9 @@
 import { useEffect, useState, FC } from 'react';
 import { useSelector } from '../../services/types/hooks';
 import styles from './order-info.module.css'
-import OrderIngredient from '../orders/order-ingredient/order-ingredient';
+import { OrderIngredient } from '../orders/order-ingredient/order-ingredient';
 import { CurrencyIcon, FormattedDate } from '@ya.praktikum/react-developer-burger-ui-components';
-import TotalPrice from '../total-price/total-price';
+import { TotalPrice } from '../total-price/total-price';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { TOrder } from '../../services/types/types';
 

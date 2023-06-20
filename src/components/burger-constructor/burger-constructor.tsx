@@ -1,9 +1,9 @@
 import { useState, useMemo, useEffect, FC } from "react";
 import { CurrencyIcon, Button } from "@ya.praktikum/react-developer-burger-ui-components";
-import BurgerBun from "../burger-elements/burger-element_bun";
-import BurgerStuffing from "../burger-elements/burger-element_stuffing";
-import OrderDetails from "../order-details/order-details"
-import Modal from "../modal/modal";
+import { BurgerBun } from "../burger-elements/burger-element_bun";
+import { BurgerStuffing } from "../burger-elements/burger-element_stuffing";
+import { OrderDetails } from "../order-details/order-details"
+import { Modal } from "../modal/modal";
 import styles from "./burger-constructor.module.css";
 import { useDrop } from "react-dnd";
 import { useDispatch, useSelector } from "../../services/types/hooks";
