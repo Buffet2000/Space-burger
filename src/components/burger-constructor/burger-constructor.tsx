@@ -4,7 +4,7 @@ import { BurgerBun } from "../burger-elements/burger-element_bun";
 import { BurgerStuffing } from "../burger-elements/burger-element_stuffing";
 import { OrderDetails } from "../order-details/order-details"
 import { Modal } from "../modal/modal";
-import styles from "./burger-constructor.module.css";
+import styles from "./burger-сonstructor.module.css";
 import { useDrop } from "react-dnd";
 import { useDispatch, useSelector } from "../../services/types/hooks";
 import { deleteOrder, postOrderInfo, saveOrderitems } from "../../services/actions/order";
