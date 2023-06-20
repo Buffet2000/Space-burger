@@ -5,11 +5,11 @@ import BurgerConstructor from "../../components/burger-constructor/burger-constr
 import styles from "./home-page.module.css";
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { DndProvider } from 'react-dnd';
-import { useSelector } from 'react-redux';
+import { useSelector } from "../../services/types/hooks";
+import { FC } from 'react';
 
 
-
-export default function HomePage() {
+export const HomePage: FC = () => {
   const itemsLoading = useSelector((store) => store.ingredients.itemsLoading);
   const itemsError = useSelector((store) => store.ingredients.itemsError);
 

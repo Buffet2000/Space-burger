@@ -1,26 +1,16 @@
-import React, { useState } from 'react';
-//import AppHeader from '../components/app-header/app-header';
+import { FC } from 'react';
 import styles from './login.module.css';
 import { EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link } from 'react-router-dom';
 import { userLogin } from '../../services/actions/login';
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "../../services/types/hooks";
 import { useForm } from '../../services/types/hooks';
-export default function Login() {
+
+export const Login: FC = () => {
 	const dispatch = useDispatch();
 	const userData = useSelector((store) => store.user);
 
-	const {values, handleChange, setValues} = useForm({email: "", password: ""});
-
-	/*const [user, setUser] = useState(
-		{
-			email: "",
-			password: "",
-		});*/
-
-	/*const onChange = e => {
-		setUser({ ...user, [e.target.name]: e.target.value });
-	}*/
+	const {values, handleChange} = useForm({email: "", password: ""});
 
 	const loginUser = (e) => {
 		e.preventDefault();

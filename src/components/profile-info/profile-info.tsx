@@ -1,11 +1,11 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState, FC } from 'react';
 import styles from './profile-info.module.css';
 import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
-import { Link, useNavigate } from 'react-router-dom';
-import { logoutUser, updateUserData } from '../../services/actions/login';
-import { useDispatch, useSelector } from 'react-redux';
+import { updateUserData } from '../../services/actions/login';
+import { useDispatch, useSelector } from '../../services/types/hooks';
 import { useForm } from '../../services/types/hooks';
-export default function ProfileInfo() {
+
+export const ProfileInfo: FC = () => {
 	const dispatch = useDispatch();
 
 	const [disabled, setDisabled] = useState(true);

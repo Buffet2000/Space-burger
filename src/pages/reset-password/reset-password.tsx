@@ -1,12 +1,12 @@
-import React, { useRef } from 'react';
+import { useRef, FC } from 'react';
 import styles from './reset-password.module.css';
 import { Input, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from '../../services/types/hooks';
 import { resetPassword } from '../../services/actions/password-reset';
 import { useForm } from '../../services/types/hooks';
 
-export default function ResetPassword() {
+export const ResetPassword: FC = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const inputRef = useRef(null);
@@ -17,16 +17,7 @@ export default function ResetPassword() {
 	}
 
 	const { values, handleChange } = useForm({ newPassword: "", token: "" })
-	/*const [newPasswordInfo, setNewPasswordInfo] = useState(
-    {
-      newPassword: "",
-      token: ""
-    })
-
-	const onChange = e => {
-		setNewPasswordInfo({ ...newPasswordInfo, [e.target.name]: e.target.value });
-	}*/
-
+	
 	const resetPass = e => {
 		e.preventDefault();
 		dispatch(resetPassword(values.newPassword, values.token));

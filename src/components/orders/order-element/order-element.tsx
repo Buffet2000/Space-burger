@@ -1,13 +1,13 @@
 import { FormattedDate } from '@ya.praktikum/react-developer-burger-ui-components';
-import { useState, useEffect, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect, useMemo, FC } from 'react';
+import { useDispatch, useSelector } from '../../../services/types/hooks';
 import { Link, useLocation } from 'react-router-dom';
 import { addCurrentOrderInfo } from '../../../services/actions/current-order';
 import TotalPrice from '../../total-price/total-price';
 import OrderIngredient from '../order-ingredient/order-ingredient';
 import styles from './order-element.module.css'
 
-export default function OrderElement({ data, path }) {
+export const OrderElement: FC = ({ data, path }) => {
 	const location = useLocation();
 	const dispatch = useDispatch();
 	const allIngredients = useSelector((store) => store.ingredients.items);
@@ -66,7 +66,6 @@ export default function OrderElement({ data, path }) {
 			<div className={styles.total}>
 				<TotalPrice size={'text text_type_digits-default'} totalPrice={status.totalPrice} />
 			</div>
-
 		</Link>
 	);
 }

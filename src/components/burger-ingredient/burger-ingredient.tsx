@@ -1,15 +1,13 @@
-import React from "react";
+import { useMemo, FC } from "react";
 import { Counter, CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import Modal from "../modal/modal";
-import IngredientDetails from "../ingredient-details/ingredient-details";
 import styles from "./burger-ingredient.module.css";
 import { DataType } from "../../utils/dataType";
 import { useDrag } from 'react-dnd';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "../../services/types/hooks";
 import { addIngredientInfo } from "../../services/actions/opened-ingredient";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-export default function BurgerIngredient({ data }) {
+export const BurgerIngredient: FC = ({ data }) => {
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -20,7 +18,7 @@ export default function BurgerIngredient({ data }) {
     dispatch(addIngredientInfo(data))
   }
 
-  const count = React.useMemo(() => {
+  const count = useMemo(() => {
     const allIngredients = [...constructorIngredients, ...constructorBuns]
     return allIngredients.filter(item => item._id === data._id).length;
   }, [constructorIngredients, constructorBuns])

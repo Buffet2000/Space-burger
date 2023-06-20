@@ -3,10 +3,11 @@ import styles from './forgot-password.module.css';
 import { EmailInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link, useNavigate } from 'react-router-dom';
 import { sentVerificationEmail } from '../../services/actions/password-reset';
-import { useDispatch } from 'react-redux';
+import { useDispatch } from '../../services/types/hooks';
 import { useForm } from '../../services/types/hooks';
+import { FC } from 'react'
 
-export default function ForgotPassword() {
+export const ForgotPassword: FC = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const { values, handleChange } = useForm({ email: "" });

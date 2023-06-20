@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+import { useEffect, FC } from 'react';
 import { WS_AUTH_CONNECTION_START, WS_AUTH_CONNECTION_CLOSED } from '../../services/constants/web-socket-auth';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from '../../services/types/hooks';
 import Orders from '../../components/orders/orders';
-import styles from './profile-orders.module.css'
-import PropTypes from 'prop-types';
+import styles from './profile-orders.module.css';
 
-export default function ProfileOrders({ path, reverse }) {
+export const ProfileOrders: FC = ({ path, reverse }) => {
   const dispatch = useDispatch();
   const wsAuthData = useSelector((store) => store.wsAuthOrders);
   console.log(wsAuthData)
@@ -20,8 +19,4 @@ export default function ProfileOrders({ path, reverse }) {
       <Orders statusOn={true} ordersData={wsAuthData} path={path} reverse={reverse} />
     </div>
   );
-}
-
-ProfileOrders.propTypes = {
-  path: PropTypes.string,
 }

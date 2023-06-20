@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
+import { useState, useEffect, FC } from "react";
 import styles from "./burger-ingredients.module.css";
-import BurgerIngredientCategory from "../burger-ingredient-category/burger-ingredient-category";
+import { BurgerIngredientCategory } from "../burger-ingredient-category/burger-ingredient-category";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useInView } from "react-intersection-observer";
 
-export default function BurgerIngredients() {
+export const BurgerIngredients: FC = () => {
   
-  const [current, setCurrent] = React.useState("bun");
+  const [current, setCurrent] = useState("bun");
 
   function scrollToCategory(cat) {
     setCurrent(cat);

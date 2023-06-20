@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import styles from './feed.module.css'
 import { WS_CONNECTION_START, WS_CONNECTION_CLOSED } from '../../services/constants/web-socket';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "../../services/types/hooks";
 import Orders from '../../components/orders/orders';
 import FeedInfo from '../../components/feed-info/feed-info';
-import PropTypes from 'prop-types';
+import { FC } from "react"
 
-export default function Feed({ path }) {
+export const Feed: FC<{ path: string }> = ({ path }) => {
 	const dispatch = useDispatch();
 	const wsData = useSelector((store) => store.wsOrders);
 	const ordersData = useSelector((store) => store.wsOrders.orders);
@@ -20,7 +20,7 @@ export default function Feed({ path }) {
 		<div className={`${styles.page}`}>
 			<h2 className={`${styles.block} text text_type_main-large mt-10 mb-5`}>Лента заказов</h2>
 			<div className={`${styles.block}`}>
-				<Orders size={''} ordersData={wsData} path={path} />
+				<Orders ordersData={wsData} path={path} />
 				<div className={`${styles.ordersTemplate}`}>
 					<div className={`${styles.ordersStatus}`}>
 						{ordersData
@@ -38,8 +38,4 @@ export default function Feed({ path }) {
 			</div>
 		</div>
 	);
-}
-
-Feed.propTypes = {
-	path: PropTypes.string,
 }
