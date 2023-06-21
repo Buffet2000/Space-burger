@@ -1,13 +1,18 @@
 import {
-  VERIFICATION_EMAIL_REQUEST,
-  VERIFICATION_EMAIL_SUCCESS,
-  VERIFICATION_EMAIL_FAILED,
-  RESET_PASSWORD_REQUEST,
-  RESET_PASSWORD_SUCCESS,
-  RESET_PASSWORD_FAILED,
+  VERIFICATION_EMAIL_REQUEST, VERIFICATION_EMAIL_SUCCESS, VERIFICATION_EMAIL_FAILED,
+  RESET_PASSWORD_REQUEST, RESET_PASSWORD_SUCCESS, RESET_PASSWORD_FAILED,
 } from "../constants/password-reset";
+import { ResetPasswordActions } from "../actions/reset-password";
 
-const initialState = {
+type initialState = {
+  emailRequest: boolean,
+  emailRequestFailed: boolean,
+  resetPasswordRequest: boolean,
+  resetPasswordRequestFailed: boolean,
+  verificationSent: boolean,
+}
+
+const initialState: initialState = {
   emailRequest: false,
   emailRequestFailed: false,
   resetPasswordRequest: false,
@@ -15,7 +20,7 @@ const initialState = {
   verificationSent: false,
 };
 
-export const passwordResetReducer = (state = initialState, action) => {
+export const passwordResetReducer = (state = initialState, action: ResetPasswordActions) => {
   switch (action.type) {
     case VERIFICATION_EMAIL_REQUEST:
       return { ...state, emailRequest: true };

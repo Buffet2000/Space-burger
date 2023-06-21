@@ -3,7 +3,7 @@ import styles from './reset-password.module.css';
 import { Input, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector, useForm } from '../../services/types/hooks';
-import { resetPassword } from '../../services/actions/password-reset';
+import { resetPassword } from '../../services/actions/reset-password';
 
 export default function ResetPassword() {
 	const navigate = useNavigate();

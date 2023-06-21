@@ -52,9 +52,18 @@ export const ResetPasswordFailed = (): ResetPasswordFailed => ({
   type: RESET_PASSWORD_FAILED,
 });
 
+export type ResetPasswordActions = 
+  | VerificationEmailRequest
+  | VerificationEmailSuccess
+  | VerificationEmailFailed
+  | ResetPasswordRequest
+  | ResetPasswordSuccess
+  | ResetPasswordFailed
+  ;
+
 export const sentVerificationEmail: AppThunk = (email, goToPage) => {
   return function (dispatch: AppDispatch) {
-    dispatch(VerificationEmailRequest);
+    dispatch(VerificationEmailRequest());
     postForgotPassword(email)
       .then((res) => {
         if (res && res.success) {
@@ -63,22 +72,22 @@ export const sentVerificationEmail: AppThunk = (email, goToPage) => {
       })
       .then(goToPage)
       .catch((e) => {
-        dispatch(VerificationEmailFailed);
+        dispatch(VerificationEmailFailed());
       });
   };
 }
 
 export const resetPassword: AppThunk = (password, token) => {
   return function (dispatch: AppDispatch) {
-    dispatch(ResetPasswordRequest);
+    dispatch(ResetPasswordRequest());
     postResetPassword(password, token)
       .then((res) => {
         if (res && res.success) {
-          dispatch(ResetPasswordSuccess);
+          dispatch(ResetPasswordSuccess());
         }
       })
       .catch((e) => {
-        dispatch(ResetPasswordFailed);
+        dispatch(ResetPasswordFailed());
       });
   };
 }

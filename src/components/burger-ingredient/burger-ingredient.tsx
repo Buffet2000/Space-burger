@@ -4,7 +4,7 @@ import styles from "./burger-ingredient.module.css";
 import { DataType } from "../../utils/dataType";
 import { useDrag } from 'react-dnd';
 import { useDispatch, useSelector } from "../../services/types/hooks";
-import { addIngredientInfo } from "../../services/actions/opened-ingredient";
+import { addOpenedIngredientInfo } from "../../services/actions/opened-ingredient-info";
 import { Link, useLocation } from "react-router-dom";
 
 export default function BurgerIngredient({ data }) {
@@ -15,7 +15,7 @@ export default function BurgerIngredient({ data }) {
   const constructorBuns = useSelector((store) => store.constructorIngredients.buns);
 
   function handleOpen() {
-    dispatch(addIngredientInfo(data))
+    dispatch(addOpenedIngredientInfo(data))
   }
 
   const count = useMemo(() => {

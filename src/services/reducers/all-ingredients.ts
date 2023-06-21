@@ -3,12 +3,12 @@ import {
   GET_INGREDIENTS_SUCCESS,
   GET_INGREDIENTS_FAILED,
 } from "../constants/all-ingredients";
-import { Ingredients } from "../types/types";
+import { Ingredient } from "../types/types";
 import { IngredientsDataActions } from "../actions/all-ingredients";
 
 //Все ингредиенты от запроса API
 type InitialState = {
-  items: Ingredients[] | null,
+  items: Ingredient[] | null,
   itemsRequest: boolean,
   itemsFailed: boolean,
   itemsLoaded: boolean,
