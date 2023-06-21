@@ -5,22 +5,22 @@ import styles from "./burger-element.module.css";
 import { useDrag, useDrop } from "react-dnd/dist/hooks";
 import { useDispatch } from "../../services/types/hooks";
 import { moveIngredientInConstructor, deleteIngredient } from "../../services/actions/constructor-ingredients";
-import { Ingredients } from "../../services/types/types";
+import { Ingredient } from "../../services/types/types";
 
 export type BurgerStuffing = {
-  data: Ingredients,
+  data: Ingredient,
   id: string,
   index: number,
 }
 
 export default function BurgerStuffing({ data, id, index }: BurgerStuffing) {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
 
   const [, drop] = useDrop({
     accept: "filling",
     collect() { },
-    hover(item, monitor) {
+    hover(item: any, monitor) {
       if (!ref.current) {
         return;
       }
@@ -34,7 +34,7 @@ export default function BurgerStuffing({ data, id, index }: BurgerStuffing) {
       const hoverMiddleY =
         (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
       const clientOffset = monitor.getClientOffset()
-      const hoverClientY = clientOffset.y - hoverBoundingRect.top
+      const hoverClientY = clientOffset!.y - hoverBoundingRect.top
       if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
         return;
       }
@@ -73,7 +73,7 @@ export default function BurgerStuffing({ data, id, index }: BurgerStuffing) {
           text={data.name}
           price={data.price}
           thumbnail={data.image}
-          handleClose={() => dispatch(deleteIngredient(index))}
+          handleClose={() => dispatch(deleteIngredient(id))}
         />
       )}
     </div>

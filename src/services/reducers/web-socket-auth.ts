@@ -4,6 +4,16 @@ import {
   WS_AUTH_CONNECTION_CLOSED,
   WS_GET_AUTH_ORDERS,
 } from "../constants/web-socket-auth";
+import { Order } from "../types/types";
+import { WsAuthActions } from "../actions/web-socket-auth";
+
+type initialState = {
+  wsAuthConnected: boolean,
+  wsAuthError: string | undefined,
+  orders: Order[] | null,
+  total: number,
+  totalToday: number,
+}
 
 const initialState = {
   wsAuthConnected: false,
@@ -13,7 +23,7 @@ const initialState = {
   totalToday: 0,
 };
 
-export const webSocketAuthReducer = (state = initialState, action) => {
+export const webSocketAuthReducer = (state = initialState, action: WsAuthActions) => {
   switch (action.type) {
     case WS_AUTH_CONNECTION_SUCCESS:
       return {

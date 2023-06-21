@@ -1,9 +1,19 @@
+import { WsActions } from "../actions/web-socket";
 import {
   WS_CONNECTION_SUCCESS,
   WS_CONNECTION_ERROR,
   WS_CONNECTION_CLOSED,
   WS_GET_ORDERS,
 } from "../constants/web-socket";
+import { Order } from "../types/types";
+
+type initialState = {
+  wsConnected: boolean,
+  wsError: undefined,
+  orders: Order[],
+  total: number,
+  totalToday: number,
+}
 
 const initialState = {
   wsConnected: false,
@@ -13,7 +23,7 @@ const initialState = {
   totalToday: 0,
 };
 
-export const webSocketReducer = (state = initialState, action) => {
+export const webSocketReducer = (state = initialState, action: WsActions) => {
   switch (action.type) {
     case WS_CONNECTION_SUCCESS:
       return {

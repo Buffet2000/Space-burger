@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './forgot-password.module.css';
 import { EmailInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link, useNavigate } from 'react-router-dom';
-import { sentVerificationEmail } from '../../services/actions/password-reset';
+import { sentVerificationEmail } from '../../services/actions/reset-password';
 import { useDispatch } from '../../services/types/hooks';
 import { useForm } from '../../services/types/hooks';
 

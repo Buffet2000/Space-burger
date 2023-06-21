@@ -11,6 +11,7 @@ import { deleteOrder, postOrderInfo, saveOrderitems } from "../../services/actio
 import { addIngredientInConstructor, addBunsInConstructor, deleteAllIngredients } from "../../services/actions/constructor-ingredients";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
+import { Ingredient } from "../../services/types/types";
 
 export default function BurgerConstructor() {
   const dispatch = useDispatch();
@@ -40,8 +41,8 @@ export default function BurgerConstructor() {
   const totalPrice = useMemo(
     () => {
       let total = 0;
-      ingredients.map((item) => { total = total + item.price });
-      buns.map((item) => { total = total + item.price });
+      ingredients.map((item: Ingredient) => { total = total + item.price });
+      buns.map((item: Ingredient) => { total = total + item.price });
       return total;
     },
     [ingredients, buns]
@@ -67,7 +68,7 @@ export default function BurgerConstructor() {
 
   const [, dropTarget] = useDrop({
     accept: "ingredient",
-    drop(item) {
+    drop(item: Ingredient) {
       if (item.type === "bun") {
         dispatch(addBunsInConstructor([item, item]));
       } else {
@@ -77,7 +78,7 @@ export default function BurgerConstructor() {
   });
 
   return (
-    <section ref={dropTarget} className={styles.constructor}>
+    <section ref={dropTarget} className={`${styles.constructor}`}>
       <div className={styles.constructor_list}>
         <BurgerBun className="mr-4" hideIco={styles.dragIcon_hidden} isLocked={true} containerType={"top"} nameType={"(верх)"} />
         <ul className={styles.stuffing_list}>
@@ -95,7 +96,7 @@ export default function BurgerConstructor() {
           <p className="text text_type_digits-medium mr-2">{totalPrice}</p>
           <CurrencyIcon type="primary" />
         </div>
-        <Button disabled={buttonValue} htmlType="button" type="primary" size="large" onClick={() => confirmOrder(orderIds)}>
+        <Button disabled={buttonValue} htmlType="button" type="primary" size="large" onClick={confirmOrder}>
           Оформить заказ
         </Button>
         {modalActive && <Modal handleClose={closeOrder}>

@@ -1,6 +1,6 @@
 import { getIngredients } from "../../components/api/api";
 import { AppDispatch, AppThunk } from "../types";
-import { Ingredients } from "../types/types";
+import { Ingredient } from "../types/types";
 
 import { GET_INGREDIENTS_REQUEST, GET_INGREDIENTS_SUCCESS, GET_INGREDIENTS_FAILED } from "../constants/all-ingredients";
 
@@ -11,7 +11,7 @@ export interface GetIngredientsRequest {
 
 export interface GetIngredientsSuccess {
   readonly type: typeof GET_INGREDIENTS_SUCCESS;
-  payload: Array<Ingredients>
+  payload: Ingredient[],
 }
 
 export interface GetIngredientsFailed {
@@ -28,7 +28,7 @@ export const getIngredientsRequest = (): GetIngredientsRequest => ({
   type: GET_INGREDIENTS_REQUEST,
 });
 
-export const getIngredientsSuccess = (payload: Ingredients[]): GetIngredientsSuccess => ({
+export const getIngredientsSuccess = (payload: Ingredient[]): GetIngredientsSuccess => ({
   type: GET_INGREDIENTS_SUCCESS,
   payload
 });

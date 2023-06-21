@@ -1,12 +1,18 @@
 import {
-  GET_ORDER_NUMBER_REQUEST,
-  GET_ORDER_NUMBER_SUCCESS,
-  GET_ORDER_NUMBER_FAILED,
-  ADD_ORDER,
-  DELETE_ORDER,
+  GET_ORDER_NUMBER_REQUEST, GET_ORDER_NUMBER_SUCCESS, GET_ORDER_NUMBER_FAILED,
+  ADD_ORDER, DELETE_ORDER,
 } from "../constants/order";
+import { OrderActions } from "../actions/order";
 
-const initialState = {
+type initialState = {
+  orderNumber: number | null,
+  orderNumberRequest: boolean,
+  orderNumberFailed: boolean,
+  isLoaded: boolean,
+  orderItems: string[] | [],
+}
+
+const initialState: initialState = {
   orderNumber: null,
   orderNumberRequest: false,
   orderNumberFailed: false,
@@ -14,7 +20,7 @@ const initialState = {
   orderItems: [],
 };
 
-export const orderReducer = (state = initialState, action) => {
+export const orderReducer = (state = initialState, action: OrderActions) => {
   switch (action.type) {
     case GET_ORDER_NUMBER_REQUEST:
       return { ...state, orderNumberRequest: true };

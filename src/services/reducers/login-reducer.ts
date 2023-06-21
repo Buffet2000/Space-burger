@@ -1,20 +1,31 @@
 import {
-  USER_LOGIN_REQUEST,
-  USER_LOGIN_SUCCESS,
-  USER_LOGIN_FAILED,
-  USER_LOGOUT,
-  USER_DATA_REQUEST,
-  USER_DATA_SUCCESS,
-  USER_DATA_FAILED,
-  REFRESH_ACCESS_TOKEN_FAILED,
-  REFRESH_ACCESS_TOKEN_SUCCESS,
-  REFRESH_ACCESS_TOKEN_REQUEST,
-  USER_DATA_UPDATE_REQUEST,
-  USER_DATA_UPDATE_SUCCESS,
-  USER_DATA_UPDATE_FAILED,
+  USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAILED, USER_LOGOUT,
+  USER_DATA_REQUEST, USER_DATA_SUCCESS, USER_DATA_FAILED,
+  REFRESH_ACCESS_TOKEN_FAILED, REFRESH_ACCESS_TOKEN_SUCCESS, REFRESH_ACCESS_TOKEN_REQUEST,
+  USER_DATA_UPDATE_REQUEST, USER_DATA_UPDATE_SUCCESS, USER_DATA_UPDATE_FAILED,
 } from "../constants/login";
+import { LoginActions } from "../actions/login";
 
-const initialState = {
+type initialState = {
+  loginRequest: boolean,
+  loginRequestFailed: boolean,
+  userDataLoaded: boolean,
+  userDataRequest: boolean,
+  userDataRequestFailed: boolean,
+  userDataUpdateRequest: boolean,
+  userDataUpdateFailed: boolean,
+  accessTokenRequest: boolean,
+  accessTokenRequestFailed: boolean,
+  isAuthenticated: boolean,
+  user: {
+    email: string,
+    name: string,
+  },
+  accessToken: string,
+  refreshToken: string,
+}
+
+const initialState: initialState = {
   loginRequest: false,
   loginRequestFailed: false,
   userDataLoaded: false,
@@ -33,7 +44,7 @@ const initialState = {
   refreshToken: "",
 };
 
-export const userReducer = (state = initialState, action) => {
+export const userReducer = (state = initialState, action: LoginActions) => {
   switch (action.type) {
     case USER_LOGIN_REQUEST:
       return { ...state, loginRequest: true };

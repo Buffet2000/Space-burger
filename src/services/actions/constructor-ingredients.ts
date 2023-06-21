@@ -1,39 +1,39 @@
 //Ингредиенты, добавленные в конструктор
 import { ADD_INGREDIENT, INGREDIENT_MOVE, DELETE_INGREDIENT, DELETE_ALL_INGREDIENTS, ADD_BUNS } from "../constants/constructor-ingredients";
-// список всех ингредиентов в текущем конструкторе бургера,
-import { Ingredients } from "../types/types";
-//типизация экшенов
+import { Ingredient } from "../types/types";
+
+// Типизация экшенов
 export interface AddIngredient {
   readonly type: typeof ADD_INGREDIENT;
-  payload: Ingredients
+  payload: Ingredient;
 }
 
 export interface DeleteIngredient {
   readonly type: typeof DELETE_INGREDIENT;
-  payload: string
+  payload: string;
 }
 
 type IngredientOrder = {
-  dragIndex: number,
-  hoverIndex: number
+  dragIndex: number;
+  hoverIndex: number;
 };
 
 export interface IngredientMove {
   readonly type: typeof INGREDIENT_MOVE;
-  payload: IngredientOrder
+  payload: IngredientOrder;
 }
 
 export interface AddBuns {
   readonly type: typeof ADD_BUNS;
-  payload: Array<Ingredients>
+  payload: Ingredient[];
 }
 
 export interface DeleteAllIngredient {
   readonly type: typeof DELETE_ALL_INGREDIENTS;
 }
 
-// Объединение типов
-export type IngrediensConstructorActions = 
+// Union тип
+export type IngrediensConstructorActions =
   | AddIngredient
   | DeleteIngredient
   | IngredientMove
@@ -42,26 +42,26 @@ export type IngrediensConstructorActions =
   ;
 
 // Генераторы экшенов
-export const addIngredientInConstructor = (payload: Ingredients): AddIngredient => ({
+export const addIngredientInConstructor = (payload: Ingredient): AddIngredient => ({
   type: ADD_INGREDIENT,
-  payload
+  payload,
 });
 
 export const deleteIngredient = (payload: string): DeleteIngredient => ({
   type: DELETE_INGREDIENT,
-  payload
+  payload,
 });
 
 export const moveIngredientInConstructor = (payload: IngredientOrder): IngredientMove => ({
   type: INGREDIENT_MOVE,
-  payload
+  payload,
 });
 
-export const addBunsInConstructor = (payload: Array<Ingredients>): AddBuns => ({
+export const addBunsInConstructor = (payload: Ingredient[]): AddBuns => ({
   type: ADD_BUNS,
-  payload
+  payload,
 });
 
 export const deleteAllIngredients = (): DeleteAllIngredient => ({
-  type: DELETE_ALL_INGREDIENTS
+  type: DELETE_ALL_INGREDIENTS,
 });

@@ -4,10 +4,11 @@ import styles from "./burger-element.module.css";
 import { useSelector } from "../../services/types/hooks";
 
 type BurgerBun = {
-  containerType: string,
+  containerType: "top" | "bottom" | undefined,
   isLocked: boolean,
   hideIco: string,
-  nameType: "top" | "bottom" | undefined,
+  nameType: string | undefined,
+  className?: string,
 }
 
 export default function BurgerBun({ containerType, isLocked, hideIco, nameType }: BurgerBun) {
