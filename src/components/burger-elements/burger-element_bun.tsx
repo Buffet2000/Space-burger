@@ -1,10 +1,9 @@
-import { FC } from "react";
 import PropTypes from "prop-types";
 import { ConstructorElement, DragIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./burger-element.module.css";
 import { useSelector } from "../../services/types/hooks";
 
-export const BurgerBun: FC = ({ containerType, isLocked, hideIco, nameType }) => {
+export default function BurgerBun({ containerType, isLocked, hideIco, nameType }) {
 
   const buns = useSelector((store) => store.constructorIngredients.buns);
 

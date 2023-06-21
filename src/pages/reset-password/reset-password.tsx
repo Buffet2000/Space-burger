@@ -2,11 +2,10 @@ import { useRef, FC } from 'react';
 import styles from './reset-password.module.css';
 import { Input, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from '../../services/types/hooks';
+import { useDispatch, useSelector, useForm } from '../../services/types/hooks';
 import { resetPassword } from '../../services/actions/password-reset';
-import { useForm } from '../../services/types/hooks';
 
-export const ResetPassword: FC = () => {
+export default function ResetPassword() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const inputRef = useRef(null);

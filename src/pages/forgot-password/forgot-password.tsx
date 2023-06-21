@@ -5,9 +5,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { sentVerificationEmail } from '../../services/actions/password-reset';
 import { useDispatch } from '../../services/types/hooks';
 import { useForm } from '../../services/types/hooks';
-import { FC } from 'react'
 
-export const ForgotPassword: FC = () => {
+export default function ForgotPassword() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const { values, handleChange } = useForm({ email: "" });

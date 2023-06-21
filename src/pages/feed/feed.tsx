@@ -2,11 +2,10 @@ import { useEffect } from 'react';
 import styles from './feed.module.css'
 import { WS_CONNECTION_START, WS_CONNECTION_CLOSED } from '../../services/constants/web-socket';
 import { useDispatch, useSelector } from "../../services/types/hooks";
-import { Orders } from '../../components/orders/orders';
-import { FeedInfo } from '../../components/feed-info/feed-info';
-import { FC } from "react"
+import Orders from '../../components/orders/orders';
+import FeedInfo from '../../components/feed-info/feed-info';
 
-export const Feed: FC<{ path: string }> = ({ path }) => {
+export default function Feed({ path }) {
 	const dispatch = useDispatch();
 	const wsData = useSelector((store) => store.wsOrders);
 	const ordersData = useSelector((store) => store.wsOrders.orders);

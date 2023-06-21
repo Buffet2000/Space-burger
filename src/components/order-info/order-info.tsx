@@ -1,9 +1,9 @@
-import { useEffect, useState, FC } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from '../../services/types/hooks';
 import styles from './order-info.module.css'
-import { OrderIngredient } from '../orders/order-ingredient/order-ingredient';
+import OrderIngredient from '../orders/order-ingredient/order-ingredient';
 import { CurrencyIcon, FormattedDate } from '@ya.praktikum/react-developer-burger-ui-components';
-import { TotalPrice } from '../total-price/total-price';
+import TotalPrice from '../total-price/total-price';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { TOrder } from '../../services/types/types';
 
@@ -12,7 +12,7 @@ type TOrderInfo = {
   data: Array<TOrder>
 }
 
-export const OrderInfo: FC<TOrderInfo> = ({ modal, data }) => {
+export default function OrderInfo({ modal, data }): TOrderInfo {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const { id } = useParams();

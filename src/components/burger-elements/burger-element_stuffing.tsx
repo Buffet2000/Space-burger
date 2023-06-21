@@ -1,4 +1,4 @@
-import { useRef, FC } from "react";
+import { useRef } from "react";
 import PropTypes from "prop-types";
 import { ConstructorElement, DragIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./burger-element.module.css";
@@ -6,7 +6,7 @@ import { useDrag, useDrop } from "react-dnd/dist/hooks";
 import { useDispatch } from "../../services/types/hooks";
 import { moveIngredientInConstructor, deleteIngredient } from "../../services/actions/constructor-ingredients";
 
-export const BurgerStuffing: FC = ({ data, id, index }) => {
+export default function BurgerStuffing({ data, id, index }) {
   const ref = useRef(null);
   const dispatch = useDispatch();
 

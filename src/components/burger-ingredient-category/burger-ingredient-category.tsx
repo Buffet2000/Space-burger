@@ -1,10 +1,9 @@
-import { FC } from "react";
 import PropTypes from "prop-types";
-import { BurgerIngredient } from "../burger-ingredient/burger-ingredient";
+import BurgerIngredient from "../burger-ingredient/burger-ingredient";
 import { useSelector } from '../../services/types/hooks';
 import { useLocation } from "react-router-dom";
 
-export const BurgerIngredientCategory: FC = ({ innerRef, ingr_type, name, style }) => {
+export default function BurgerIngredientCategory({ innerRef, ingr_type, name, style }) {
   const location = useLocation();
   const data = useSelector((store) => store.ingredients.items);
 

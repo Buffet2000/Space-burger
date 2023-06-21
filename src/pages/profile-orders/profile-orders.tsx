@@ -1,10 +1,10 @@
-import { useEffect, FC } from 'react';
+import { useEffect } from 'react';
 import { WS_AUTH_CONNECTION_START, WS_AUTH_CONNECTION_CLOSED } from '../../services/constants/web-socket-auth';
 import { useDispatch, useSelector } from '../../services/types/hooks';
-import { Orders } from '../../components/orders/orders';
+import Orders from '../../components/orders/orders';
 import styles from './profile-orders.module.css';
 
-export const ProfileOrders: FC = ({ path, reverse }) => {
+export default function ProfileOrders({ path, reverse }) {
   const dispatch = useDispatch();
   const wsAuthData = useSelector((store) => store.wsAuthOrders);
   console.log(wsAuthData)

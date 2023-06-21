@@ -1,9 +1,8 @@
-import { FC } from 'react';
 import styles from "./order-details.module.css"
 import done_icon from "../../images/done_icon.svg"
 import { useSelector } from "../../services/types/hooks";
 
-export const OrderDetails: FC = () => {
+export default function OrderDetails() {
 
   const zeroLength = 6;
   const orderInfo = useSelector((store) => store.orderInformation.orderNumber); //Информация заказа

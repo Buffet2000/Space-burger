@@ -1,12 +1,11 @@
-import { useRef, FC } from 'react';
+import { useRef } from 'react';
 import styles from './register.module.css';
 import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link } from 'react-router-dom';
 import { registerNewUser } from '../../components/api/api';
-import { useSelector } from '../../services/types/hooks';
-import { useForm } from '../../services/types/hooks';
+import { useSelector, useForm } from '../../services/types/hooks';
 
-export const Register: FC = () => {
+export default function Register() {
 	const { isAuthenticated } = useSelector((store) => store.user);
 
 	const inputRef = useRef(null)

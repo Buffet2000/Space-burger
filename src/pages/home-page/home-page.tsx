@@ -1,14 +1,13 @@
 import React from "react";
-import { BurgerIngredients } from "../../components/burger-ingredients/burger-ingredients";
-import { BurgerConstructor } from "../../components/burger-constructor/burger-constructor";
+import BurgerIngredients from "../../components/burger-ingredients/burger-ingredients";
+import BurgerConstructor from "../../components/burger-constructor/burger-constructor";
 import styles from "./home-page.module.css";
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { DndProvider } from 'react-dnd';
 import { useSelector } from "../../services/types/hooks";
-import { FC } from 'react';
 
 
-export const HomePage: FC = () => {
+export default function HomePage() {
   const itemsLoading = useSelector((store) => store.ingredients.itemsLoading);
   const itemsError = useSelector((store) => store.ingredients.itemsError);
 

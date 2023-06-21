@@ -1,8 +1,7 @@
 import { useSelector } from '../../../services/types/hooks';
-import { FC } from 'react';
 import styles from './order-ingredient.module.css'
 
-export const OrderIngredient: FC = ({ intersection, id, counter }) => {
+export default function OrderIngredient({ intersection, id, counter }) {
 
 	const allIngredients = useSelector((store) => store.ingredients.items);
 	const ingredientData = allIngredients.filter(item => item._id === id)[0]
