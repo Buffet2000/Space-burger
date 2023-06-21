@@ -17,10 +17,12 @@ export default function IngredientDetailsPage() {
   }, [itemsLoaded])
 
   return (
-    openedIngredient &&
-    <div className={styles.container}>
-      <h2 className="text text_type_main-large mt-3 mb-3">Детали ингредиента</h2>
-      <IngredientDetails />
-    </div>
+    <>
+      {openedIngredient &&
+      <div className={styles.container}>
+        <h2 className="text text_type_main-large mt-3 mb-3">Детали ингредиента</h2>
+        <IngredientDetails />
+      </div>}
+    </>
   );
 }
