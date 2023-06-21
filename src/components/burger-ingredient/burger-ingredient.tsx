@@ -6,8 +6,13 @@ import { useDrag } from 'react-dnd';
 import { useDispatch, useSelector } from "../../services/types/hooks";
 import { addOpenedIngredientInfo } from "../../services/actions/opened-ingredient-info";
 import { Link, useLocation } from "react-router-dom";
+import { Ingredient } from "../../services/types/types";
 
-export default function BurgerIngredient({ data }) {
+type BurgerIngredient = {
+  data: Ingredient,
+}
+
+export default function BurgerIngredient({ data }: BurgerIngredient) {
   const dispatch = useDispatch();
   const location = useLocation();
 

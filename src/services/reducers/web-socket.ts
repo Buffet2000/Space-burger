@@ -9,13 +9,13 @@ import { Order } from "../types/types";
 
 type initialState = {
   wsConnected: boolean,
-  wsError: undefined,
-  orders: Order[],
+  wsError: string | undefined,
+  orders: Order[] | null,
   total: number,
   totalToday: number,
 }
 
-const initialState = {
+const initialState: initialState = {
   wsConnected: false,
   wsError: undefined,
   orders: null,

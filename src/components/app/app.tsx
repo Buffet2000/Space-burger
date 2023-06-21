@@ -20,6 +20,7 @@ import ProfileOrders from "../../pages/profile-orders/profile-orders";
 import ProfileInfo from "../profile-info/profile-info";
 import Order from "../../pages/order/order";
 import Feed from "../../pages/feed/feed";
+import OrderInfo from "../order-info/order-info";
 
 export default function App() {
   const location = useLocation();
@@ -59,8 +60,8 @@ export default function App() {
       </Routes>
 
       {background && itemsLoaded && <Routes> <Route path="/ingredients/:id" element={<Modal title={"Детали ингредиента"} handleClose={closePopup}><IngredientDetails /></Modal>} /> </Routes>}
-      {background && wsOrdersData && <Routes> <Route path="/feed/:id" element={<Modal title={``} handleClose={closePopup}><Order modal data={wsOrdersData} /></Modal>} /> </Routes>}
-      {background && wsAuthOrdersData && <Routes> <Route path="/profile/orders/:id" element={<Modal handleClose={closePopup}><Order modal data={wsAuthOrdersData} /></Modal>} /> </Routes>}
+      {background && wsOrdersData && <Routes> <Route path="/feed/:id" element={<Modal title={``} handleClose={closePopup}><OrderInfo modal data={wsOrdersData} /></Modal>} /> </Routes>}
+      {background && wsAuthOrdersData && <Routes> <Route path="/profile/orders/:id" element={<Modal handleClose={closePopup}><OrderInfo modal data={wsAuthOrdersData} /></Modal>} /> </Routes>}
     </>
   );
 }

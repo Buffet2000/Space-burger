@@ -23,27 +23,23 @@ const initialState: InitialState = {
 export const ingredientsConstructorReducer = (state = initialState, action: IngrediensConstructorActions) => {
   switch (action.type) {
     case ADD_BUNS:
-      return { ...state, buns: action.payload };
+      return { ...state, buns: action.payload }
     case ADD_INGREDIENT:
-      return { ...state, ingredients: [...state.ingredients, action.payload] };
+      return { ...state, ingredients: [...state.ingredients, action.payload] }
     case DELETE_INGREDIENT:
-      return { ...state, ingredients: [], buns: [] }
+      return { ...state, ingredients: [...state.ingredients.filter((item) => item?.id !== action.payload)] }
     case DELETE_ALL_INGREDIENTS:
-      return { ...state, ingredients: [], buns: [] };
+      return { ...state, ingredients: [], buns: [] }
     case INGREDIENT_MOVE:
       return {
         ...state,
         ingredients: update(state.ingredients, {
           $splice: [
             [action.payload.dragIndex, 1],
-            [
-              action.payload.hoverIndex,
-              0,
-              state.ingredients[action.payload.dragIndex],
-            ],
+            [action.payload.hoverIndex, 0, state.ingredients[action.payload.dragIndex]],
           ],
         }),
-      };
+      }
     default:
       return state;
   }
