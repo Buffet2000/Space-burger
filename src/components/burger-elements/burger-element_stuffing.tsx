@@ -5,8 +5,15 @@ import styles from "./burger-element.module.css";
 import { useDrag, useDrop } from "react-dnd/dist/hooks";
 import { useDispatch } from "../../services/types/hooks";
 import { moveIngredientInConstructor, deleteIngredient } from "../../services/actions/constructor-ingredients";
+import { Ingredients } from "../../services/types/types";
 
-export default function BurgerStuffing({ data, id, index }) {
+export type BurgerStuffing = {
+  data: Ingredients,
+  id: string,
+  index: number,
+}
+
+export default function BurgerStuffing({ data, id, index }: BurgerStuffing) {
   const ref = useRef(null);
   const dispatch = useDispatch();
 

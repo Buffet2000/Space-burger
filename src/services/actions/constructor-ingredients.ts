@@ -1,14 +1,14 @@
 //Ингредиенты, добавленные в конструктор
 import { ADD_INGREDIENT, INGREDIENT_MOVE, DELETE_INGREDIENT, DELETE_ALL_INGREDIENTS, ADD_BUNS } from "../constants/constructor-ingredients";
 // список всех ингредиентов в текущем конструкторе бургера,
-import { TIngredients } from "../types/types";
+import { Ingredients } from "../types/types";
 //типизация экшенов
-export interface IAddIngredient {
+export interface AddIngredient {
   readonly type: typeof ADD_INGREDIENT;
-  payload: TIngredients
+  payload: Ingredients
 }
 
-export interface IDeleteIngredient {
+export interface DeleteIngredient {
   readonly type: typeof DELETE_INGREDIENT;
   payload: string
 }
@@ -18,50 +18,50 @@ type IngredientOrder = {
   hoverIndex: number
 };
 
-export interface IIngredientMove {
+export interface IngredientMove {
   readonly type: typeof INGREDIENT_MOVE;
   payload: IngredientOrder
 }
 
-export interface IAddBuns {
+export interface AddBuns {
   readonly type: typeof ADD_BUNS;
-  payload: Array<TIngredients>
+  payload: Array<Ingredients>
 }
 
-export interface IDeleteAllIngredient {
+export interface DeleteAllIngredient {
   readonly type: typeof DELETE_ALL_INGREDIENTS;
 }
 
 // Объединение типов
-export type TIngrediensConstructorActions = 
-  | IAddIngredient
-  | IDeleteIngredient
-  | IIngredientMove
-  | IAddBuns
-  | IDeleteAllIngredient
+export type IngrediensConstructorActions = 
+  | AddIngredient
+  | DeleteIngredient
+  | IngredientMove
+  | AddBuns
+  | DeleteAllIngredient
   ;
 
 // Генераторы экшенов
-export const addIngredientInConstructor = (payload: TIngredients): IAddIngredient => ({
+export const addIngredientInConstructor = (payload: Ingredients): AddIngredient => ({
   type: ADD_INGREDIENT,
   payload
 });
 
-export const deleteIngredient = (payload: string): IDeleteIngredient => ({
+export const deleteIngredient = (payload: string): DeleteIngredient => ({
   type: DELETE_INGREDIENT,
   payload
 });
 
-export const moveIngredientInConstructor = (payload: IngredientOrder): IIngredientMove => ({
+export const moveIngredientInConstructor = (payload: IngredientOrder): IngredientMove => ({
   type: INGREDIENT_MOVE,
   payload
 });
 
-export const addBunsInConstructor = (payload: Array<TIngredients>): IAddBuns => ({
+export const addBunsInConstructor = (payload: Array<Ingredients>): AddBuns => ({
   type: ADD_BUNS,
   payload
 });
 
-export const deleteAllIngredients = (): IDeleteAllIngredient => ({
+export const deleteAllIngredients = (): DeleteAllIngredient => ({
   type: DELETE_ALL_INGREDIENTS
 });

@@ -1,26 +1,26 @@
 import { ADD_INGREDIENT_INFO, DELETE_INGREDIENT_INFO } from "../constants/opened-ingredient";
-import { TIngredients } from "../types/types";
+import { Ingredients } from "../types/types";
 
-export interface IAddIngredientInfo {
+export interface AddIngredientInfo {
   readonly type: typeof ADD_INGREDIENT_INFO;
-  payload: TIngredients
+  payload: Ingredients
 }
 
-export interface IDeleteIngredientInfo {
+export interface DeleteIngredientInfo {
   readonly type: typeof DELETE_INGREDIENT_INFO;
 }
 
 // Union тип
-export type TIngredientInfoActions = 
-  | IAddIngredientInfo
-  | IDeleteIngredientInfo
+export type IngredientInfoActions = 
+  | AddIngredientInfo
+  | DeleteIngredientInfo
   ;
 
-export const addIngredientInfo = (payload: TIngredients): IAddIngredientInfo => ({
+export const addIngredientInfo = (payload: Ingredients): AddIngredientInfo => ({
   type: ADD_INGREDIENT_INFO,
   payload,
 });
 
-export const deleteIngredientInfo = (): IDeleteIngredientInfo => ({
+export const deleteIngredientInfo = (): DeleteIngredientInfo => ({
   type: DELETE_INGREDIENT_INFO
 });

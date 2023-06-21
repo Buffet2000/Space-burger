@@ -9,47 +9,47 @@ import {
 import { AppDispatch, AppThunk } from "../types";
 
 // Verification Email
-export interface IVerificationEmailRequest {
-  readonly type: typeof VERIFICATION_EMAIL_REQUEST
+export interface VerificationEmailRequest {
+  readonly type: typeof VERIFICATION_EMAIL_REQUEST,
 }
-export interface IVerificationEmailSuccess {
+export interface VerificationEmailSuccess {
   readonly type: typeof VERIFICATION_EMAIL_SUCCESS,
-  payload: { success: true, message: 'Reset email sent' }
+  payload: { success: true, message: 'Reset email sent' },
 }
-export interface IVerificationEmailFailed {
-  readonly type: typeof VERIFICATION_EMAIL_FAILED
+export interface VerificationEmailFailed {
+  readonly type: typeof VERIFICATION_EMAIL_FAILED,
 }
 
-export const VerificationEmailRequest = (): IVerificationEmailRequest => ({
-  type: VERIFICATION_EMAIL_REQUEST
+export const VerificationEmailRequest = (): VerificationEmailRequest => ({
+  type: VERIFICATION_EMAIL_REQUEST,
 });
-export const VerificationEmailSuccess = (payload: { success: true, message: 'Reset email sent' }): IVerificationEmailSuccess => ({
+export const VerificationEmailSuccess = (payload: { success: true, message: 'Reset email sent' }): VerificationEmailSuccess => ({
   type: VERIFICATION_EMAIL_SUCCESS,
   payload
 });
-export const VerificationEmailFailed = (): IVerificationEmailFailed => ({
-  type: VERIFICATION_EMAIL_FAILED
+export const VerificationEmailFailed = (): VerificationEmailFailed => ({
+  type: VERIFICATION_EMAIL_FAILED,
 });
 
 // Reset Password
-export interface IResetPasswordRequest {
-  readonly type: typeof RESET_PASSWORD_REQUEST
+export interface ResetPasswordRequest {
+  readonly type: typeof RESET_PASSWORD_REQUEST,
 }
-export interface IResetPasswordSuccess {
-  readonly type: typeof RESET_PASSWORD_SUCCESS
+export interface ResetPasswordSuccess {
+  readonly type: typeof RESET_PASSWORD_SUCCESS,
 }
-export interface IResetPasswordFailed {
-  readonly type: typeof RESET_PASSWORD_FAILED
+export interface ResetPasswordFailed {
+  readonly type: typeof RESET_PASSWORD_FAILED,
 }
 
-export const ResetPasswordRequest = () => ({
-  type: RESET_PASSWORD_REQUEST
+export const ResetPasswordRequest = (): ResetPasswordRequest => ({
+  type: RESET_PASSWORD_REQUEST,
 });
-export const ResetPasswordSuccess = () => ({
-  type: RESET_PASSWORD_SUCCESS
+export const ResetPasswordSuccess = (): ResetPasswordSuccess => ({
+  type: RESET_PASSWORD_SUCCESS,
 });
-export const ResetPasswordFailed = () => ({
-  type: RESET_PASSWORD_FAILED
+export const ResetPasswordFailed = (): ResetPasswordFailed => ({
+  type: RESET_PASSWORD_FAILED,
 });
 
 export const sentVerificationEmail: AppThunk = (email, goToPage) => {

@@ -1,4 +1,4 @@
-export type TIngredients = {
+export type Ingredients = {
   readonly calories: number,
   readonly carbohydrates: number,
   readonly fat: number,
@@ -13,7 +13,7 @@ export type TIngredients = {
   readonly id?: string,
 }
 
-export type TOrder = {
+export type Order = {
   _id: string
   createdAt: string,
   ingredients: Array<string>,

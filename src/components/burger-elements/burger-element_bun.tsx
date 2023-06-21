@@ -3,7 +3,14 @@ import { ConstructorElement, DragIcon } from "@ya.praktikum/react-developer-burg
 import styles from "./burger-element.module.css";
 import { useSelector } from "../../services/types/hooks";
 
-export default function BurgerBun({ containerType, isLocked, hideIco, nameType }) {
+type BurgerBun = {
+  containerType: string,
+  isLocked: boolean,
+  hideIco: string,
+  nameType: "top" | "bottom" | undefined,
+}
+
+export default function BurgerBun({ containerType, isLocked, hideIco, nameType }: BurgerBun) {
 
   const buns = useSelector((store) => store.constructorIngredients.buns);
 

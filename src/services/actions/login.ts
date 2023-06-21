@@ -11,7 +11,7 @@ import {
 import { setCookie, deleteCookie } from "../utils";
 import { AppDispatch, AppThunk } from "../types";
 
-type TLoginData = {
+type LoginData = {
   accessToken: string,
   refreshToken: string,
   success: boolean,
@@ -23,119 +23,119 @@ type TLoginData = {
 }
 
 // User Login/Logout
-export interface IUserLoginRequest {
+export interface UserLoginRequest {
   readonly type: typeof USER_LOGIN_REQUEST;
 }
-export interface IUserLoginSuccess {
+export interface UserLoginSuccess {
   readonly type: typeof USER_LOGIN_SUCCESS;
-  payload: TLoginData
+  payload: LoginData
 }
-export interface IUserLoginFailed {
+export interface UserLoginFailed {
   readonly type: typeof USER_LOGIN_FAILED;
 }
-export interface IUserLogout {
+export interface UserLogout {
   readonly type: typeof USER_LOGOUT;
 }
 
-export const userLoginRequest = (): IUserLoginRequest => ({
+export const userLoginRequest = (): UserLoginRequest => ({
   type: USER_LOGIN_REQUEST,
 });
-export const userLoginSuccess = (payload: TLoginData): IUserLoginSuccess => ({
+export const userLoginSuccess = (payload: LoginData): UserLoginSuccess => ({
   type: USER_LOGIN_SUCCESS,
   payload
 });
-export const userLoginFailed = (): IUserLoginFailed => ({
+export const userLoginFailed = (): UserLoginFailed => ({
   type: USER_LOGIN_FAILED,
 });
-export const userLogout = (): IUserLogout => ({
+export const userLogout = (): UserLogout => ({
   type: USER_LOGOUT,
 });
 
 // User Data
-export interface IUserDataRequest {
+export interface UserDataRequest {
   readonly type: typeof USER_DATA_REQUEST;
 }
-export interface IUserDataSuccess {
+export interface UserDataSuccess {
   readonly type: typeof USER_DATA_SUCCESS;
-  payload: TLoginData
+  payload: LoginData
 }
-export interface IUserDataFailed {
+export interface UserDataFailed {
   readonly type: typeof USER_DATA_FAILED;
 }
 
-export const userDataRequest = (): IUserDataRequest => ({
+export const userDataRequest = (): UserDataRequest => ({
   type: USER_DATA_REQUEST,
 });
-export const userDataSuccess = (payload: TLoginData): IUserDataSuccess => ({
+export const userDataSuccess = (payload: LoginData): UserDataSuccess => ({
   type: USER_DATA_SUCCESS,
   payload
 });
-export const userDataFailed = (): IUserDataFailed => ({
+export const userDataFailed = (): UserDataFailed => ({
   type: USER_DATA_FAILED,
 });
 
 // User Data Update
-export interface IUserDataUpdateRequest {
+export interface UserDataUpdateRequest {
   readonly type: typeof USER_DATA_UPDATE_REQUEST;
 }
-export interface IUserDataUpdateSuccess {
+export interface UserDataUpdateSuccess {
   readonly type: typeof USER_DATA_UPDATE_SUCCESS;
-  payload: TLoginData
+  payload: LoginData
 }
-export interface IUserDataUpdateFailed {
+export interface UserDataUpdateFailed {
   readonly type: typeof USER_DATA_UPDATE_FAILED;
 }
 
-export const userDataUpdateRequest = (): IUserDataUpdateRequest => ({
+export const userDataUpdateRequest = (): UserDataUpdateRequest => ({
   type: USER_DATA_UPDATE_REQUEST,
 });
-export const userDataUpdateSuccess = (payload: TLoginData): IUserDataUpdateSuccess => ({
+export const userDataUpdateSuccess = (payload: LoginData): UserDataUpdateSuccess => ({
   type: USER_DATA_UPDATE_SUCCESS,
   payload
 });
-export const userDataUpdateFailed = (): IUserDataUpdateFailed => ({
+export const userDataUpdateFailed = (): UserDataUpdateFailed => ({
   type: USER_DATA_UPDATE_FAILED,
 });
 
 // Refresh Token
-export interface IRefreshAccessTokenRequest {
+export interface RefreshAccessTokenRequest {
   readonly type: typeof REFRESH_ACCESS_TOKEN_REQUEST;
 }
-export interface IRefreshAccessTokenSuccess {
+export interface RefreshAccessTokenSuccess {
   readonly type: typeof REFRESH_ACCESS_TOKEN_SUCCESS;
-  payload: TLoginData
+  payload: LoginData
 }
-export interface IRefreshAccessTokenFailed {
+export interface RefreshAccessTokenFailed {
   readonly type: typeof REFRESH_ACCESS_TOKEN_FAILED;
 }
 
-export const refreshAccessTokenRequest = (): IRefreshAccessTokenRequest => ({
+export const refreshAccessTokenRequest = (): RefreshAccessTokenRequest => ({
   type: REFRESH_ACCESS_TOKEN_REQUEST,
 });
-export const refreshAccessTokenSuccess = (payload: TLoginData): IRefreshAccessTokenSuccess => ({
+export const refreshAccessTokenSuccess = (payload: LoginData): RefreshAccessTokenSuccess => ({
   type: REFRESH_ACCESS_TOKEN_SUCCESS,
   payload
 });
-export const refreshAccessTokenFailed = (): IRefreshAccessTokenFailed => ({
+export const refreshAccessTokenFailed = (): RefreshAccessTokenFailed => ({
   type: REFRESH_ACCESS_TOKEN_FAILED,
 });
 
 // Union тип
-export type TLoginActions =
-  | IUserLoginRequest
-  | IUserLoginSuccess
-  | IUserLoginFailed
-  | IUserLogout
-  | IUserDataRequest
-  | IUserDataSuccess
-  | IUserDataFailed
-  | IUserDataUpdateRequest
-  | IUserDataUpdateSuccess
-  | IUserDataUpdateFailed
-  | IRefreshAccessTokenRequest
-  | IRefreshAccessTokenSuccess
-  | IRefreshAccessTokenSuccess
-  | IRefreshAccessTokenFailed
+export type LoginActions =
+  | UserLoginRequest
+  | UserLoginSuccess
+  | UserLoginFailed
+  | UserLogout
+  | UserDataRequest
+  | UserDataSuccess
+  | UserDataFailed
+  | UserDataUpdateRequest
+  | UserDataUpdateSuccess
+  | UserDataUpdateFailed
+  | RefreshAccessTokenRequest
+  | RefreshAccessTokenSuccess
+  | RefreshAccessTokenSuccess
+  | RefreshAccessTokenFailed
   ;
 
 export const userLogin: AppThunk = (user: { email: string, password: string }) => {
