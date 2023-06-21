@@ -1,62 +1,39 @@
 import { getIngredients } from "../../components/api/api";
 import { AppDispatch, AppThunk } from "../types";
-import { TIngredients } from "../types/types";
+import { Ingredients } from "../types/types";
 
 import { GET_INGREDIENTS_REQUEST, GET_INGREDIENTS_SUCCESS, GET_INGREDIENTS_FAILED } from "../constants/all-ingredients";
 
-/*export function getIngredientsData() {
-  return function (dispatch) {
-    dispatch({
-      type: GET_INGREDIENTS_REQUEST,
-    });
-
-    getIngredients()
-      .then((res) => {
-        if (res && res.success) {
-          dispatch({
-            type: GET_INGREDIENTS_SUCCESS,
-            items: res.data,
-          });
-        }
-      })
-      .catch((e) => {
-        dispatch({
-          type: GET_INGREDIENTS_FAILED,
-        });
-      });
-  };
-}*/
-
 //Типизация экшенов
-export interface IGetIngredientsRequest {
+export interface GetIngredientsRequest {
   readonly type: typeof GET_INGREDIENTS_REQUEST;
 }
 
-export interface IGetIngredientsSuccess {
+export interface GetIngredientsSuccess {
   readonly type: typeof GET_INGREDIENTS_SUCCESS;
-  payload: Array<TIngredients>
+  payload: Array<Ingredients>
 }
 
-export interface IGetIngredientsFailed {
+export interface GetIngredientsFailed {
   readonly type: typeof GET_INGREDIENTS_FAILED;
 }
 
 //Объединение типов
-export type TIngredientsDataActions = 
-  IGetIngredientsRequest
-  | IGetIngredientsSuccess
-  | IGetIngredientsFailed;
+export type IngredientsDataActions = 
+  | GetIngredientsRequest
+  | GetIngredientsSuccess
+  | GetIngredientsFailed;
 
-export const getIngredientsRequest = (): IGetIngredientsRequest => ({
+export const getIngredientsRequest = (): GetIngredientsRequest => ({
   type: GET_INGREDIENTS_REQUEST,
 });
 
-export const getIngredientsSuccess = (payload: Array<TIngredients>): IGetIngredientsSuccess => ({
+export const getIngredientsSuccess = (payload: Ingredients[]): GetIngredientsSuccess => ({
   type: GET_INGREDIENTS_SUCCESS,
   payload
 });
 
-export const getIngredientsFailed = (): IGetIngredientsFailed => ({
+export const getIngredientsFailed = (): GetIngredientsFailed => ({
   type: GET_INGREDIENTS_FAILED,
 });
 
