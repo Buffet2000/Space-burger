@@ -1,4 +1,4 @@
-import { useState, FC } from "react";
+import { useState } from "react";
 import {
   Logo,
   BurgerIcon,
@@ -8,7 +8,7 @@ import {
 import HeaderStyles from "./app-header.module.css";
 import { Link } from 'react-router-dom';
 
-export const AppHeader: FC = () => {
+export default function AppHeader() {
 
   const [active, setActive] = useState("const")
 

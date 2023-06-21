@@ -1,8 +1,7 @@
-import { FC } from 'react';
 import styles from './feed-info.module.css';
 import PropTypes from 'prop-types';
 
-export const FeedInfo: FC = ({ name, arr, done, statusString }) => {
+export default function FeedInfo({ name, arr, done, statusString }) {
 
 	const ordersReady = arr.filter(item => item.status === statusString)
 

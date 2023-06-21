@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import styles from './login.module.css';
 import { EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link } from 'react-router-dom';
@@ -6,7 +5,7 @@ import { userLogin } from '../../services/actions/login';
 import { useSelector, useDispatch } from "../../services/types/hooks";
 import { useForm } from '../../services/types/hooks';
 
-export const Login: FC = () => {
+export default function Login() {
 	const dispatch = useDispatch();
 	const userData = useSelector((store) => store.user);
 

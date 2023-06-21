@@ -1,4 +1,4 @@
-import { useMemo, FC } from "react";
+import { useMemo } from "react";
 import { Counter, CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./burger-ingredient.module.css";
 import { DataType } from "../../utils/dataType";
@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "../../services/types/hooks";
 import { addIngredientInfo } from "../../services/actions/opened-ingredient";
 import { Link, useLocation } from "react-router-dom";
 
-export const BurgerIngredient: FC = ({ data }) => {
+export default function BurgerIngredient({ data }) {
   const dispatch = useDispatch();
   const location = useLocation();
 

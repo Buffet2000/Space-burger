@@ -1,9 +1,9 @@
-import { useState, useMemo, useEffect, FC } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { CurrencyIcon, Button } from "@ya.praktikum/react-developer-burger-ui-components";
-import { BurgerBun } from "../burger-elements/burger-element_bun";
-import { BurgerStuffing } from "../burger-elements/burger-element_stuffing";
-import { OrderDetails } from "../order-details/order-details"
-import { Modal } from "../modal/modal";
+import BurgerBun from "../burger-elements/burger-element_bun";
+import BurgerStuffing from "../burger-elements/burger-element_stuffing";
+import OrderDetails from "../order-details/order-details"
+import Modal from "../modal/modal";
 import styles from "./burger-сonstructor.module.css";
 import { useDrop } from "react-dnd";
 import { useDispatch, useSelector } from "../../services/types/hooks";
@@ -12,7 +12,7 @@ import { addIngredientInConstructor, addBunsInConstructor, deleteAllIngredients 
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 
-export const BurgerConstructor: FC = () => {
+export default function BurgerConstructor() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

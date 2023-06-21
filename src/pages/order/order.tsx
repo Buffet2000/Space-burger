@@ -1,9 +1,9 @@
-import { useEffect, FC } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from '../../services/types/hooks';
-import { OrderInfo } from '../../components/order-info/order-info';
+import OrderInfo from '../../components/order-info/order-info';
 import PropTypes from 'prop-types';
 
-export const Order: FC = ({ start, close, data, modal }) => {
+export default function Order({ start, close, data, modal }) {
 	const dispatch = useDispatch();
 
 	useEffect(() => {

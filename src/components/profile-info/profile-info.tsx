@@ -1,11 +1,11 @@
-import { useRef, useState, FC } from 'react';
+import { useRef, useState } from 'react';
 import styles from './profile-info.module.css';
 import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { updateUserData } from '../../services/actions/login';
 import { useDispatch, useSelector } from '../../services/types/hooks';
 import { useForm } from '../../services/types/hooks';
 
-export const ProfileInfo: FC = () => {
+export default function ProfileInfo() {
 	const dispatch = useDispatch();
 
 	const [disabled, setDisabled] = useState(true);

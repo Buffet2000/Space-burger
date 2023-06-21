@@ -1,11 +1,9 @@
-import React, { useEffect } from "react";
 import styles from "./ingredient-details-page.module.css";
 import { useSelector } from "../../services/types/hooks";
 import { useParams } from "react-router-dom";
-import { IngredientDetails } from "../../components/ingredient-details/ingredient-details";
-import { FC } from 'react';
+import IngredientDetails from "../../components/ingredient-details/ingredient-details";
 
-export const IngredientDetailsPage: FC = () => {
+export default function IngredientDetailsPage() {
 
   const { id } = useParams();
   const itemsLoaded = useSelector((store) => store.ingredients.items);

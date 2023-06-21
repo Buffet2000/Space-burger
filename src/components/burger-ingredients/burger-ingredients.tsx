@@ -1,10 +1,10 @@
-import { useState, useEffect, FC } from "react";
+import { useState, useEffect } from "react";
 import styles from "./burger-ingredients.module.css";
-import { BurgerIngredientCategory } from "../burger-ingredient-category/burger-ingredient-category";
+import BurgerIngredientCategory from "../burger-ingredient-category/burger-ingredient-category";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useInView } from "react-intersection-observer";
 
-export const BurgerIngredients: FC = () => {
+export default function BurgerIngredients() {
   
   const [current, setCurrent] = useState("bun");
 

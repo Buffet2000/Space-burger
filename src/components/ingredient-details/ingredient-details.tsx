@@ -1,10 +1,9 @@
-import { FC } from "react";
 import styles from "./ingredient-details.module.css";
 import { useParams } from "react-router-dom";
 import { useSelector } from "../../services/types/hooks";
 
 
-export const IngredientDetails: FC = () => {
+export default function IngredientDetails() {
   const { id } = useParams();
   const allIngredients = useSelector((store) => store.ingredients.items);
   const openedIngredient = allIngredients.find(item => item._id === id);

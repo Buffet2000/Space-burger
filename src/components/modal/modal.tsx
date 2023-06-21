@@ -1,11 +1,11 @@
-import { useEffect, FC } from "react";
+import { useEffect } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import styles from "./modal.module.css";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import { ModalOverlay } from "../modal-overlay/modal-overlay"
+import ModalOverlay from "../modal-overlay/modal-overlay"
 
-export const Modal: FC = ({ title, children, handleClose }) => {
+export default function Modal({ title, children, handleClose }) {
 
   useEffect(() => {
     const closeByEsc = (e) => (e.key === "Escape" ? handleClose() : null);
