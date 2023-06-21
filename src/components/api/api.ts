@@ -7,7 +7,7 @@ const config = {
   },
 };
 
-const checkResponse = (res) => {
+const checkResponse = (res: Response) => {
   return res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
 };
 
@@ -18,7 +18,7 @@ export function getIngredients() {
   }).then((res) => checkResponse(res));
 }
 
-export function postOrder(orderIds) {
+export function postOrder(orderIds: string[]) {
   return fetch(`${config.baseURL}/orders`, {
     method: "POST",
     headers: {
@@ -32,7 +32,7 @@ export function postOrder(orderIds) {
 }
 
 //запрос на получение письма для сброса пароля
-export function postForgotPassword(email) {
+export function postForgotPassword(email: string) {
   return fetch(`${config.baseURL}/password-reset`, {
     method: "POST",
     headers: config.headers,
@@ -43,7 +43,7 @@ export function postForgotPassword(email) {
 }
 
 //запрос на обновление пароля
-export function postResetPassword(password, token) {
+export function postResetPassword(password: string, token: string) {
   return fetch(`${config.baseURL}/password-reset/reset`, {
     method: "POST",
     headers: config.headers,
@@ -55,7 +55,7 @@ export function postResetPassword(password, token) {
 }
 
 //создание пользователя
-export function registerNewUser(email, password, name) {
+export function registerNewUser(email: string, password: string, name: string) {
   return fetch(`${config.baseURL}/auth/register`, {
     method: "POST",
     headers: config.headers,
@@ -68,7 +68,7 @@ export function registerNewUser(email, password, name) {
 }
 
 //авторизация
-export function login(user) {
+export function login(user: {email: string, password: string}) {
   return fetch(`${config.baseURL}/auth/login`, {
     method: "POST",
     headers: config.headers,
@@ -92,7 +92,7 @@ export function getUser() {
 
 //обновление данных пользователя через профиль
 
-export function updateUser(data) {
+export function updateUser(data: {email: string, name: string}) {
   return fetch(`${config.baseURL}/auth/user`, {
     method: "PATCH",
     headers: {
