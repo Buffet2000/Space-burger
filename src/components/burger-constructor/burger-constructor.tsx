@@ -85,7 +85,7 @@ export default function BurgerConstructor() {
           {ingredients.length === 0
             ? <div className={`${styles.stuffing_addIngredient} text text_type_main-medium`}>Добавь ингредиеты</div>
             : ingredients.map((item, index) => {
-              return <BurgerStuffing data={item} key={item.id} id={item.id} index={index} />
+              return <BurgerStuffing data={item} key={item.id} id={item.id!} index={index} />
             })
           }
         </ul>

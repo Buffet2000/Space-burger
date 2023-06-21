@@ -6,7 +6,7 @@ import { useSelector } from "../../services/types/hooks";
 export default function IngredientDetails() {
   const { id } = useParams();
   const allIngredients = useSelector((store) => store.ingredients.items);
-  const openedIngredient = allIngredients.find(item => item._id === id);
+  const openedIngredient = allIngredients!.find(item => item._id === id);
   
   return (
     <>

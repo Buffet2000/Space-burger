@@ -15,7 +15,7 @@ type initialState = {
   totalToday: number,
 }
 
-const initialState = {
+const initialState: initialState = {
   wsAuthConnected: false,
   wsAuthError: undefined,
   orders: null,

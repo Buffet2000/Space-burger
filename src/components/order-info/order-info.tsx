@@ -5,27 +5,27 @@ import OrderIngredient from '../orders/order-ingredient/order-ingredient';
 import { CurrencyIcon, FormattedDate } from '@ya.praktikum/react-developer-burger-ui-components';
 import TotalPrice from '../total-price/total-price';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { TOrder } from '../../services/types/types';
+import { Order } from '../../services/types/types';
 
-type TOrderInfo = {
+type OrderInfo = {
   modal?: boolean,
-  data: Array<TOrder>
+  data: Order[],
 }
 
-export default function OrderInfo({ modal, data }): TOrderInfo {
+export default function OrderInfo({ modal, data }: OrderInfo) {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const { id } = useParams();
 
 	const currentOrderData = data.find(item => item._id === id);
 	const allIngredients = useSelector((store) => store.ingredients.items);
-	const orderingredients = currentOrderData?.ingredients.map((item) => allIngredients.find((data) => data._id === item));
-	const totalPrice = orderingredients?.reduce((previous, current) => previous + current.price, 0);
+	const orderingredients = currentOrderData?.ingredients.map((item) => allIngredients!.find((data) => data._id === item));
+	const totalPrice = orderingredients?.reduce((previous, current) => previous + current?.price!, 0);
 	const uniqueIngredients = currentOrderData?.ingredients.filter((element, index) => {
 		return currentOrderData.ingredients.indexOf(element) === index;
 	}).reverse();
 
-	function Counter(arr, id) {
+	function Counter(arr: string[], id: string) {
 		return arr.filter(item => item == id).length
 	};
 
@@ -42,7 +42,7 @@ export default function OrderInfo({ modal, data }): TOrderInfo {
 			}
 		}, [location]);
 	
-		const [style, setStyle] = useState(null)
+		const [style, setStyle] = useState<string>()
 
 	return (
 		<>
@@ -59,16 +59,16 @@ export default function OrderInfo({ modal, data }): TOrderInfo {
 					{currentOrderData.status === 'done' && (<p className={`${styles.orderDone} text text_type_main-default mb-15`}>Выполнен</p>)}
 					<p className={`${styles.orderConsist} text text_type_main-medium mb-6`}>Состав:</p>
 					<ul className={`${styles.blockWithScroll} mb-10`}>
-						{uniqueIngredients.map((item) => {
-							const ingredientInfo = allIngredients.find(ingredient => ingredient._id === item);
-							return (<li className={`${styles.ingredientCard}`} key={ingredientInfo._id}>
+						{uniqueIngredients!.map((item) => {
+							const ingredientInfo = allIngredients!.find(ingredient => ingredient._id === item);
+							return (<li className={`${styles.ingredientCard}`} key={ingredientInfo!._id}>
 								<div className={`${styles.ingredient}`}>
-									<OrderIngredient id={item} />
-									<p className={`text text_type_main-default ml-4`}>{ingredientInfo.name}</p>
+									<OrderIngredient id={item} intersection={false} />
+									<p className={`text text_type_main-default ml-4`}>{ingredientInfo!.name}</p>
 								</div>
 								<div className={`${styles.ingredientPriceBlock}`}>
-									<p className={`text text_type_digits-default mr-2`}>{Counter(currentOrderData.ingredients, item)} x {ingredientInfo.price}</p>
-									<CurrencyIcon />
+									<p className={`text text_type_digits-default mr-2`}>{Counter(currentOrderData.ingredients, item)} x {ingredientInfo!.price}</p>
+									<CurrencyIcon type='primary' />
 								</div>
 							</li>)
 						})}
