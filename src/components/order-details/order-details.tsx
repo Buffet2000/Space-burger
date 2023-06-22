@@ -10,7 +10,7 @@ export default function OrderDetails() {
 
   return ( 
     <div className={styles.order_details}>
-      {orderInfo 
+      {orderInfo
       ?  <p className='text text_type_digits-large mt-15'>{orderNumber}</p>
       :  <p className='text text_type_main-medium'>Ожидайте...</p>
       }

@@ -58,7 +58,7 @@ export const postOrderInfo: AppThunk = (orderIds: string[]) => {
     dispatch(getOrderNumberRequest());
 
     postOrder(orderIds)
-      .then((res) => {
+      .then(res => {
         if (res && res.success) {
           dispatch(getOrderNumberSuccess(res.order.number));
         }
