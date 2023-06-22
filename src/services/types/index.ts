@@ -1,5 +1,5 @@
 import { CurrentOrderActions } from "../actions/current-order";
-import { IngredientInfoActions } from "../actions/opened-ingredient-info";
+import { OpenedIngredientInfoActions } from "../actions/opened-ingredient-info";
 import { IngrediensConstructorActions } from "../actions/constructor-ingredients";
 import { IngredientsDataActions } from "../actions/all-ingredients";
 import { LoginActions } from "../actions/login";
@@ -18,7 +18,7 @@ export type RootState = ReturnType<typeof rootReducer>;
 // Все экшены приложения
 type ApplicationActions =
   | CurrentOrderActions
-  | IngredientInfoActions
+  | OpenedIngredientInfoActions
   | IngrediensConstructorActions
   | IngredientsDataActions
   | LoginActions

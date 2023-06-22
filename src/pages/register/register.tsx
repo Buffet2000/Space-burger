@@ -8,11 +8,6 @@ import { useSelector, useForm } from '../../services/types/hooks';
 export default function Register() {
 	const { isAuthenticated } = useSelector((store) => store.user);
 
-	const inputRef = useRef(null)
-	const onIconClick = () => {
-		setTimeout(() => inputRef.current.focus(), 0)
-	}
-
 	const { values, handleChange } = useForm({ email: "", password: "", name: "" })
 
 	const submitNewUser = () => {
@@ -30,8 +25,6 @@ export default function Register() {
 					value={values.name}
 					name={'name'}
 					error={false}
-					ref={inputRef}
-					onIconClick={onIconClick}
 					errorText={'Ошибка'}
 					size={'default'}
 					extraClass="ml-1"

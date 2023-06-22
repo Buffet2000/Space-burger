@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import styles from './profile.module.css';
-import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { logoutUser } from '../../services/actions/login';
 import { useDispatch } from '../../services/types/hooks';
 
@@ -15,33 +15,32 @@ export default function Profile() {
 	}
 
 	useEffect(() => {
-    if (location.pathname === '/profile') {
-      setCurrent('profile');
-    }
-    if (location.pathname === '/profile/orders') {
-      setCurrent("orderHistory");
-    }
-  }, [location]);
+		if (location.pathname === '/profile') {
+			setCurrent('profile');
+		}
+		if (location.pathname === '/profile/orders') {
+			setCurrent("orderHistory");
+		}
+	}, [location]);
 
 	return (
 		<>
 			<div className={styles.profileContent}>
 				<div className={styles.profileNavigation}>
-					<Link to={{ pathname: "/profile" }} name='profile' className={styles.profileLink} >
-						<p className={current === 'profile' ? 'text text_type_main-medium' : 'text text_type_main-medium text_color_inactive'}>Профиль</p>
-					</Link>
-					<Link to={{ pathname: "/profile/orders" }} name='orderHistory' className={styles.profileLink} >
-						<p className={current === 'orderHistory' ? 'text text_type_main-medium' : 'text text_type_main-medium text_color_inactive'}>История заказов</p>
-					</Link>
-					<Link name='logOut' className={styles.profileLink} onClick={logOut}>
-						<p className={current === 'logOut' ? 'text text_type_main-medium' : 'text text_type_main-medium text_color_inactive'}>Выход</p>
-					</Link>
+					<NavLink end to="/profile" className={({ isActive }) => isActive ? `${styles.profileLink} text_color_inactive text text_type_main-medium` : `${styles.profileLink} text text_type_main-medium text_color_inactive`}>Профиль</NavLink>
+					<NavLink to="/profile/orders" className={({ isActive }) => isActive ? `${styles.profileLink} text_color_inactive text text_type_main-medium` : `${styles.profileLink} text text_type_main-medium text_color_inactive`}>История заказов</NavLink>
+					<NavLink to="/login" className={`${styles.profileLink} text_color_inactive text text_type_main-medium`} onClick={logOut}>Выход</NavLink>
 					<div className={styles.help}>
 						<p className='text text_type_main-default text_color_inactive'>В этом разделе вы можете изменить свои персональные данные</p>
 					</div>
 				</div>
-				<Outlet className="mt-30" />
+				<Outlet />
 			</div>
 		</>
 	)
 }
+/*
+	<NavLink end to="/profile" className={({isActive}) => isActive ? `${styles.link} ${styles.active} text text_type_main-medium` : `${styles.link} text text_type_main-medium`}>Профиль</NavLink>
+	<NavLink to="/profile/orders" className={({isActive}) => isActive ? `${styles.link} ${styles.active} text text_type_main-medium` : `${styles.link} text text_type_main-medium`}>История заказов</NavLink>
+	<NavLink to="/login" className={`${styles.link} text text_type_main-medium`} onClick={logOut}>Выход</NavLink>
+*/

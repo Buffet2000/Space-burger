@@ -4,7 +4,7 @@ import styles from './order-ingredient.module.css';
 type OrderIngredient = {
   intersection: boolean,
   id: string,
-  counter?: number,
+  counter?: number | undefined,
 }
 
 export default function OrderIngredient({ intersection, id, counter }: OrderIngredient) {

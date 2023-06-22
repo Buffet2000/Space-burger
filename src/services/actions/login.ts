@@ -8,7 +8,7 @@ import {
   REFRESH_ACCESS_TOKEN_REQUEST, REFRESH_ACCESS_TOKEN_SUCCESS, REFRESH_ACCESS_TOKEN_FAILED,
   USER_DATA_UPDATE_REQUEST, USER_DATA_UPDATE_SUCCESS, USER_DATA_UPDATE_FAILED
 } from "../constants/login";
-import { setCookie, deleteCookie } from "../utils";
+import { setCookie, deleteCookie } from "../cookie";
 import { AppDispatch, AppThunk } from "../types";
 
 type LoginData = {
@@ -28,7 +28,7 @@ export interface UserLoginRequest {
 }
 export interface UserLoginSuccess {
   readonly type: typeof USER_LOGIN_SUCCESS;
-  payload: LoginData
+  payload: LoginData;
 }
 export interface UserLoginFailed {
   readonly type: typeof USER_LOGIN_FAILED;
@@ -57,7 +57,7 @@ export interface UserDataRequest {
 }
 export interface UserDataSuccess {
   readonly type: typeof USER_DATA_SUCCESS;
-  payload: LoginData
+  payload: LoginData;
 }
 export interface UserDataFailed {
   readonly type: typeof USER_DATA_FAILED;
@@ -80,7 +80,7 @@ export interface UserDataUpdateRequest {
 }
 export interface UserDataUpdateSuccess {
   readonly type: typeof USER_DATA_UPDATE_SUCCESS;
-  payload: LoginData
+  payload: LoginData;
 }
 export interface UserDataUpdateFailed {
   readonly type: typeof USER_DATA_UPDATE_FAILED;
@@ -140,24 +140,24 @@ export type LoginActions =
 
 export const userLogin: AppThunk = (user: { email: string, password: string }) => {
   return function (dispatch: AppDispatch) {
-    dispatch(userLoginRequest);
+    dispatch(userLoginRequest());
     login(user)
       .then((res) => {
         if (res && res.success) {
           setCookie("accessToken", res.accessToken.split("Bearer ")[1]);
           setCookie("refreshToken", res.refreshToken);
-          dispatch(userLoginSuccess);
+          dispatch(userLoginSuccess(res));
         }
       })
       .catch((e) => {
-        dispatch(userLoginFailed);
+        dispatch(userLoginFailed());
       });
   };
 }
 
 export const logoutUser: AppThunk = (goToPage: () => void) => {
   return function (dispatch: AppDispatch) {
-    dispatch(userLogout);
+    dispatch(userLogout());
     logout().then((res) => {
       if (res && res.success) {
         deleteCookie("accessToken");
@@ -170,49 +170,49 @@ export const logoutUser: AppThunk = (goToPage: () => void) => {
 
 export const getUserData: AppThunk = () => {
   return function (dispatch: AppDispatch) {
-    dispatch(userDataRequest);
+    dispatch(userDataRequest());
     getUser()
       .then((res) => {
         if (res && res.success) {
-          dispatch(userDataSuccess);
+          dispatch(userDataSuccess(res));
         }
       })
       .catch((e) => {
-        dispatch(userDataFailed);
-        dispatch(refreshToken());
+        dispatch(userDataFailed());
+        refreshToken();
       });
   };
 }
 
 export const refreshToken: AppThunk = () => {
   return function (dispatch: AppDispatch) {
-    dispatch(refreshAccessTokenRequest);
+    dispatch(refreshAccessTokenRequest());
     resetToken()
       .then((res) => {
         if (res && res.success) {
-          dispatch(refreshAccessTokenSuccess);
+          dispatch(refreshAccessTokenSuccess(res));
           setCookie("accessToken", res.accessToken.split("Bearer ")[1]);
           setCookie("refreshToken", res.refreshToken);
-          dispatch(getUserData());
+          getUserData();
         }
       })
       .catch((e) => {
-        dispatch(refreshAccessTokenFailed);
+        dispatch(refreshAccessTokenFailed());
       });
   };
 }
 
 export const updateUserData: AppThunk = (data: { email: string, name: string }) => {
   return function (dispatch: AppDispatch) {
-    dispatch(userDataUpdateRequest);
+    dispatch(userDataUpdateRequest());
     updateUser(data)
       .then((res) => {
         if (res && res.success) {
-          dispatch(userDataUpdateSuccess);
+          dispatch(userDataUpdateSuccess(res));
         }
       })
       .catch((e) => {
-        dispatch(userDataUpdateFailed);
+        dispatch(userDataUpdateFailed());
       });
   };
 }

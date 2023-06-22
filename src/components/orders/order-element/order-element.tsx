@@ -5,9 +5,15 @@ import { Link, useLocation } from 'react-router-dom';
 import { addCurrentOrderInfo } from '../../../services/actions/current-order';
 import TotalPrice from '../../total-price/total-price';
 import OrderIngredient from '../order-ingredient/order-ingredient';
-import styles from './order-element.module.css'
+import styles from './order-element.module.css';
+import { Order } from '../../../services/types/types';
 
-export default function OrderElement({ data, path }) {
+type OrderElement = {
+	data: Order,
+	path: string,
+}
+
+export default function OrderElement({ data, path }: OrderElement) {
 	const location = useLocation();
 	const dispatch = useDispatch();
 	const allIngredients = useSelector((store) => store.ingredients.items);
@@ -15,22 +21,27 @@ export default function OrderElement({ data, path }) {
 		return data.ingredients.indexOf(element) === index;
 	}).reverse();
 
-	function Counter(arr, id) {
+	function Counter(arr: string[], id: string) {
 		return arr.filter(item => item == id).length
 	};
 
-	const [status, setStatus] = useState(
+	type Status = {
+		text: string | null,
+		status: string | null,
+		totalPrice: number,
+	}
+
+	const [status, setStatus] = useState<Status>(
 		{
 			text: null,
 			status: null,
-			style: styles.defaultStatus,
 			totalPrice: 0,
 		});
 
 	useMemo(() => {
-		if (allIngredients.length !== 0) {
-			const ingredients = data.ingredients.map((item) => allIngredients.find((data) => data._id === item));
-			const totalPrice = ingredients.reduce((previous, current) => previous + current.price, 0)
+		if (allIngredients!.length !== 0) {
+			const ingredients = data.ingredients.map((item) => allIngredients!.find((data) => data._id === item));
+			const totalPrice = ingredients?.reduce((previous, current) => previous + current?.price!, 0)
 			setStatus({ ...status, status: data.status, totalPrice: totalPrice })
 		}
 	}, [data.status]);
@@ -41,14 +52,14 @@ export default function OrderElement({ data, path }) {
 
 	//Отключение статуса заказа в Ленте заказов
 	useEffect(() => {
-    if (location.pathname === '/feed') {
+		if (location.pathname === '/feed') {
 			setStatusOff(`${styles.statusOff}`);
 			setSize(`${styles.orderCard_size}`)
-    }
-  }, [location]);
+		}
+	}, [location]);
 
-	const [statusOff, setStatusOff] = useState(null)
-	const [size, setSize] = useState(null)
+	const [statusOff, setStatusOff] = useState<string>()
+	const [size, setSize] = useState<string>()
 
 	return (
 		<Link to={`${path}/${data._id}`} state={{ background: location }} className={`${styles.orderCard} ${size}`} onClick={handleClick}>

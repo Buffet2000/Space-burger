@@ -11,7 +11,7 @@ export default function ForgotPassword() {
 	const navigate = useNavigate();
 	const { values, handleChange } = useForm({ email: "" });
 
-	const resetPassword = (e) => {
+	const resetPassword = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		dispatch(sentVerificationEmail(values.email, () => navigate('/reset-password')));
 	}

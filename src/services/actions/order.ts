@@ -55,7 +55,7 @@ export type OrderActions =
 
 export const postOrderInfo: AppThunk = (orderIds: string[]) => {
   return function (dispatch: AppDispatch) {
-    dispatch(getOrderNumberRequest);
+    dispatch(getOrderNumberRequest());
 
     postOrder(orderIds)
       .then((res) => {
@@ -64,7 +64,7 @@ export const postOrderInfo: AppThunk = (orderIds: string[]) => {
         }
       })
       .catch((e) => {
-        dispatch(getOrderNumberFailed);
+        dispatch(getOrderNumberFailed());
       });
   };
 }

@@ -11,13 +11,9 @@ export default function ResetPassword() {
 	const inputRef = useRef(null);
 	const { verificationSent } = useSelector((store) => store.resetPassword);
 
-	const onIconClick = () => {
-		setTimeout(() => inputRef.current.focus(), 0)
-	}
-
 	const { values, handleChange } = useForm({ newPassword: "", token: "" })
 	
-	const resetPass = e => {
+	const resetPass = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		dispatch(resetPassword(values.newPassword, values.token));
 		navigate('/login');
@@ -44,8 +40,6 @@ export default function ResetPassword() {
 				value={values.token}
 				name={'token'}
 				error={false}
-				ref={inputRef}
-				onIconClick={onIconClick}
 				errorText={'Ошибка'}
 				size={'default'}
 				extraClass="ml-1"
