@@ -11,11 +11,11 @@ export default function ProtectedRoute({ children, anonymous = false }: Protecte
   const location = useLocation();
 
   const from = location.state?.from.pathname || "/";
-  // Если разрешен неавторизованный доступ, а пользователь авторизован...
+  // Если разрешен неавторизованный доступ и пользователь авторизован:
   if (anonymous && isLoggedIn) {
     return <Navigate to={from} />;
   }
-  // Если требуется авторизация, а пользователь не авторизован...
+  // Если требуется авторизация и пользователь не авторизован:
   if (!anonymous && !isLoggedIn) {
     return <Navigate to="/login" replace state={{ from: location }} />;
   }

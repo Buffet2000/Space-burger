@@ -10,7 +10,7 @@ type BurgerIngredientCategory = {
 
 export default function BurgerIngredientCategory({ innerRef, ingr_type, name, style }: BurgerIngredientCategory) {
   const data = useSelector((store) => store.ingredients.items!);
-  console.log(data)
+
   return (
     <div className="mt-10">
       <p ref={innerRef} id={ingr_type} className="text text_type_main-medium mb-6">{name}</p>

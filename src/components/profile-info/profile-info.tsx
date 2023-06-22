@@ -8,17 +8,18 @@ import { useForm } from '../../services/types/hooks';
 export default function ProfileInfo() {
 	const dispatch = useDispatch();
 
-	const [disabled, setDisabled] = useState(true);
 	const inputRef = useRef(null)
 	const { email, name } = useSelector((store) => store.user.user);
 
-	const {values, handleChange, setValues} = useForm({ name: name, email: email, password: "" });
+	const { values, handleChange, setValues } = useForm({ name: name, email: email, password: "" });
 	const [active, setActive] = useState(false)
+	const [disabled, setDisabled] = useState(true);
 
 	const submitChanges = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		dispatch(updateUserData(values))
 	}
+
 
 	const canсelChanges = () => {
 		setValues({
@@ -44,6 +45,8 @@ export default function ProfileInfo() {
 				size={'default'}
 				extraClass="ml-1"
 				disabled={disabled}
+				onIconClick={() => setDisabled(false)}
+				onClick={() => {setActive(true)}}
 			/>
 			<EmailInput
 				onChange={handleChange}
@@ -52,6 +55,7 @@ export default function ProfileInfo() {
 				placeholder="Логин"
 				isIcon={true}
 				extraClass="mb-2"
+				onClick={() => {setActive(true)}}
 			/>
 			<PasswordInput
 				onChange={handleChange}
@@ -59,6 +63,7 @@ export default function ProfileInfo() {
 				name={'password'}
 				placeholder="Изменить пароль"
 				icon="EditIcon"
+				onClick={() => {setActive(true)}}
 			/>
 			<div className={styles.buttons}>
 				{active && <Button htmlType="button" type="secondary" size="medium" extraClass="ml-2" onClick={canсelChanges}>Отмена</Button>}

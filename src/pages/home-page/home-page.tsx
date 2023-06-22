@@ -17,8 +17,8 @@ export default function HomePage() {
         {!itemsLoaded
         ? "Загрузка..."
         : <DndProvider backend={HTML5Backend}>
-          {!itemsLoaded && !itemsError && <BurgerIngredients />}
-          {!itemsLoaded && !itemsError && <BurgerConstructor />}
+          {!itemsError && <BurgerIngredients />}
+          {!itemsError && <BurgerConstructor />}
         </DndProvider>} 
       </div>
     </>

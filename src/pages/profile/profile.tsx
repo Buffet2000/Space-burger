@@ -27,11 +27,11 @@ export default function Profile() {
 		<>
 			<div className={styles.profileContent}>
 				<div className={styles.profileNavigation}>
-					<NavLink end to="/profile" className={({ isActive }) => isActive ? `${styles.profileLink} text_color_inactive text text_type_main-medium` : `${styles.profileLink} text text_type_main-medium text_color_inactive`}>Профиль</NavLink>
-					<NavLink to="/profile/orders" className={({ isActive }) => isActive ? `${styles.profileLink} text_color_inactive text text_type_main-medium` : `${styles.profileLink} text text_type_main-medium text_color_inactive`}>История заказов</NavLink>
-					<NavLink to="/login" className={`${styles.profileLink} text_color_inactive text text_type_main-medium`} onClick={logOut}>Выход</NavLink>
+					<NavLink to="/profile" end className={({ isActive }) => isActive ? `${styles.profileLink_active} text text_type_main-medium` : `${styles.profileLink} text text_type_main-medium`}>Профиль</NavLink>
+					<NavLink to="/profile/orders" className={({ isActive }) => isActive ? `${styles.profileLink_active} text text_type_main-medium` : `${styles.profileLink} text text_type_main-medium`}>История заказов</NavLink>
+					<NavLink to="/login" className={({ isActive }) => isActive ? `${styles.profileLink_active} text text_type_main-medium` : `${styles.profileLink} text text_type_main-medium`} onClick={logOut}>Выход</NavLink>
 					<div className={styles.help}>
-						<p className='text text_type_main-default text_color_inactive'>В этом разделе вы можете изменить свои персональные данные</p>
+						<p className='text text_type_main-default'>В этом разделе вы можете изменить свои персональные данные</p>
 					</div>
 				</div>
 				<Outlet />

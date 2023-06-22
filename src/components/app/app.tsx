@@ -35,9 +35,7 @@ export default function App() {
   useEffect(() => {
     dispatch(getIngredientsData());
     dispatch(getUserData());
-    console.log(Ingredients)
   }, [dispatch])
-  const Ingredients = useSelector((store) => store.ingredients.items);
 
   function closePopup() {
     navigate(-1)
@@ -46,7 +44,7 @@ export default function App() {
   return (
     <>
       <AppHeader />
-      {!itemsLoaded
+      {!itemsLoaded && userData
         ? <p>Загрузка</p>
         : <Routes location={background || location}>
           <Route path="/" element={<HomePage />} />
