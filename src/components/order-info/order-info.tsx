@@ -48,7 +48,7 @@ export default function OrderInfo({ modal, data }: OrderInfo) {
 		<>
 			{currentOrderData === undefined
 				? <p>Загрузка</p>
-				: <div className={``}>
+				: <div className={styles.orderContainer}>
 					{modal
 						? <p className={`text text_type_digits-default mb-10 ${style}`}>#{currentOrderData.number}</p>
 						: <p className={`${styles.modal} text text_type_digits-default`}>#{currentOrderData.number}</p>

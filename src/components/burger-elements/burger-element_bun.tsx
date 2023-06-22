@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { ConstructorElement, DragIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./burger-element.module.css";
 import { useSelector } from "../../services/types/hooks";
@@ -32,10 +31,3 @@ export default function BurgerBun({ containerType, isLocked, hideIco, nameType }
     </div>
   );
 }
-
-BurgerBun.propTypes = {
-  type: PropTypes.string,
-  isLocked: PropTypes.bool,
-  hideIco: PropTypes.string,
-  nameType: PropTypes.string,
-};
