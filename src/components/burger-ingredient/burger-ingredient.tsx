@@ -1,7 +1,6 @@
 import { useMemo } from "react";
 import { Counter, CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./burger-ingredient.module.css";
-import { DataType } from "../../utils/dataType";
 import { useDrag } from 'react-dnd';
 import { useDispatch, useSelector } from "../../services/types/hooks";
 import { addOpenedIngredientInfo } from "../../services/actions/opened-ingredient-info";
@@ -49,7 +48,3 @@ export default function BurgerIngredient({ data }: BurgerIngredient) {
     </>
   );
 }
-
-BurgerIngredient.propTypes = {
-  data: DataType.isRequired,
-};

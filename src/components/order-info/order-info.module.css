@@ -4,6 +4,7 @@
   margin: auto;
   width: fit-content;
   text-align: start;
+  max-width: 650px;
 }
 
 .orderName {
@@ -21,7 +22,7 @@
   min-height: 64px;
   display: flex;
   align-items: center;
-  justify-content: left;
+  justify-content: center;
 }
 
 .orderConsist {

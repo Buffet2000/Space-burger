@@ -1,6 +1,5 @@
 import { Order } from '../../services/types/types';
 import styles from './feed-info.module.css';
-import PropTypes from 'prop-types';
 
 type FeedInfo = {
 	name: string,
@@ -25,11 +24,4 @@ export default function FeedInfo({ name, arr, done, statusString }: FeedInfo) {
 			</ul>
 		</div>
 	);
-}
-
-FeedInfo.propTypes = {
-	name: PropTypes.string,
-	arr: PropTypes.array,
-	done: PropTypes.bool,
-	statusString: PropTypes.string,
 }
