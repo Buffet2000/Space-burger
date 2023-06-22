@@ -1,7 +1,12 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { getCookie } from "../../services/cookie";
 
-export default function ProtectedRoute({ children, anonymous = false }) {
+type ProtectedRoute = {
+  children: JSX.Element,
+  anonymous?: boolean
+}
+
+export default function ProtectedRoute({ children, anonymous = false }: ProtectedRoute) {
   const isLoggedIn = getCookie("accessToken");
   const location = useLocation();
 

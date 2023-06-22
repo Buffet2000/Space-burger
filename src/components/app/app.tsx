@@ -13,7 +13,7 @@ import { WS_AUTH_CONNECTION_CLOSED, WS_AUTH_CONNECTION_START } from "../../servi
 import { WS_CONNECTION_CLOSED, WS_CONNECTION_START } from '../../services/constants/web-socket';
 import { useSelector, useDispatch } from "../../services/types/hooks";
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
-import ProtectedRoute  from "../protected-route/protected-route";
+import ProtectedRoute from "../protected-route/protected-route";
 import { getUserData } from "../../services/actions/login";
 import Modal from "../modal/modal";
 import ProfileOrders from "../../pages/profile-orders/profile-orders";
@@ -25,7 +25,8 @@ import OrderInfo from "../order-info/order-info";
 export default function App() {
   const location = useLocation();
   const background = location.state && location.state.background;
-  const itemsLoaded = useSelector((store) => store.ingredients.items);
+  const itemsLoaded = useSelector((store) => store.ingredients);
+  const userData = useSelector((store) => store.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const wsOrdersData = useSelector((store) => store.wsOrders.orders);
@@ -33,35 +34,39 @@ export default function App() {
 
   useEffect(() => {
     dispatch(getIngredientsData());
-    dispatch(getUserData()); 
+    dispatch(getUserData());
+    console.log(Ingredients)
   }, [dispatch])
+  const Ingredients = useSelector((store) => store.ingredients.items);
 
   function closePopup() {
     navigate(-1)
   };
-  
+
   return (
     <>
       <AppHeader />
-      <Routes location={background || location}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<ProtectedRoute anonymous> <Login /> </ProtectedRoute>} />
-        <Route path="/profile" element={<ProtectedRoute ><Profile /></ProtectedRoute>}>
-          <Route path="" element={<ProfileInfo />} />
-          <Route path="orders" element={<ProfileOrders reverse path={'/profile/orders'} />} />
-        </Route>
-        <Route path="/profile/orders/:id" element={<ProtectedRoute><Order start={WS_AUTH_CONNECTION_START} close={WS_AUTH_CONNECTION_CLOSED} data={wsAuthOrdersData} /></ProtectedRoute>} />
-        <Route path="/feed" element={<Feed path={'/feed'} />} />
-        <Route path="/feed/:id" element={<Order start={WS_CONNECTION_START} close={WS_CONNECTION_CLOSED} data={wsOrdersData} />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/reset-password" element={<ProtectedRoute anonymous><ResetPassword /></ProtectedRoute>} />
-        <Route path="/forgot-password" element={<ProtectedRoute anonymous><ForgotPassword /></ProtectedRoute>} />
-        <Route path="/ingredients/:id" element={<IngredientDetailsPage />} />
-      </Routes>
+      {!itemsLoaded
+        ? <p>Загрузка</p>
+        : <Routes location={background || location}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<ProtectedRoute anonymous><Login /></ProtectedRoute>} />
+          <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>}>
+            <Route path="" element={<ProfileInfo />} />
+            <Route path="orders" element={<ProfileOrders reverse path={'/profile/orders'} />} />
+          </Route>
+          <Route path="/profile/orders/:id" element={<ProtectedRoute><Order start={WS_AUTH_CONNECTION_START} close={WS_AUTH_CONNECTION_CLOSED} data={wsAuthOrdersData} /></ProtectedRoute>} />
+          <Route path="/feed" element={<Feed path={'/feed'} />} />
+          <Route path="/feed/:id" element={<Order start={WS_CONNECTION_START} close={WS_CONNECTION_CLOSED} data={wsOrdersData} />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/reset-password" element={<ProtectedRoute anonymous><ResetPassword /></ProtectedRoute>} />
+          <Route path="/forgot-password" element={<ProtectedRoute anonymous><ForgotPassword /></ProtectedRoute>} />
+          <Route path="/ingredients/:id" element={<IngredientDetailsPage />} />
+        </Routes>}
 
       {background && itemsLoaded && <Routes> <Route path="/ingredients/:id" element={<Modal title={"Детали ингредиента"} handleClose={closePopup}><IngredientDetails /></Modal>} /> </Routes>}
-      {background && wsOrdersData && <Routes> <Route path="/feed/:id" element={<Modal title={``} handleClose={closePopup}><OrderInfo modal data={wsOrdersData} /></Modal>} /> </Routes>}
-      {background && wsAuthOrdersData && <Routes> <Route path="/profile/orders/:id" element={<Modal handleClose={closePopup}><OrderInfo modal data={wsAuthOrdersData} /></Modal>} /> </Routes>}
+      {background && wsOrdersData && <Routes> <Route path="/feed/:id" element={<Modal title={""} handleClose={closePopup}><OrderInfo modal data={wsOrdersData} /></Modal>} /> </Routes>}
+      {background && wsAuthOrdersData && <Routes> <Route path="/profile/orders/:id" element={<Modal title={""} handleClose={closePopup}><OrderInfo modal data={wsAuthOrdersData} /></Modal>} /> </Routes>}
     </>
   );
 }

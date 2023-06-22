@@ -1,7 +1,15 @@
+import { Order } from '../../services/types/types';
 import styles from './feed-info.module.css';
 import PropTypes from 'prop-types';
 
-export default function FeedInfo({ name, arr, done, statusString }) {
+type FeedInfo = {
+	name: string,
+	arr: Order[],
+	done?: boolean,
+	statusString: "done" | "pending",
+}
+
+export default function FeedInfo({ name, arr, done, statusString }: FeedInfo) {
 
 	const ordersReady = arr.filter(item => item.status === statusString)
 

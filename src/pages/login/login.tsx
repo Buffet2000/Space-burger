@@ -11,7 +11,7 @@ export default function Login() {
 
 	const {values, handleChange} = useForm({email: "", password: ""});
 
-	const loginUser = (e) => {
+	const loginUser = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		dispatch(userLogin(values));
 	}

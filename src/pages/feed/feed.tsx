@@ -5,21 +5,21 @@ import { useDispatch, useSelector } from "../../services/types/hooks";
 import Orders from '../../components/orders/orders';
 import FeedInfo from '../../components/feed-info/feed-info';
 
-export default function Feed({ path }) {
+export default function Feed({ path }: {path: string}) {
 	const dispatch = useDispatch();
 	const wsData = useSelector((store) => store.wsOrders);
 	const ordersData = useSelector((store) => store.wsOrders.orders);
 
 	useEffect(() => {
 		dispatch({ type: WS_CONNECTION_START });
-		return () => dispatch({ type: WS_CONNECTION_CLOSED });
+		return () => {dispatch({ type: WS_CONNECTION_CLOSED })};
 	}, [dispatch]);
 
 	return (
 		<div className={`${styles.page}`}>
 			<h2 className={`${styles.block} text text_type_main-large mt-10 mb-5`}>Лента заказов</h2>
 			<div className={`${styles.block}`}>
-				<Orders ordersData={wsData} path={path} />
+				<Orders ordersData={wsData.orders!} path={path} />
 				<div className={`${styles.ordersTemplate}`}>
 					<div className={`${styles.ordersStatus}`}>
 						{ordersData

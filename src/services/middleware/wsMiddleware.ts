@@ -1,10 +1,20 @@
 import { getCookie } from "../cookie";
+import { Middleware } from "redux";
+import { RootState } from "../types";
 
-export const wsMiddleware = (wsUrl, wsActions, auth) => {
+type wsActions = {
+  wsStart: string,
+  onOpen: string,
+  onClose: string,
+  onError: string,
+  getOrders: string,
+};
+
+export const wsMiddleware = (wsUrl: string, wsActions: wsActions, auth: boolean): Middleware<{}, RootState> => {
   return (store) => {
-    let ws = null;
+    let ws: WebSocket | null = null;
 
-    return (next) => (action) => {
+    return next => action => {
       const { dispatch } = store;
       const { type, payload } = action;
       const { wsStart, onOpen, onClose, onError, getOrders } = wsActions;
@@ -18,22 +28,22 @@ export const wsMiddleware = (wsUrl, wsActions, auth) => {
       }
 
       if (ws) {
-        ws.onopen = (event) => {
+        ws.onopen = (event: Event) => {
           dispatch({ type: onOpen, payload: event });
         };
 
-        ws.onerror = (event) => {
+        ws.onerror = (event: Event) => {
           dispatch({ type: onError, payload: event });
         };
 
-        ws.onmessage = (event) => {
+        ws.onmessage = (event: MessageEvent<any>) => {
           const { data } = event;
           const parsedData = JSON.parse(data);
           const { success, ...restParsedData } = parsedData;
           dispatch({ type: getOrders, payload: restParsedData });
         };
 
-        ws.onclose = (event) => {
+        ws.onclose = (event: CloseEvent) => {
           dispatch({ type: onClose, payload: event });
         };
       }

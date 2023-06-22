@@ -8,17 +8,18 @@ import { useSelector } from "../../services/types/hooks";
 
 
 export default function HomePage() {
-  const itemsLoading = useSelector((store) => store.ingredients.itemsLoading);
-  const itemsError = useSelector((store) => store.ingredients.itemsError);
+  const itemsLoaded = useSelector((store) => store.ingredients.itemsLoaded);
+  const itemsError = useSelector((store) => store.ingredients.itemsFailed);
 
   return (
     <>
       <div className={styles.page}>
-        {itemsLoading && "Загрузка..."}
-        <DndProvider backend={HTML5Backend}>
-          {!itemsLoading && !itemsError && <BurgerIngredients />}
-          {!itemsLoading && !itemsError && <BurgerConstructor />}
-        </DndProvider>
+        {!itemsLoaded
+        ? "Загрузка..."
+        : <DndProvider backend={HTML5Backend}>
+          {!itemsLoaded && !itemsError && <BurgerIngredients />}
+          {!itemsLoaded && !itemsError && <BurgerConstructor />}
+        </DndProvider>} 
       </div>
     </>
   );

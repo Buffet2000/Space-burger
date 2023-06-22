@@ -22,7 +22,8 @@ export interface GetIngredientsFailed {
 export type IngredientsDataActions = 
   | GetIngredientsRequest
   | GetIngredientsSuccess
-  | GetIngredientsFailed;
+  | GetIngredientsFailed
+  ;
 
 export const getIngredientsRequest = (): GetIngredientsRequest => ({
   type: GET_INGREDIENTS_REQUEST,
@@ -43,6 +44,7 @@ export const getIngredientsData: AppThunk = () => (dispatch: AppDispatch) => {
   getIngredients().then(res => {
     if (res && res.success) {
       dispatch(getIngredientsSuccess(res.data))
+      console.log(res.data)
     }
   }).catch(e => {
     dispatch(getIngredientsFailed())

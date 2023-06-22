@@ -8,14 +8,14 @@ import { IngredientsDataActions } from "../actions/all-ingredients";
 
 //Все ингредиенты от запроса API
 type InitialState = {
-  items: Ingredient[] | [],
+  items: Ingredient[] | null,
   itemsRequest: boolean,
   itemsFailed: boolean,
   itemsLoaded: boolean,
 }
 
 const initialState: InitialState = {
-  items: [],
+  items: null,
   itemsRequest: false,
   itemsFailed: false,
   itemsLoaded: false,

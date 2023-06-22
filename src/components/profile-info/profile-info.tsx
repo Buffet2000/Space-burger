@@ -15,17 +15,12 @@ export default function ProfileInfo() {
 	const {values, handleChange, setValues} = useForm({ name: name, email: email, password: "" });
 	const [active, setActive] = useState(false)
 
-	const onIconClick = () => {
-		setTimeout(() => inputRef.current.focus(), 0);
-		setDisabled(false);
-	}
-
-	const submitChanges = (e) => {
+	const submitChanges = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		dispatch(updateUserData(values))
 	}
 
-	const canсelChanges = (e) => {
+	const canсelChanges = () => {
 		setValues({
 			email: email,
 			password: "",
@@ -45,7 +40,6 @@ export default function ProfileInfo() {
 				name={'name'}
 				error={false}
 				ref={inputRef}
-				onIconClick={onIconClick}
 				errorText={'Ошибка'}
 				size={'default'}
 				extraClass="ml-1"

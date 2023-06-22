@@ -5,18 +5,16 @@ import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useInView } from "react-intersection-observer";
 
 export default function BurgerIngredients() {
-  
-  const [current, setCurrent] = useState("bun");
 
-  function scrollToCategory(cat) {
+  function scrollToCategory(cat: string) {
     setCurrent(cat);
     const element = document.getElementById(cat);
     if (element) element.scrollIntoView({ behavior: "smooth" });
   }
 
-  const [ bunRef, scrollToBuns ] = useInView({ threshold: 0 });
-  const [ sauceRef, scrollToSauces ] = useInView({ threshold: 0 });
-  const [ mainRef, scrollToMain ] = useInView({ threshold: 0 });
+  const [bunRef, scrollToBuns] = useInView({ threshold: 0 });
+  const [sauceRef, scrollToSauces] = useInView({ threshold: 0 });
+  const [mainRef, scrollToMain] = useInView({ threshold: 0 });
 
   useEffect(() => {
     if (scrollToBuns) {
@@ -26,22 +24,24 @@ export default function BurgerIngredients() {
     } else if (scrollToMain) {
       setCurrent("main");
     }
-  }, [ scrollToBuns, scrollToSauces, scrollToMain ]);
+  }, [scrollToBuns, scrollToSauces, scrollToMain]);
+
+  const [current, setCurrent] = useState("bun");
 
   return (
     <section className={styles.ingredients}>
       <h2 className="text text_type_main-large mt-10 mb-5">Соберите бургер</h2>
       <div className={styles.ingredient_tabs}>
-      <Tab value="bun" active={current === "bun"} onClick={() => scrollToCategory("bun")}>
-        Булки
-      </Tab>
-      <Tab value="sauce" active={current === "sauce"} onClick={() => scrollToCategory("sauce")}>
-        Соусы
-      </Tab>
-      <Tab value="main" active={current === "main"} onClick={() => scrollToCategory("main")}>
-        Начинки
-      </Tab>
-    </div>
+        <Tab value="bun" active={current === "bun"} onClick={() => scrollToCategory("bun")}>
+          Булки
+        </Tab>
+        <Tab value="sauce" active={current === "sauce"} onClick={() => scrollToCategory("sauce")}>
+          Соусы
+        </Tab>
+        <Tab value="main" active={current === "main"} onClick={() => scrollToCategory("main")}>
+          Начинки
+        </Tab>
+      </div>
       <div className={styles.ingredients_container}>
         <BurgerIngredientCategory
           innerRef={bunRef}
