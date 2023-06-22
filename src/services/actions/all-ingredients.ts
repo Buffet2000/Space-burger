@@ -5,16 +5,16 @@ import { Ingredient } from "../types/types";
 import { GET_INGREDIENTS_REQUEST, GET_INGREDIENTS_SUCCESS, GET_INGREDIENTS_FAILED } from "../constants/all-ingredients";
 
 //Типизация экшенов
-export interface GetIngredientsRequest {
+interface GetIngredientsRequest {
   readonly type: typeof GET_INGREDIENTS_REQUEST;
 }
 
-export interface GetIngredientsSuccess {
+interface GetIngredientsSuccess {
   readonly type: typeof GET_INGREDIENTS_SUCCESS;
   payload: Ingredient[],
 }
 
-export interface GetIngredientsFailed {
+interface GetIngredientsFailed {
   readonly type: typeof GET_INGREDIENTS_FAILED;
 }
 
@@ -44,7 +44,6 @@ export const getIngredientsData: AppThunk = () => (dispatch: AppDispatch) => {
   getIngredients().then(res => {
     if (res && res.success) {
       dispatch(getIngredientsSuccess(res.data))
-      console.log(res.data)
     }
   }).catch(e => {
     dispatch(getIngredientsFailed())
