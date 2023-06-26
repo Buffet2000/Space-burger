@@ -13,7 +13,7 @@ type AppDispatchFunc = () => AppDispatch | AppThunk;
 export const useDispatch: AppDispatchFunc = dispatchHook;
 
 //Универсальный хук для формы
-export function useForm(inputValues: any) {
+export function useForm(inputValues: Record<string, string>) {
   const [values, setValues] = useState(inputValues);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

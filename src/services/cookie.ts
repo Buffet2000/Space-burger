@@ -1,3 +1,9 @@
+type Props = {
+  path?: string
+  expires?: Date | string | number
+  [propName: string]: any
+}
+
 export function setCookie(name: string, value: any, props?: any) {
   props = props || {};
   let exp = props.expires;
