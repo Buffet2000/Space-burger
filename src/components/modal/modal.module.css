@@ -17,10 +17,11 @@
 .button_close {
 	width: 24px;
 	height: 24px;
-	background-color: transparent;
 	border: none;
+	background-color: transparent;
 	position: absolute;
 	right: 45px;
 	top: 60px;
 	cursor: pointer;
+	z-index: 2;
 }
