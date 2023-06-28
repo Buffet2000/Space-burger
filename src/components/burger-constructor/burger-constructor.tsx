@@ -20,9 +20,6 @@ export default function BurgerConstructor() {
   const { isAuthenticated } = useSelector((store) => store.user);
   const [modalActive, setModalActive] = useState(false);
 
-  //const getIngredients = (store) => store.constructorIngredients.ingredients;
-  //const getBuns = (store) => store.constructorIngredients.buns;
-
   const ingredients = useSelector((store) => store.constructorIngredients.ingredients); //Ингредиенты в конструкторе
   const buns = useSelector((store) => store.constructorIngredients.buns);//Булки в конструкторе
   const order = [...ingredients, ...buns]; //Весь заказ в конструкторе
