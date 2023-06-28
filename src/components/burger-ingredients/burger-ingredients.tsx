@@ -35,7 +35,7 @@ export default function BurgerIngredients() {
         <Tab value="bun" active={current === "bun"} onClick={() => scrollToCategory("bun")}>
           Булки
         </Tab>
-        <Tab value="sauce" active={current === "sauce"} onClick={() => scrollToCategory("sauce")}>
+        <Tab  value="sauce" active={current === "sauce"} onClick={() => scrollToCategory("sauce")}>
           Соусы
         </Tab>
         <Tab value="main" active={current === "main"} onClick={() => scrollToCategory("main")}>

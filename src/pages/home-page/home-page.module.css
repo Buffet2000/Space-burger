@@ -7,3 +7,24 @@
 	justify-content: center;
 	gap: 40px;
 }
+
+@media (max-width: 500px) {
+	.page {
+		display: none;
+	}
+}
+
+.page_mobile {
+	display: none;
+}
+
+@media (max-width: 500px) {
+	.page_mobile {
+		display: flex;
+		flex-direction: row;
+		max-width: 500px;
+		margin: 0 auto;
+		justify-content: center;
+		gap: 10px;
+	}
+}

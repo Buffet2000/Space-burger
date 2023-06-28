@@ -1,5 +1,7 @@
 .ingredients {
   max-width: 600px;
+  display: flexbox;
+  justify-content: center;
 }
 
 .ingredients_container {
@@ -51,4 +53,12 @@
 
 .ingredient_tabs {
   display: flex;
+  max-width: 500px;
+}
+
+@media (max-width: 500px) {
+  .ingredient_tabs {
+    max-width: 500px;
+    overflow: hidden;
+  }
 }

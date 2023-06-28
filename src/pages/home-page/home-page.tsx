@@ -15,11 +15,18 @@ export default function HomePage() {
     <>
       <div className={styles.page}>
         {!itemsLoaded
-        ? "Загрузка..."
-        : <DndProvider backend={HTML5Backend}>
-          {!itemsError && <BurgerIngredients />}
-          {!itemsError && <BurgerConstructor />}
-        </DndProvider>} 
+          ? "Загрузка..."
+          : <DndProvider backend={HTML5Backend}>
+            {!itemsError && <BurgerIngredients />}
+            {!itemsError && <BurgerConstructor />}
+          </DndProvider>}
+      </div>
+      <div className={styles.page_mobile}>
+        {!itemsLoaded
+          ? "Загрузка..."
+          : <DndProvider backend={HTML5Backend}>
+            {!itemsError && <BurgerIngredients />}
+          </DndProvider>}
       </div>
     </>
   );
