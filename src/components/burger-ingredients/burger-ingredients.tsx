@@ -3,6 +3,8 @@ import styles from "./burger-ingredients.module.css";
 import BurgerIngredientCategory from "../burger-ingredient-category/burger-ingredient-category";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useInView } from "react-intersection-observer";
+import './custom-tab-styles.css';
+
 
 export default function BurgerIngredients() {
 
@@ -35,7 +37,7 @@ export default function BurgerIngredients() {
         <Tab value="bun" active={current === "bun"} onClick={() => scrollToCategory("bun")}>
           Булки
         </Tab>
-        <Tab  value="sauce" active={current === "sauce"} onClick={() => scrollToCategory("sauce")}>
+        <Tab value="sauce" active={current === "sauce"} onClick={() => scrollToCategory("sauce")}>
           Соусы
         </Tab>
         <Tab value="main" active={current === "main"} onClick={() => scrollToCategory("main")}>

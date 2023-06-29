@@ -22,13 +22,24 @@
 	object-fit: contain;
 }
 
-@media (max-width: 500px) {
-	.ingImage {
-		max-width: 144px;
-	}
-}
-
 .linkContainer {
+	max-width: 272px;
 	text-decoration: none;
 	color: #F2F2F3;
+}
+
+@media (max-width: 500px) {
+	.ingImage {
+		max-width: 190px;
+	}
+
+	.ingredients_card {
+		max-width: 190px;
+	}
+
+	.linkContainer {
+		max-width: 190px;
+		text-decoration: none;
+		color: #F2F2F3;
+	}
 }

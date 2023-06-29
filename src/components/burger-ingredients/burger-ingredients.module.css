@@ -1,7 +1,5 @@
 .ingredients {
   max-width: 600px;
-  display: flexbox;
-  justify-content: center;
 }
 
 .ingredients_container {
@@ -57,8 +55,25 @@
 }
 
 @media (max-width: 500px) {
-  .ingredient_tabs {
-    max-width: 500px;
+
+  .ingredients_container {
+    max-width: 480px;
+  }
+
+  .buns {
+    margin-left: 0;
+  }
+  
+  .sauces {
+    margin-left: 0;
+  }
+  
+  .stuffing {
+    margin-left: 0;
+  }
+
+  .ingredients_container {
     overflow: hidden;
   }
 }
+

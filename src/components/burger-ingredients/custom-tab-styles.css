@@ -1,0 +1,5 @@
+@media (max-width: 500px) {
+	.tab {
+		min-width: 33.3%;
+	}
+}
