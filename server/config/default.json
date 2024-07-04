@@ -1,0 +1,5 @@
+{
+  "serverPort": 5001,
+  "dbUrl": "mongodb+srv://buffet2000:8Qok1UIU78PBMXor@cluster-burger.1pzprns.mongodb.net/?retryWrites=true&w=majority&appName=Cluster-burger",
+  "secretKey": "burger-secretKey"
+}

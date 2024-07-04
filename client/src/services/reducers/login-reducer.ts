@@ -6,7 +6,7 @@ import {
 } from "../constants/login";
 import { LoginActions } from "../actions/login";
 
-type initialState = {
+type InitialState = {
   loginRequest: boolean,
   loginRequestFailed: boolean,
   userDataLoaded: boolean,
@@ -25,7 +25,7 @@ type initialState = {
   refreshToken: string,
 }
 
-const initialState: initialState = {
+const initialState: InitialState = {
   loginRequest: false,
   loginRequestFailed: false,
   userDataLoaded: false,
