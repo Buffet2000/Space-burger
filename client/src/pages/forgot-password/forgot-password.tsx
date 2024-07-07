@@ -19,17 +19,17 @@ export default function ForgotPassword() {
 	return (
 		<>
 			<form onSubmit={resetPassword} className={styles.inputContainer}>
-				<h2 className="text text_type_main-medium">Восстановление пароля</h2>
+				<h2 className="text text_type_main-medium">Password recovery</h2>
 				<EmailInput
 					onChange={handleChange}
 					value={values.email}
 					name={'email'}
-					placeholder="Укажите e-mail"
+					placeholder="Enter your E-mail"
 					extraClass="mb-2"
 				/>
-				<Button htmlType="submit" type="primary" size="medium" >Восстановить</Button>
+				<Button htmlType="submit" type="primary" size="medium">Reset</Button>
 				<div className={styles.registration}>
-					<p className="text text_type_main-default text_color_inactive">Вспомнили пароль? <Link className={styles.link} to='/login'>Войти</Link></p>
+					<p className="text text_type_main-default text_color_inactive">Remember your password? <Link className={styles.link} to='/login'>Login</Link></p>
 				</div>
 			</form>
 		</>

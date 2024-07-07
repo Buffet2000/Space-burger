@@ -5,12 +5,11 @@ import {
 import { Ingredient } from "../types/types";
 import { OpenedIngredientInfoActions } from "../actions/opened-ingredient-info";
 
-type initialState = {
+type InitialState = {
   information: Ingredient | null,
 }
 
-//Открытый ингредиент, информация
-const initialState = {
+const initialState: InitialState = {
   information: null,
 };
 

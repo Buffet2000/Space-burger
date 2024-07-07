@@ -120,7 +120,7 @@ export const refreshAccessTokenFailed = (): RefreshAccessTokenFailed => ({
   type: REFRESH_ACCESS_TOKEN_FAILED,
 });
 
-// Union тип
+// Union type
 export type LoginActions =
   | UserLoginRequest
   | UserLoginSuccess

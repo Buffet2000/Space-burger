@@ -7,11 +7,11 @@ import { addOpenedIngredientInfo } from "../../services/actions/opened-ingredien
 import { Link, useLocation } from "react-router-dom";
 import { Ingredient } from "../../services/types/types";
 
-type BurgerIngredient = {
+type BurgerIngredientProps = {
   data: Ingredient,
 }
 
-export default function BurgerIngredient({ data }: BurgerIngredient) {
+export default function BurgerIngredient({ data }: BurgerIngredientProps) {
   const dispatch = useDispatch();
   const location = useLocation();
 

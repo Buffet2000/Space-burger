@@ -1,4 +1,3 @@
-import { useRef, FC } from 'react';
 import styles from './reset-password.module.css';
 import { Input, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link, useNavigate } from 'react-router-dom';
@@ -8,7 +7,6 @@ import { resetPassword } from '../../services/actions/reset-password';
 export default function ResetPassword() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const inputRef = useRef(null);
 	const { verificationSent } = useSelector((store) => store.resetPassword);
 
 	const { values, handleChange } = useForm({ newPassword: "", token: "" })
@@ -25,7 +23,7 @@ export default function ResetPassword() {
 
 	return (
 		<form onSubmit={resetPass} className={styles.inputContainer}>
-			<h2 className="text text_type_main-medium">Восстановление пароля</h2>
+			<h2 className="text text_type_main-medium">Password recovery</h2>
 			<PasswordInput
 				onChange={handleChange}
 				value={values.newPassword}

@@ -8,11 +8,9 @@ import { AppDispatch, AppThunk, RootState } from './index';
 
 export const useSelector: TypedUseSelectorHook<RootState> = selectorHook;
 
-//Хук не даст отправить экшен, который ему не знаком
 type AppDispatchFunc = () => AppDispatch | AppThunk;
 export const useDispatch: AppDispatchFunc = dispatchHook;
 
-//Универсальный хук для формы
 export function useForm(inputValues: Record<string, string>) {
   const [values, setValues] = useState(inputValues);
 

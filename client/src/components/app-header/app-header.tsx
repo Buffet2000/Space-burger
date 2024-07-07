@@ -17,11 +17,11 @@ export default function AppHeader() {
       <div className={HeaderStyles.button_container}>
         <Link to='/' type="button" className={HeaderStyles.button_burger} onClick={() => setActive('const')}>
           <BurgerIcon type={active === "const" ? "primary" : "secondary"} />
-          <p className={active === "const" ? 'text text_type_main-default' : 'text text_type_main-default text_color_inactive'}>Конструктор</p>
+          <p className={active === "const" ? 'text text_type_main-default' : 'text text_type_main-default text_color_inactive'}>Constructor</p>
         </Link>
         <Link to='/feed' type="button" className={HeaderStyles.button_list} onClick={() => setActive('orders')}>
           <ListIcon type={active === "orders" ? "primary" : "secondary"} />
-          <p className={active === "orders" ? 'text text_type_main-default' : 'text text_type_main-default text_color_inactive'}>Лента заказов</p>
+          <p className={active === "orders" ? 'text text_type_main-default button_text' : 'text text_type_main-default text_color_inactive'}>Order feed</p>
         </Link>
       </div>
       <div className={HeaderStyles.burger_logo}>
@@ -29,7 +29,7 @@ export default function AppHeader() {
       </div>
       <Link to='/profile' type="button" className={HeaderStyles.button_profile} onClick={() => setActive('profile')}>
         <ProfileIcon type={active === "profile" ? "primary" : "secondary"} />
-        <p className={active === "profile" ? 'text text_type_main-default' : 'text text_type_main-default text_color_inactive'}>Личный кабинет</p>
+        <p className={active === "profile" ? 'text text_type_main-default' : 'text text_type_main-default text_color_inactive'}>Personal account</p>
       </Link>
     </header>
   );

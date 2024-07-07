@@ -6,13 +6,13 @@ import { useDispatch } from "../../services/types/hooks";
 import { moveIngredientInConstructor, deleteIngredient } from "../../services/actions/constructor-ingredients";
 import { Ingredient } from "../../services/types/types";
 
-export type BurgerStuffing = {
+export type BurgerStuffingProps = {
   data: Ingredient,
   id: string,
   index: number,
 }
 
-export default function BurgerStuffing({ data, id, index }: BurgerStuffing) {
+export default function BurgerStuffing({ data, id, index }: BurgerStuffingProps) {
   const ref = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
 

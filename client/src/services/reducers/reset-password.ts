@@ -4,7 +4,7 @@ import {
 } from "../constants/password-reset";
 import { ResetPasswordActions } from "../actions/reset-password";
 
-type initialState = {
+type InitialState = {
   emailRequest: boolean,
   emailRequestFailed: boolean,
   resetPasswordRequest: boolean,
@@ -12,7 +12,7 @@ type initialState = {
   verificationSent: boolean,
 }
 
-const initialState: initialState = {
+const initialState: InitialState = {
   emailRequest: false,
   emailRequestFailed: false,
   resetPasswordRequest: false,

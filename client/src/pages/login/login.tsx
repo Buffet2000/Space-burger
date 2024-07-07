@@ -19,7 +19,7 @@ export default function Login() {
 	return (
 		<>
 			<div className={styles.inputContainer}>
-				<h2 className="text text_type_main-medium">Вход</h2>
+				<h2 className="text text_type_main-medium">Login</h2>
 				<form className={styles.form} onSubmit={loginUser}>
 					<EmailInput
 						onChange={handleChange}
@@ -32,20 +32,21 @@ export default function Login() {
 						onChange={handleChange}
 						value={values.password}
 						name={'password'}
+						placeholder='Password'
 						extraClass='mb-2'
 					/>
 					{userData.loginRequestFailed && (
 						<p className={`${styles.error} text text_type_main-default mb-2`}>
-							Неверный логин или пароль
+							Invalid login or password
 						</p>
 					)}
 					<Button htmlType="submit" type="primary" size="medium">
-						Войти
+						Login
 					</Button>
 				</form>
 				<div className={styles.registration}>
-					<p className="text text_type_main-default text_color_inactive">Вы — новый пользователь? <Link className={styles.link} to='/register'>Зарегистрироваться</Link></p>
-					<p className="text text_type_main-default text_color_inactive mt-4">Забыли пароль? <Link className={styles.link} to='/forgot-password'>Восстановить пароль</Link></p>
+					<p className="text text_type_main-default text_color_inactive">You are a new user? <Link className={styles.link} to='/register'>Registration</Link></p>
+					<p className="text text_type_main-default text_color_inactive mt-4">Forgot your password? <Link className={styles.link} to='/forgot-password'>Recover your password</Link></p>
 				</div>
 			</div>
 		</>

@@ -25,7 +25,7 @@ export default function IngredientDetails() {
               <div className={styles.nutrition_values}>
                 <div className={styles.value_item}>
                   <p className="text text_type_main-default text_color_inactive">
-                    Калории, ккал
+                    Calories, kcal
                   </p>
                   <p className="text text_type_digits-default text_color_inactive mt-2">
                     {openedIngredient.calories}
@@ -33,7 +33,7 @@ export default function IngredientDetails() {
                 </div>
                 <div className={styles.value_item}>
                   <p className="text text_type_main-default text_color_inactive">
-                    Белки, г
+                    Protein, g
                   </p>
                   <p className="text text_type_digits-default text_color_inactive mt-2">
                     {openedIngredient.proteins}
@@ -41,7 +41,7 @@ export default function IngredientDetails() {
                 </div>
                 <div className={styles.value_item}>
                   <p className="text text_type_main-default text_color_inactive">
-                    Жиры, г
+                    Fat, g
                   </p>
                   <p className="text text_type_digits-default text_color_inactive mt-2">
                     {openedIngredient.fat}
@@ -49,7 +49,7 @@ export default function IngredientDetails() {
                 </div>
                 <div className={styles.value_item}>
                   <p className="text text_type_main-default text_color_inactive">
-                    Углеводы, г
+                    Carbs, g
                   </p>
                   <p className="text text_type_digits-default text_color_inactive mt-2">
                     {openedIngredient.carbohydrates}

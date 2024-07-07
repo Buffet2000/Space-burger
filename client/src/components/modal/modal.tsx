@@ -4,7 +4,7 @@ import styles from "./modal.module.css";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import ModalOverlay from "../modal-overlay/modal-overlay"
 
-type Modal = {
+type ModalProps = {
   title?: string,
   children: JSX.Element,
   handleClose: (() => void),
@@ -12,14 +12,14 @@ type Modal = {
 
 const modal = document.getElementById('modal') as HTMLElement;
 
-export default function Modal({ title, children, handleClose }: Modal) {
+export default function Modal({ title, children, handleClose }: ModalProps) {
 
   useEffect(() => {
     const closeByEsc = (e: KeyboardEvent) => (e.key === "Escape" ? handleClose() : null);
     document.addEventListener("keydown", closeByEsc);
 
     return () => document.removeEventListener("keydown", closeByEsc);
-  }, []);
+  }, [handleClose]);
 
   return ReactDOM.createPortal(
     <>

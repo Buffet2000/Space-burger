@@ -19,13 +19,13 @@ export default function Order({ start, close, data, modal }: OrderFullScreen) {
 			dispatch({ type: start });
 		}
 		return () => {dispatch({ type: close })};
-	}, []);
+	});
 
 	return (
 		<>
 			{data
 				? <OrderInfo data={data} modal={modal} />
-				: <p>Загрузка данных...</p>}
+				: <p>Loading...</p>}
 		</>
 	);
 }

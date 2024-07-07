@@ -7,7 +7,7 @@ import {
 import { Order } from "../types/types";
 import { WsAuthActions } from "../actions/web-socket-auth";
 
-type initialState = {
+type InitialState = {
   wsAuthConnected: boolean,
   wsAuthError: string | undefined,
   orders: Order[] | null,
@@ -15,7 +15,7 @@ type initialState = {
   totalToday: number,
 }
 
-const initialState: initialState = {
+const initialState: InitialState = {
   wsAuthConnected: false,
   wsAuthError: undefined,
   orders: null,

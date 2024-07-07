@@ -15,7 +15,7 @@ export default function HomePage() {
     <>
       <div className={styles.page}>
         {!itemsLoaded
-        ? "Загрузка..."
+        ? "Loading"
         : <DndProvider backend={HTML5Backend}>
           {!itemsError && <BurgerIngredients />}
           {!itemsError && <BurgerConstructor />}

@@ -7,7 +7,6 @@
   background: #1c1c21;
   align-items: center;
   justify-content: center;
-  /*border: 1px red solid;*/
 }
 
 .burger_logo {
@@ -15,7 +14,6 @@
   width: 290px;
   height: 40px;
   margin-left: 110px;
-  /*border: 1px red solid;*/
   align-items: center;
 }
 
@@ -29,8 +27,6 @@
   background: #1c1c21;
   border-radius: 40px;
   color: #F2F2F3;
-  /*border: 1px red solid;*/
-  border: none;
   text-decoration: none;
 }
 
@@ -40,12 +36,12 @@
   align-items: center;
   padding: 16px 20px;
   gap: 8px;
+  min-width: 137px;
   max-width: 197px;
   margin-left: 8px;
   background: #1c1c21;
   border-radius: 40px;
   color: #F2F2F3;
-  /*border: 1px red solid;*/
   border: none;
   text-decoration: none;
 }
@@ -56,14 +52,13 @@
   align-items: center;
   padding: 16px 20px;
   gap: 8px;
+  min-width: 190px;
   max-width: 207px;
   margin-left: 290px;
   margin-right: 320px;
   background: #1c1c21;
   border-radius: 40px;
   color: #F2F2F3;
-  /*border: 1px red solid;*/
-  border: none;
   text-decoration: none;
   cursor: pointer;
 }
@@ -74,5 +69,5 @@
   margin-left: 320px;
   margin-top: 16px;
   margin-bottom: 16px;
-  /*border: 1px red solid;*/
+  width: 600px;
 }

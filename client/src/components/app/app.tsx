@@ -45,7 +45,7 @@ export default function App() {
     <>
       <AppHeader />
       {!itemsLoaded && userData
-        ? <p>Загрузка</p>
+        ? <p>Loading</p>
         : <Routes location={background || location}>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<ProtectedRoute anonymous><Login /></ProtectedRoute>} />
@@ -62,7 +62,7 @@ export default function App() {
           <Route path="/ingredients/:id" element={<IngredientDetailsPage />} />
         </Routes>}
 
-      {background && itemsLoaded && <Routes> <Route path="/ingredients/:id" element={<Modal title={"Детали ингредиента"} handleClose={closePopup}><IngredientDetails /></Modal>} /> </Routes>}
+      {background && itemsLoaded && <Routes> <Route path="/ingredients/:id" element={<Modal title={"Ingredient detail"} handleClose={closePopup}><IngredientDetails /></Modal>} /> </Routes>}
       {background && wsOrdersData && <Routes> <Route path="/feed/:id" element={<Modal title={""} handleClose={closePopup}><OrderInfo modal data={wsOrdersData} /></Modal>} /> </Routes>}
       {background && wsAuthOrdersData && <Routes> <Route path="/profile/orders/:id" element={<Modal title={""} handleClose={closePopup}><OrderInfo modal data={wsAuthOrdersData} /></Modal>} /> </Routes>}
     </>

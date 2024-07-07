@@ -7,12 +7,12 @@ import TotalPrice from '../total-price/total-price';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Order } from '../../services/types/types';
 
-type OrderInfo = {
+type OrderInfoProps = {
   modal?: boolean,
   data: Order[],
 }
 
-export default function OrderInfo({ modal, data }: OrderInfo) {
+export default function OrderInfo({ modal, data }: OrderInfoProps) {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const { id } = useParams();
@@ -26,7 +26,7 @@ export default function OrderInfo({ modal, data }: OrderInfo) {
 	}).reverse();
 
 	function Counter(arr: string[], id: string) {
-		return arr.filter(item => item == id).length
+		return arr.filter(item => item === id).length
 	};
 
 	useEffect(() => {
@@ -35,7 +35,6 @@ export default function OrderInfo({ modal, data }: OrderInfo) {
 		}
 	}, [])
 
-		//Отключение статуса заказа в Ленте заказов
 		useEffect(() => {
 			if (location.pathname === '/feed/:id') {
 				setStyle(`${styles.orderNumber}`);
@@ -47,17 +46,17 @@ export default function OrderInfo({ modal, data }: OrderInfo) {
 	return (
 		<>
 			{currentOrderData === undefined
-				? <p>Загрузка</p>
+				? <p>Loading</p>
 				: <div className={styles.orderContainer}>
 					{modal
 						? <p className={`text text_type_digits-default mb-10 ${style}`}>#{currentOrderData.number}</p>
 						: <p className={`${styles.modal} text text_type_digits-default`}>#{currentOrderData.number}</p>
 					}
 					<h3 className={`${styles.orderName} text text_type_main-medium mb-3`}>{currentOrderData.name}</h3>
-					{currentOrderData.status === 'created' && (<p className={` text text_type_main-default`}>Создан</p>)}
-					{currentOrderData.status === 'pending' && (<p className={`text text_type_main-default`}>Готовится</p>)}
-					{currentOrderData.status === 'done' && (<p className={`${styles.orderDone} text text_type_main-default mb-15`}>Выполнен</p>)}
-					<p className={`${styles.orderConsist} text text_type_main-medium mb-6`}>Состав:</p>
+					{currentOrderData.status === 'created' && (<p className={` text text_type_main-default`}>Created</p>)}
+					{currentOrderData.status === 'pending' && (<p className={`text text_type_main-default`}>In preparation</p>)}
+					{currentOrderData.status === 'done' && (<p className={`${styles.orderDone} text text_type_main-default mb-15`}>Ready</p>)}
+					<p className={`${styles.orderConsist} text text_type_main-medium mb-6`}>Ingredients:</p>
 					<ul className={`${styles.blockWithScroll} mb-10`}>
 						{uniqueIngredients!.map((item) => {
 							const ingredientInfo = allIngredients!.find(ingredient => ingredient._id === item);

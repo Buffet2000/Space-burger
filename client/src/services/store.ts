@@ -34,7 +34,7 @@ const wsAuthActions = {
   getOrders: WS_GET_AUTH_ORDERS
 };
 
-//подключаем DevTools
+// DevTools
 declare global {
 	interface Window {
 		__REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;

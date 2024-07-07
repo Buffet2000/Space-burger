@@ -1,13 +1,13 @@
 import { useSelector } from '../../../services/types/hooks';
 import styles from './order-ingredient.module.css';
 
-type OrderIngredient = {
+type OrderIngredientProps = {
   intersection: boolean,
   id: string,
   counter?: number | undefined,
 }
 
-export default function OrderIngredient({ intersection, id, counter }: OrderIngredient) {
+export default function OrderIngredient({ intersection, id, counter }: OrderIngredientProps) {
 
 	const allIngredients = useSelector((store) => store.ingredients.items);
 	const ingredientData = allIngredients!.filter(item => item._id === id)[0]
@@ -27,7 +27,7 @@ export default function OrderIngredient({ intersection, id, counter }: OrderIngr
 
 	return (
 		<div className={`${styles.frame} ${className}`}>
-			<img className={`${styles.img} `} src={ingredientData ? ingredientData.image : undefined} ></img>
+			<img alt='ingredient' className={`${styles.img}`} src={ingredientData ? ingredientData.image : undefined} ></img>
 			{counter! >= 2
 				? (<div className={`${styles.counter} text text_type_main-default`}>+{counter}</div>)
 				: null

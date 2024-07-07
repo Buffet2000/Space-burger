@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from '../../services/types/hooks';
 import Orders from '../../components/orders/orders';
 import styles from './profile-orders.module.css';
 
-type ProfileOrders = {
+type ProfileOrdersProps = {
   path: string,
   reverse?: boolean
 }
 
-export default function ProfileOrders({ path, reverse }: ProfileOrders) {
+export default function ProfileOrders({ path, reverse }: ProfileOrdersProps) {
   const dispatch = useDispatch();
   const wsAuthData = useSelector((store) => store.wsAuthOrders.orders);
 
@@ -22,7 +22,7 @@ export default function ProfileOrders({ path, reverse }: ProfileOrders) {
     <>
       <div className={styles.orders}>
         {!wsAuthData
-          ? <p>Загрузка...</p>
+          ? <p>Loading...</p>
           : <Orders ordersData={wsAuthData} path={path} reverse={reverse} />}
       </div>
     </>

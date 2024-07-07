@@ -6,7 +6,6 @@ import {
 import { Ingredient } from "../types/types";
 import { IngredientsDataActions } from "../actions/all-ingredients";
 
-//Все ингредиенты от запроса API
 type InitialState = {
   items: Ingredient[] | null,
   itemsRequest: boolean,

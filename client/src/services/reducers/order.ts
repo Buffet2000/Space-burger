@@ -4,7 +4,7 @@ import {
 } from "../constants/order";
 import { OrderActions } from "../actions/order";
 
-type initialState = {
+type InitialState = {
   orderNumber: number | null,
   orderNumberRequest: boolean,
   orderNumberFailed: boolean,
@@ -12,7 +12,7 @@ type initialState = {
   orderItems: string[] | [],
 }
 
-const initialState: initialState = {
+const initialState: InitialState = {
   orderNumber: null,
   orderNumberRequest: false,
   orderNumberFailed: false,

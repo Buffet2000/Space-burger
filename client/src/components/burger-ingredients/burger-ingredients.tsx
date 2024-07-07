@@ -30,34 +30,34 @@ export default function BurgerIngredients() {
 
   return (
     <section className={styles.ingredients}>
-      <h2 className="text text_type_main-large mt-10 mb-5">Соберите бургер</h2>
+      <h2 className="text text_type_main-large mt-10 mb-5">Build a burger</h2>
       <div className={styles.ingredient_tabs}>
         <Tab value="bun" active={current === "bun"} onClick={() => scrollToCategory("bun")}>
-          Булки
+          Buns
         </Tab>
         <Tab value="sauce" active={current === "sauce"} onClick={() => scrollToCategory("sauce")}>
-          Соусы
+          Sauces
         </Tab>
         <Tab value="main" active={current === "main"} onClick={() => scrollToCategory("main")}>
-          Начинки
+          Fillings
         </Tab>
       </div>
       <div className={styles.ingredients_container}>
         <BurgerIngredientCategory
           innerRef={bunRef}
-          name="Булки"
+          name="Buns"
           ingr_type="bun"
           style={styles.buns}
         />
         <BurgerIngredientCategory
           innerRef={sauceRef}
-          name="Соусы"
+          name="Sauces"
           ingr_type="sauce"
           style={styles.sauces}
         />
         <BurgerIngredientCategory
           innerRef={mainRef}
-          name="Начинки"
+          name="Fillings"
           ingr_type="main"
           style={styles.stuffing}
         />

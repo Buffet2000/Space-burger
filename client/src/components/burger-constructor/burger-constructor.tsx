@@ -20,11 +20,11 @@ export default function BurgerConstructor() {
   const { isAuthenticated } = useSelector((store) => store.user);
   const [modalActive, setModalActive] = useState(false);
 
-  const ingredients = useSelector((store) => store.constructorIngredients.ingredients); //Ингредиенты в конструкторе
-  const buns = useSelector((store) => store.constructorIngredients.buns);//Булки в конструкторе
-  const order = [...ingredients, ...buns]; //Весь заказ в конструкторе
+  const ingredients = useSelector((store) => store.constructorIngredients.ingredients);
+  const buns = useSelector((store) => store.constructorIngredients.buns);
+  const order = [...ingredients, ...buns];
   
-  const orderIds = order.map(item => item._id); //Все id заказа.
+  const orderIds = order.map(item => item._id);
   const [buttonValue, setButtonValue] = useState(true)
 
   useEffect(() => {
@@ -80,7 +80,7 @@ export default function BurgerConstructor() {
         <BurgerBun className="mr-4" hideIco={styles.dragIcon_hidden} isLocked={true} containerType={"top"} nameType={"(верх)"} />
         <ul className={styles.stuffing_list}>
           {ingredients.length === 0
-            ? <div className={`${styles.stuffing_addIngredient} text text_type_main-medium`}>Добавь ингредиеты</div>
+            ? <div className={`${styles.stuffing_addIngredient} text text_type_main-medium`}>Add ingredients</div>
             : ingredients.map((item, index) => {
               return <BurgerStuffing data={item} key={item.id} id={item.id!} index={index} />
             })
@@ -94,7 +94,7 @@ export default function BurgerConstructor() {
           <CurrencyIcon type="primary" />
         </div>
         <Button disabled={buttonValue} htmlType="button" type="primary" size="large" onClick={confirmOrder}>
-          Оформить заказ
+          Confirm order
         </Button>
         {modalActive && <Modal handleClose={closeOrder}>
           <OrderDetails />

@@ -12,10 +12,8 @@ import { Action, ActionCreator } from "redux";
 import { store } from "../store";
 import { rootReducer } from "../reducers/root-reducer";
 
-// Типизация стора
 export type RootState = ReturnType<typeof rootReducer>;
 
-// Все экшены приложения
 type ApplicationActions =
   | CurrentOrderActions
   | OpenedIngredientInfoActions
@@ -28,10 +26,9 @@ type ApplicationActions =
   | WsAuthActions
 ;
 
-// Типизация Redux Thunk
+// Redux Thunk
 export type AppThunk<TReturn = void> = ActionCreator<
   ThunkAction<TReturn, Action, RootState, ApplicationActions>
 >;
 
-// Типизация метода dispatch
 export type AppDispatch = typeof store.dispatch; 

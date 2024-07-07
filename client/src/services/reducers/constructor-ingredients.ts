@@ -14,7 +14,6 @@ type InitialState = {
   buns: Ingredient[] | []
 }
 
-//Все ингредиенты в конструкторе
 const initialState: InitialState = {
   ingredients: [],
   buns: [],

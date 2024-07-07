@@ -7,7 +7,7 @@ import {
 } from "../constants/web-socket";
 import { Order } from "../types/types";
 
-type initialState = {
+type InitialState = {
   wsConnected: boolean,
   wsError: string | undefined,
   orders: Order[] | null,
@@ -15,7 +15,7 @@ type initialState = {
   totalToday: number,
 }
 
-const initialState: initialState = {
+const initialState: InitialState = {
   wsConnected: false,
   wsError: undefined,
   orders: null,

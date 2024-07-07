@@ -1,12 +1,12 @@
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import styles from './total-price.module.css';
 
-type TotalPrice = {
+type TotalPriceProps = {
 	totalPrice: number | undefined,
 	size: string
 }
 
-export default function TotalPrice({ totalPrice, size }: TotalPrice) {
+export default function TotalPrice({ totalPrice, size }: TotalPriceProps) {
 
 	return (
 		<div className={styles.total}>

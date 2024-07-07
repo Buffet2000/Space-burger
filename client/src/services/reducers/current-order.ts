@@ -2,11 +2,11 @@ import { ADD_CURRENT_ORDER_INFO, DELETE_CURRENT_ORDER_INFO } from "../constants/
 import { CurrentOrderActions } from "../actions/current-order";
 import { Order } from "../types/types";
 
-type initialState = {
+type ШnitialState = {
   information: Order | null
 }
 
-const initialState: initialState = {
+const initialState: ШnitialState = {
   information: null
 }
 

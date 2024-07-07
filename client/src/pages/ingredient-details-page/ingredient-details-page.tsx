@@ -14,13 +14,13 @@ export default function IngredientDetailsPage() {
     if (itemsLoaded && !openedIngredient) {
       return (navigate('/'))
     }
-  }, [itemsLoaded])
+  }, [itemsLoaded, navigate, openedIngredient])
 
   return (
     <>
       {openedIngredient &&
       <div className={styles.container}>
-        <h2 className="text text_type_main-large mt-3 mb-3">Детали ингредиента</h2>
+        <h2 className="text text_type_main-large mt-3 mb-3">Ingredient detail</h2>
         <IngredientDetails />
       </div>}
     </>

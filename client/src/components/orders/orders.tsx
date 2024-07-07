@@ -2,13 +2,13 @@ import { Order } from '../../services/types/types';
 import OrderElement from './order-element/order-element';
 import styles from './orders.module.css';
 
-type Orders = {
+type OrdersProps = {
   path: string,
   ordersData: Order[],
   reverse?: boolean,
 }
 
-export default function Orders({ path, ordersData, reverse }: Orders) {
+export default function Orders({ path, ordersData, reverse }: OrdersProps) {
   return (
     <ul className={`${styles.blockWithScroll} mt-10`}>
       {reverse

@@ -8,12 +8,12 @@ import OrderIngredient from '../order-ingredient/order-ingredient';
 import styles from './order-element.module.css';
 import { Order } from '../../../services/types/types';
 
-type OrderElement = {
+type OrderElementProps = {
 	data: Order,
 	path: string,
 }
 
-export default function OrderElement({ data, path }: OrderElement) {
+export default function OrderElement({ data, path }: OrderElementProps) {
 	const location = useLocation();
 	const dispatch = useDispatch();
 	const allIngredients = useSelector((store) => store.ingredients.items);
@@ -50,7 +50,6 @@ export default function OrderElement({ data, path }: OrderElement) {
 		dispatch(addCurrentOrderInfo(data));
 	}
 
-	//Отключение статуса заказа в Ленте заказов
 	useEffect(() => {
 		if (location.pathname === '/feed') {
 			setStatusOff(`${styles.statusOff}`);
@@ -66,9 +65,9 @@ export default function OrderElement({ data, path }: OrderElement) {
 			<p className={`${styles.number} text text_type_digits-default`}>#{data.number}</p>
 			<p className={`${styles.date} text text_type_main-default text_color_inactive`}><FormattedDate date={new Date(data.createdAt)} /></p>
 			<h4 className={`${styles.name} text text_type_main-medium`}>{data.name}</h4>
-			{status.status === 'created' && (<p className={`${styles.status} ${styles.complete} ${statusOff} text text_type_main-default`}>Создан</p>)}
-			{status.status === 'pending' && (<p className={`${styles.status} ${styles.complete} ${statusOff} text text_type_main-default`}>Готовится</p>)}
-			{status.status === 'done' && (<p className={`${styles.status} ${styles.complete} ${statusOff} text text_type_main-default`}>Выполнен</p>)}
+			{status.status === 'created' && (<p className={`${styles.status} ${styles.complete} ${statusOff} text text_type_main-default`}>Created</p>)}
+			{status.status === 'pending' && (<p className={`${styles.status} ${styles.complete} ${statusOff} text text_type_main-default`}>In preparation</p>)}
+			{status.status === 'done' && (<p className={`${styles.status} ${styles.complete} ${statusOff} text text_type_main-default`}>Ready</p>)}
 			<div className={`${styles.ingredients}`}>
 				{uniqueIngredients.slice(0, 6).map((item) =>
 					<OrderIngredient intersection id={item} key={item} counter={Counter(data.ingredients, item)} />
